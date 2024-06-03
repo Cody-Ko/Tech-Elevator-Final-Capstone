@@ -18,7 +18,11 @@ export default {
   },
 
   addComment(comment) {
-    return http.post('add-comment', comment)
+    return http.post('/add-comment', comment)
+  },
+  
+  deleteComment(commentId) {
+    return http.delete(`/comments/${commentId}`)
   }
 
 }
