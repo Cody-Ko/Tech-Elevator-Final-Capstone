@@ -16,11 +16,11 @@ import org.springframework.stereotype.Component;
 import com.techelevator.model.User;
 
 @Component
-public class JdbcUserDao implements UserDao {
+public class JdbcUserDAO implements UserDAO {
 
     private final JdbcTemplate jdbcTemplate;
 
-    public JdbcUserDao(JdbcTemplate jdbcTemplate) {
+    public JdbcUserDAO(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 

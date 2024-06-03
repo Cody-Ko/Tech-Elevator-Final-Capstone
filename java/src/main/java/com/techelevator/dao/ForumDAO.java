@@ -1,6 +1,4 @@
 package com.techelevator.dao;
 
-public interface ForumDao {
-
-
+public interface ForumDAO {
 }
