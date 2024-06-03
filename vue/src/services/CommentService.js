@@ -9,15 +9,15 @@ export default {
     return axios.get('/comments')
   },
 
-  getPost(commentId) {
+  getComment(commentId) {
     return axios.get(`/comment/${commentId}`)
   },
 
-  updatePost(commentId) {
+  updateComment(commentId) {
     return axios.put(`/update-comment`, commentId);
   },
 
-  addPost(comment) {
+  addComment(comment) {
     return http.post('add-comment', comment)
   }
 
