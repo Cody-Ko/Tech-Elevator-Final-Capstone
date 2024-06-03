@@ -19,6 +19,10 @@ export default {
 
   addPost(post) {
     return http.post('add-post', post)
+  },
+
+  deletePost(postId) {
+    return http.delete(`/posts/${postId}`)
   }
 
 }
