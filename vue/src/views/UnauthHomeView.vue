@@ -15,17 +15,17 @@ import ForumService from '../services/ForumService'
     },
     data(){
         return {
-             forum: []
+             forums: []
         };
     },
     methods: {
         getForums(){
             ForumService.getAllForums().then((response) =>{
-                this.forum = response.data;
+                this.forums = response.data;
             })
-            .catch(error =>{
+            // .catch(error =>{
                 
-            })
+            // })
         }
     },
     created(){

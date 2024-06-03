@@ -24,6 +24,8 @@ export function createStore(currentToken, currentUser) {
         state.user = {};
         axios.defaults.headers.common = {};
       }
+
+      // SET_NOTIFICATION (state, notification)
     },
   });
   return store;
