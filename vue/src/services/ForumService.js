@@ -19,6 +19,11 @@ export default {
 
   addForum(forum) {
     return http.post('add-fourm', forum)
+  },
+
+  deleteForum(forumId) {
+    return http.delete(`/forums/${forumId}`)
   }
+
 
 }

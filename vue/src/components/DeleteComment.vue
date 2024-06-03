@@ -27,6 +27,7 @@ export default {
                 )
             }
         },
+        
         errorNeedingAddressed(error, toBeDone) {
             if(error.response) {
                 if(error.response.status == 404) {

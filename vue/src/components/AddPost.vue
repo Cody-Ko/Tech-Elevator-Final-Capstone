@@ -1,28 +1,28 @@
 <template>
-  <h1>Comments Add</h1>
-</template>
-
-<script>
-import CommentService from '../services/CommentService.js';
-
+    <h1>Post Add</h1>
+  </template>
+  
+  <script>
+import PostService from '../services/PostService';
+  
 export default {
-    data() {
-        return {
-            newComment: ''
-        }
-    },
-
-    methods: {
-        addComment() {
-            CommentService.addComment(this.newComment).then(
-                (response) => {
-                    if(response.status === 201) {
-                        window.alert('Comment added!')
-                        this.newComment = '';
-                        this.$router.push({name: 'comment'})
-                    }
-                },
-            )  .catch(
+      data() {
+          return {
+              newPost: ''
+          }
+      },
+  
+      methods: {
+          addPost() {
+              PostService.addPost(this.newPost).then(
+                  (response) => {
+                      if(response.status === 201) {
+                          window.alert('Post added!')
+                          this.newPost = '';
+                          this.$router.push({name: 'post'})
+                      }
+                  },
+              )  .catch(
                 (error) => {
                     if(error.response) {
                         this.errorNeedingAddressed(this.error.response, "adding");
@@ -30,9 +30,9 @@ export default {
                         this.errorNeedingAddressed(this.error.request, "adding");
                     }
                     }
-                )
-        },
-        errorNeedingAddressed(error, toBeDone) {
+                ) 
+          },
+          errorNeedingAddressed(error, toBeDone) {
             if(error.response) {
                 if(error.response.status == 404) {
                     this.$router.push({name: 'Home'})
@@ -44,12 +44,11 @@ export default {
                 `This ${toBeDone} has not occurred.  Server could not be reached.`
             }
         },
-
-    },
-
+      },
+  
 }
-</script>
-
-<style>
-
-</style>
+  </script>
+  
+  <style>
+  
+  </style>
