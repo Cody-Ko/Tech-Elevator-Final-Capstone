@@ -1,9 +1,8 @@
 <template>
-    <header>
-        <h1>{{ forum.name }}</h1>
-    </header>
-   
     <div class="card">
+    <header>
+        <h1 class="forumName">{{ forum.name }}</h1>
+    </header>
 
          <!-- what should the layout look like in the HomeView(s)? 
         (i.e. forum name in the middle, 
@@ -49,5 +48,18 @@ export default{
 </script>
 
 <style scoped>
+.card{
+    border: 2px solid #34aae1;
+    border-radius: 10px;
+    width: 550px;
+    height: 250px;
+    margin: 20px;
+}
+
+.card .forumName{
+    font-size: 1.5rem
+    
+}
+
 
 </style>
