@@ -1,32 +1,68 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Post;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 
+import javax.validation.constraints.Null;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class JdbcPostDAO implements PostDAO {
 
+    /*** CONSTRUCTOR ***/
+    private final JdbcTemplate jdbcTemplate;
+
+    public JdbcPostDAO (JdbcTemplate jdbcTemplate){
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
+
+
     /*** SINGLE POST GETTERS ***/
 
     public Post getPostByID(int postID){
+        String sql = "SELECT * FROM posts" +
+                " WHERE post_id = ?";
+
         return new Post();
     }
     public Post getPostByTitle(String postTitle){
+
+        String sql = "SELECT * FROM posts" +
+                " WHERE title = ?";
+
         return new Post();
     }
     public int getUserID(int postID){
+        String sql = "SELECT user_id FROM posts" +
+                " WHERE post_id = ?";
 
-        return 999;
+        return jdbcTemplate.queryForObject(sql, int.class, postID);
     }
     public String getUserName(int postID){
+        String sql = "SELECT ";
+            // do a join here
         return new String();
     }
 
     /*** LIST POST GETTERS ***/
     public List<Post> getAllPosts(){
-        List<Post> rtnList = new ArrayList<Post>();
-        return rtnList;
+        String sql = "SELECT * FROM posts";
+        List<Post> postList = new ArrayList<>();
+        try {
+            SqlRowSet result= jdbcTemplate.queryForRowSet(sql);
+            while(result.next()){
+                postList.add(mapRowToTransfer(result));
+            }
+        }
+        catch (NullPointerException e){
+            return null;
+        }
+
+        return postList;
     }
     public List<Post> getPostsByUsername(String Username){
         List<Post> rtnList = new ArrayList<Post>();
@@ -66,5 +102,19 @@ public class JdbcPostDAO implements PostDAO {
     public int getPostScore(int postID){
         return 999;
     }
+
+    private Post mapRowToTransfer(SqlRowSet rs) {
+        Post post = new Post();
+        post.setPostID(rs.getInt("post_id"));
+        post.setUserID(rs.getInt("user_id"));
+        post.setForumID(rs.getInt("forum_id"));
+        post.setTitle(rs.getString("title"));
+        post.setMessageDetails(rs.getString("message"));
+        post.setUpVotes(rs.getInt("up_votes"));
+        post.setDownVotes(rs.getInt("down_votes"));
+        post.setTimeStamp(rs.getDate("time_stamp"));
+        return post;
+    }
+
 
 }

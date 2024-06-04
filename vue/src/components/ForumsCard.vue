@@ -49,7 +49,7 @@ export default{
 
 <style scoped>
 .card{
-    border: 5px solid #34aae1;
+    border: 5px solid rgb(250, 129, 240);
     border-radius: 10px;
     width: 650px;
     height: 250px;
@@ -61,12 +61,14 @@ export default{
 }
 
 .card .forumName{
-    font-size: 2.5rem
+    font-size: 2.5rem;
+    color: white
 
 }
 
 .card .timeStamp{
-    font-size: 1.5rem
+    font-size: 1.5rem;
+    color: white
 }
 
 
