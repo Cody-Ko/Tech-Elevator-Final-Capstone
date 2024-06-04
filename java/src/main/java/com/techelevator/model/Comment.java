@@ -55,7 +55,7 @@ public class Comment {
     }
 
     public void setMessageDetails(String messageDetails){
-        this.messageDetails() = messageDetails();
+        //this.messageDetails() = messageDetails();
     }
 
     public void setTimeStamp(LocalDateTime  timeStamp) {
