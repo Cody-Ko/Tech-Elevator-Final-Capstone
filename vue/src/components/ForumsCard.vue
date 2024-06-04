@@ -1,4 +1,5 @@
 <template>
+    <router-link class="ForumViewLink" v-bind:to="{ name: 'forumview', params:{forumId: forum.forumId} }">
     <div class="card">
     <header>
         <h1 class="forumName">{{ forum.forumName }}</h1>
@@ -11,6 +12,7 @@
         ability to like a forum (IF SIGNED IN - otherwise hide)-->
         
     </div>
+</router-link>
 </template>
 
 <script>
@@ -62,13 +64,18 @@ export default{
 
 .card .forumName{
     font-size: 2.5rem;
-    color: white
+    color: white;
+    text-decoration: none;
 
 }
 
 .card .timeStamp{
     font-size: 1.5rem;
     color: white
+}
+
+.ForumViewLink{
+    text-decoration: none;
 }
 
 

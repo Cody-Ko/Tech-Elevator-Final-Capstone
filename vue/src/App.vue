@@ -70,4 +70,13 @@ label {
   color: white;
 }
 
+html, body, content {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  background-attachment: fixed;
+  background-color: #34aae1;
+}
+
+
 </style>
