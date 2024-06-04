@@ -29,6 +29,7 @@ CREATE TABLE forum (
     	user_id INT NOT NULL,
     	forum_name VARCHAR(50) NOT NULL UNIQUE,
     	time_stamp TIMESTAMP NOT NULL,
+    	favorited_forum BOOLEAN,
     	FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 CREATE TABLE posts (
