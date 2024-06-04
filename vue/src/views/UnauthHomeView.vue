@@ -1,6 +1,8 @@
 <template>
     <div class="home">
       <h1>Home</h1>
+      <!-- Header for Trending Forums (up-votes) and Active Forums (comments) within 24hr window
+        Pull in a component that uses the ForumsCard to display the content -->
       <p></p>
     </div>
   </template>

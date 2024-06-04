@@ -1,16 +1,29 @@
 <template>
    
     <div class="card">
-         <!-- what should the layout look like? (i.e. username at the top, comment in the middle, 
-        timestamp at the bottom -->
+         <!-- what should the layout look like in the HomeView(s)? 
+        (i.e. username at the top, forum name in the middle, 
+        timestamp at the bottom, 
+        ability to like a forum (IF SIGNED IN - otherwise hide)-->
         
     </div>
 </template>
 
 <script>
+
+import ForumService from '../services/ForumService';
+// import PostsComponent from '../components/PostsComponent'
+
 export default{
+    components: {
+        // PostsComponent
+    },
     props: {
-        forum: Object
+        forum: {
+            type: Object,
+            required: true
+        }
+        
         /* 
         What is this for/is it needed?
         , 
@@ -20,7 +33,14 @@ export default{
         }
         */
         
+    },
+    computed: {
+
+    },
+    methods: {
+
     }
+
 };
 </script>
 
