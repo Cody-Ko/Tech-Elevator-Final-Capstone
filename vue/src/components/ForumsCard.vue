@@ -1,6 +1,11 @@
 <template>
+    <header>
+        <h1>{{ forum.name }}</h1>
+        
+    </header>
    
     <div class="card">
+
          <!-- what should the layout look like in the HomeView(s)? 
         (i.e. username at the top, forum name in the middle, 
         timestamp at the bottom, 
@@ -44,6 +49,6 @@ export default{
 };
 </script>
 
-<style>
+<style scoped>
 
 </style>
