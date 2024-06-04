@@ -46,8 +46,8 @@ public class JdbcForumDAO implements ForumDAO {
 
     public String getUsername(String name) {
         String sql = "SELECT username from users\n" +
-                "JOIN user_form ON user_id.users = user_id.user_form\n" +
-                "JOIN forum ON forum_id.user_form = forum_id.forum\n" +
+                "JOIN user_forum ON user_id.users = user_id.user_forum\n" +
+                "JOIN forum ON forum_id.user_forum = forum_id.forum\n" +
                 "WHERE forum_name = ?";
 
         try{
@@ -59,8 +59,8 @@ public class JdbcForumDAO implements ForumDAO {
 
     public List<String> getForumsByUsername(String username) {
         String sql = "SELECT forum_name FROM forum\n" +
-                "JOIN user_form ON forum_id.forum = forum_id.user_form\n" +
-                "JOIN users ON user_id.user_form = user_id.users\n" +
+                "JOIN user_forum ON forum_id.forum = forum_id.user_forum\n" +
+                "JOIN users ON user_id.user_forum = user_id.users\n" +
                 "WHERE username = ?";
 
         try{
