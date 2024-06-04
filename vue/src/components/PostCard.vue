@@ -1,8 +1,7 @@
 <template>
   <div class="PostCard">
-    <p>
+    <p></p>
         <h1 class="postName"> {{ post.postName }}</h1>
-    </p>
     <!-- Cycle through all comments for posts -->
 
   </div>
