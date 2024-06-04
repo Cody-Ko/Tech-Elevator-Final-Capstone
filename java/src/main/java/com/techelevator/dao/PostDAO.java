@@ -1,5 +1,31 @@
 package com.techelevator.dao;
 
-public interface PostDAO {
+import com.techelevator.model.Post;
 
+import java.util.List;
+
+public interface PostDAO {
+    /*** SINGLE POST GETTERS ***/
+
+    public Post getPostByID(int postID);
+    public Post getPostByTitle(String postTitle);
+    public int getUserID(int postID);
+    public String getUserName(int postID);
+
+    /*** LIST POST GETTERS ***/
+    List<Post> getAllPosts();
+    List<Post> getPostsByUsername(String Username);
+    List<Post> getPostsByUserID(int userID);
+    List<Post> getPostsByForumName(String forumName);
+    List<Post> getPostsByForumID(int forumID);
+
+    /*** CREATE AND DELETE POSTS ***/
+    void createPost(Post toPost);
+    void deletePost(int postID);
+    void deletePostsByUserID(int userID);
+
+    /*** METHODS FOR VOTING ON POSTS ***/
+    void upvotePost(int postID);
+    void downvotePost(int postID);
+    int getPostScore(int postID);
 }
