@@ -1,5 +1,9 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Forum;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
+
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -9,7 +13,15 @@ public interface ForumDAO {
 
     String getUsername(String name);
 
-    List<String> getForumsByUsername(String username);
+    List<Forum> getForumsByUsername(String username);
 
-    void addForum(int forumId, String name, Date timestamp, int userId, boolean favorite);
+    void addForum(int forumId, String name, LocalDateTime timestamp, int userId, boolean favorite);
+
+    Forum mapRowToForum(SqlRowSet results);
+
+    List<Forum> getFavoriteForums(String username);
+
+    List<Forum> getActiveForums();
+
+    List<Forum> getForumsByKeyword(String keyword);
 }

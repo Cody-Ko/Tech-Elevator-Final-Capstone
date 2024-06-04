@@ -1,17 +1,20 @@
 package com.techelevator.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 
 public class Forum {
     @JsonProperty("forum_name")
     private String name;
     @JsonProperty("time_stamp")
-    private Date timeStamp;
+    private LocalDateTime timestamp;
     @JsonProperty("user_id")
-    private int userID;
+    private int userId;
     @JsonProperty("forum_id")
     private int forumId;
+
 
     public String getName() {
         return name;
@@ -21,20 +24,24 @@ public class Forum {
         this.name = name;
     }
 
-    public Date getTimeStamp() {
-        return timeStamp;
+    public LocalDateTime getTimestamp() {
+        return timestamp;
     }
 
-    public void setTimeStamp(Date timeStamp) {
-        this.timeStamp = timeStamp;
+    public void setTimestamp(LocalDateTime timestamp) {
+        this.timestamp = timestamp;
+    }
+    public void setTimestamp(Date timestamp) {
+        LocalDateTime localDateTime = timestamp.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+        this.timestamp = localDateTime;
     }
 
-    public int getUserID() {
-        return userID;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUserID(int userID) {
-        this.userID = userID;
+    public void setUserID(int userId) {
+        this.userId = userId;
     }
 
     public int getForumId() {

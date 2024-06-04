@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
+import com.techelevator.model.Forum;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
@@ -8,6 +9,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -19,11 +23,11 @@ public class JdbcForumDAO implements ForumDAO {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public void addForum(int forumId, String name, Date timestamp, int userId, boolean favorite) {
+    public void addForum(int forumId, String name, LocalDateTime timestamp, int userId, boolean favorite) {
         String sql = "INSERT into forum " +
                 "(forum_id, forum_name, " +
                 "forum_time_stamp, user_id, " +
-                "favorite_forum) VALUES " +
+                "favorited_forum) VALUES " +
                 "(?,?,?,?,?);";
         try {
             jdbcTemplate.update(sql, forumId, name, timestamp, userId, favorite);
@@ -32,6 +36,15 @@ public class JdbcForumDAO implements ForumDAO {
         } catch(DataIntegrityViolationException e) {
             throw new DaoException("Data integrity violation", e);
         }
+    }
+
+    public Forum mapRowToForum(SqlRowSet results) {
+        Forum forum = new Forum();
+        forum.setForumId(results.getInt("forum_id"));
+        forum.setName(results.getString("forum_name"));
+        forum.setTimestamp(results.getDate("time_stamp"));
+        forum.setUserID(results.getInt("user_id"));
+        return forum;
     }
 
     public int getUserId(String name) {
@@ -57,28 +70,62 @@ public class JdbcForumDAO implements ForumDAO {
         }
     }
 
-    public List<String> getForumsByUsername(String username) {
+    public List<Forum> getForumsByUsername(String username) {
+        List<Forum> forums = new ArrayList<>();
         String sql = "SELECT forum_name FROM forum\n" +
                 "JOIN user_forum ON forum_id.forum = forum_id.user_forum\n" +
                 "JOIN users ON user_id.user_forum = user_id.users\n" +
                 "WHERE username = ?";
 
-        try{
-            return jdbcTemplate.queryForList(sql, new Object[]{username}, String.class);
-        } catch (NullPointerException | EmptyResultDataAccessException e) {
-            throw new UsernameNotFoundException("Username " + username + " not found.");
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+
+        while(results.next()) {
+            Forum forum = mapRowToForum(results);
+            forums.add(forum);
         }
+        return forums;
     }
 
-    public List<String> getFavoriteForums(String username) {
-        return null;
+    public List<Forum> getFavoriteForums(String username) {
+        List<Forum> forums = new ArrayList<>();
+        String sql = "SELECT forum_name FROM forum\n" +
+                "JOIN user_favorite_forums ON forum_id.forum = forum.id.user_favorite_forums\n" +
+                "JOIN users ON forum_user_id = user_id.users\n" +
+                "WHERE username = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+
+        while(results.next()) {
+            Forum forum = mapRowToForum(results);
+            forums.add(forum);
+        }
+        return forums;
     }
 
-    public List<String> getActiveForums() {
-        return null;
+    public List<Forum> getActiveForums() {
+        List<Forum> forums = new ArrayList<>();
+        String sql = "SELECT forum_name, time_stamp " +
+                "FROM forum " +
+                "ORDER BY time_stamp DESC " +
+                "LIMIT 5";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+
+        while(results.next()) {
+            Forum forum = mapRowToForum(results);
+            forums.add(forum);
+        }
+        return forums;
     }
 
-    public List<String> getForumsByKeyword(String keyword) {
-        return null;
+    public List<Forum> getForumsByKeyword(String keyword) {
+        List<Forum> forums = new ArrayList<>();
+        String sql = "SELECT forum_name FROM forum WHERE forum_name LIKE ?";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+
+        while(results.next()) {
+            Forum forum = mapRowToForum(results);
+            forums.add(forum);
+        }
+        return forums;
     }
 }
