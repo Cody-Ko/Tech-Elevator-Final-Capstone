@@ -65,9 +65,22 @@ export default {
 <style scoped>
 .form-input-group {
   margin-bottom: 1rem;
-}
+};
+
 label {
   margin-right: 0.5rem;
-}
+};
+
+div {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgba(rgb(250, 228, 248),);
+  text-decoration-color: rgba(rgb(250, 129, 240),);
+};
+
+.btn {
+  display: inline-block;
+  font-weight: 200;
+  background-color: rgba(52,170,225,255)
+};
 
 </style>
