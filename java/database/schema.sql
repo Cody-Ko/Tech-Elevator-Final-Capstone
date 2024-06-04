@@ -5,6 +5,7 @@ DROP TABLE IF EXISTS posts;
 DROP TABLE IF EXISTS forum;
 DROP TABLE IF EXISTS comments;
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS user_favorite_forum;
 
 CREATE TABLE users (
 	user_id SERIAL,
