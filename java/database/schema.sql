@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS user_form;
+DROP TABLE IF EXISTS user_forum;
 DROP TABLE IF EXISTS posts;
 DROP TABLE IF EXISTS forum;
 DROP TABLE IF EXISTS comments;
@@ -53,10 +53,10 @@ CREATE TABLE user_forum (
 
 CREATE TABLE user_favorite_forum (
     forum_id INT NOT NULL,
-    forum_user_id INT NOT NULL,
-    PRIMARY KEY (forum_id, forum_user_id),
-    FOREIGN KEY (forum_user_id) REFERENCES users(user_id),
-    FOREIGN KEY (forum_id) REFERENCES forum(forum_id)
-)
+        forum_user_id INT NOT NULL,
+        PRIMARY KEY (forum_id, forum_user_id),
+        FOREIGN KEY (forum_user_id) REFERENCES users(user_id),
+        FOREIGN KEY (forum_id) REFERENCES forum(forum_id)
+);
 
 COMMIT TRANSACTION;
