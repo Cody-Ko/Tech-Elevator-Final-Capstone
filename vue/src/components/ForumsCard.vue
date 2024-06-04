@@ -1,13 +1,12 @@
 <template>
     <header>
         <h1>{{ forum.name }}</h1>
-        
     </header>
    
     <div class="card">
 
          <!-- what should the layout look like in the HomeView(s)? 
-        (i.e. username at the top, forum name in the middle, 
+        (i.e. forum name in the middle, 
         timestamp at the bottom, 
         ability to like a forum (IF SIGNED IN - otherwise hide)-->
         
