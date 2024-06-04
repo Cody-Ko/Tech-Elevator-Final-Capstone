@@ -1,8 +1,9 @@
 <template>
     <div class="card">
     <header>
-        <h1 class="forumName">{{ forum.name }}</h1>
+        <h1 class="forumName">{{ forum.forumName }}</h1>
     </header>
+    <div class="timeStamp">{{ forum.timeStamp }}</div>
 
          <!-- what should the layout look like in the HomeView(s)? 
         (i.e. forum name in the middle, 
@@ -14,7 +15,6 @@
 
 <script>
 
-import ForumService from '../services/ForumService';
 // import PostsComponent from '../components/PostsComponent'
 
 export default{
@@ -49,16 +49,26 @@ export default{
 
 <style scoped>
 .card{
-    border: 2px solid #34aae1;
+    border: 5px solid rgb(250, 129, 240);
     border-radius: 10px;
-    width: 550px;
+    width: 650px;
     height: 250px;
     margin: 20px;
+    text-align: center;
+    align-content: center;
+    margin: 0 auto;
+    margin-bottom: 10px;
 }
 
 .card .forumName{
-    font-size: 1.5rem
-    
+    font-size: 2.5rem;
+    color: white
+
+}
+
+.card .timeStamp{
+    font-size: 1.5rem;
+    color: white
 }
 
 
