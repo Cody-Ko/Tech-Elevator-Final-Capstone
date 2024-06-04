@@ -53,7 +53,7 @@ CREATE TABLE user_forum (
 
 CREATE TABLE user_favorite_forum (
     forum_id INT NOT NULL,
-    forum_user_id INT NOT NULL
+    forum_user_id INT NOT NULL,
     PRIMARY KEY (forum_id, forum_user_id),
     FOREIGN KEY (forum_user_id) REFERENCES users(user_id),
     FOREIGN KEY (forum_id) REFERENCES forum(forum_id)
