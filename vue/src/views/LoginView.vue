@@ -83,4 +83,11 @@ div {
   background-color: rgba(52,170,225,255)
 };
 
+#login {
+  display: flex;
+  font-weight: 200;
+  background-color: #34aae1 ;
+  text-decoration-color: rgba(rgb(250, 129, 240));
+};
+
 </style>
