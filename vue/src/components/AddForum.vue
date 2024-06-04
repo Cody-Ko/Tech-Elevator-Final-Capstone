@@ -50,6 +50,6 @@ import ForumService from '../services/ForumService.js'
   }
 </script>
   
-<style>
+<style scoped>
   
 </style>

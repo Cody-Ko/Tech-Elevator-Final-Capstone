@@ -1,25 +1,45 @@
 <template>
-  <h1>Comments Add</h1>
+  <h1>Votes</h1>
 </template>
 
 <script>
-import CommentService from '../services/CommentService.js';
+
+import VoteServices from '../services/VoteServices.js'
 
 export default {
     data() {
         return {
-            newComment: ''
+            newVote: ''
         }
     },
 
     methods: {
-        addComment() {
-            CommentService.addComment(this.newComment).then(
+        addUpVote() {
+            VoteServices.addUpVote(this.newVote).then(
                 (response) => {
                     if(response.status === 201) {
-                        window.alert('Comment added!')
+                        window.alert('Vote added!')
                         this.newComment = '';
-                        this.$router.push({name: 'comment'})
+                        this.$router.push({name: 'post'})
+                    }
+                },
+            )  .catch(
+                (error) => {
+                    if(error.response) {
+                        this.errorNeedingAddressed(this.error.response, "adding");
+                    } else if (error.request) {
+                        this.errorNeedingAddressed(this.error.request, "adding");
+                    }
+                    }
+                )
+        },
+        addDownVote() {
+            VoteServices.addDownVote(this.newVote).then(
+                (response) => {
+                    if(response.status === 201) {
+                        window.alert('Vote added!')
+                        this.newComment = '';
+                        this.$router.push({name: 'post'})
                     }
                 },
             )  .catch(
