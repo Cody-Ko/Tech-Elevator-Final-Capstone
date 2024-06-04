@@ -7,3 +7,18 @@
     <router-view />
   </div>
 </template>
+
+<script>
+export default{
+
+};
+
+</script>
+
+<style scoped>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+};
+
+
+</style>
