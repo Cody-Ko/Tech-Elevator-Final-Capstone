@@ -11,7 +11,7 @@ import java.sql.Statement;
 import java.util.List;
 
 @Component
-public class JdbcCommentDAO implements CommentDAO {
+public abstract class JdbcCommentDAO implements CommentDAO {
 
     private final JdbcTemplate jdbcTemplate;
 
