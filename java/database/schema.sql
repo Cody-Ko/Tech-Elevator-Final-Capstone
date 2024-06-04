@@ -1,11 +1,12 @@
 BEGIN TRANSACTION;
 
+DROP TABLE IF EXISTS user_moderator_forum;
+DROP TABLE IF EXISTS user_favorite_forum;
 DROP TABLE IF EXISTS user_forum;
+DROP TABLE IF EXISTS comments;
 DROP TABLE IF EXISTS posts;
 DROP TABLE IF EXISTS forum;
-DROP TABLE IF EXISTS comments;
 DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS user_favorite_forum;
 
 CREATE TABLE users (
 	user_id SERIAL,
@@ -16,14 +17,6 @@ CREATE TABLE users (
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
 
-CREATE TABLE comments (
-	comment_id SERIAL PRIMARY KEY,
-    	user_id INT NOT NULL,
-    	message VARCHAR(1000) NOT NULL,
-    	time_stamp TIMESTAMP NOT NULL,
-    	FOREIGN KEY (user_id) REFERENCES users(user_id)
-);
-
 CREATE TABLE forum (
 	forum_id SERIAL PRIMARY KEY,
     	user_id INT NOT NULL,
@@ -32,6 +25,7 @@ CREATE TABLE forum (
     	favorited_forum BOOLEAN,
     	FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+
 CREATE TABLE posts (
 	post_id SERIAL PRIMARY KEY,
     	user_id INT NOT NULL,
@@ -44,6 +38,18 @@ CREATE TABLE posts (
     	FOREIGN KEY (forum_id) REFERENCES forum(forum_id),
     	FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+
+CREATE TABLE comments (
+	comment_id SERIAL PRIMARY KEY,
+    	user_id INT NOT NULL,
+    	message VARCHAR(1000) NOT NULL,
+    	time_stamp TIMESTAMP NOT NULL,
+    	post_id INT NOT NULL,
+    	reply_to INT,
+    	FOREIGN KEY (post_id) REFERENCES posts(post_id),
+    	FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
 CREATE TABLE user_forum (
 	user_id INT NOT NULL,
     	forum_id INT NOT NULL,
@@ -57,6 +63,14 @@ CREATE TABLE user_favorite_forum (
         forum_user_id INT NOT NULL,
         PRIMARY KEY (forum_id, forum_user_id),
         FOREIGN KEY (forum_user_id) REFERENCES users(user_id),
+        FOREIGN KEY (forum_id) REFERENCES forum(forum_id)
+);
+
+CREATE TABLE user_moderator_forum (
+    forum_id INT NOT NULL,
+        moderator_user_id INT NOT NULL,
+        PRIMARY KEY (forum_id, moderator_user_id),
+        FOREIGN KEY (moderator_user_id) REFERENCES users(user_id),
         FOREIGN KEY (forum_id) REFERENCES forum(forum_id)
 );
 
