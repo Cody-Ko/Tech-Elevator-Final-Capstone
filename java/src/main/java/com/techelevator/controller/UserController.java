@@ -8,12 +8,12 @@ import com.techelevator.dao.UserDAO;
 
 //import spring framework resources
 import com.techelevator.model.Forum;
+import com.techelevator.model.Post;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -54,5 +54,15 @@ public class UserController {
         //return forumDAO.addForum(forum);
     }
 
+    /*** CONTROLLER METHODS TO GET POSTS BY FORUM ***/
+    @RequestMapping(value = "/forums/{forumId}/posts", method = RequestMethod.GET)
+    public List<Post> getPostsByForumId(@PathVariable int forumId) {
+        return postDAO.getPostsByForumID(forumId);
+    }
+
+    @RequestMapping(value = "/forums/{forumName}/posts", method = RequestMethod.GET)
+    public List<Post> getPostsByForumName(@PathVariable String forumName){
+        return postDAO.getPostsByForumName(forumName);
+    }
 
 }
