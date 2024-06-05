@@ -7,7 +7,7 @@
 
     <i v-bind:class="{'fas fa-star yellow-star': iconClick, 'fas fa-star white-star': !iconClick}" v-on:click="favorite"></i> -->
     
-    <!-- <i class = "fas fa-star white-star"></i> -->
+    <i class = "fas fa-star white-star"></i>
     <router-link class="ForumViewLink" v-bind:to="{ name: 'forumview', params:{forumId: forum.forumId} }">
     <header>
         <h1 class="forumName">{{ forum.forumName }}</h1>
@@ -95,8 +95,8 @@ export default{
 .white-star{
     color: white;
     font-size: 35px;
-    margin-top: 10px;
-    margin-left: 550px;
+    margin-top: 5px;
+    margin-left: 575px;
 }
 
 .yellow-star{
