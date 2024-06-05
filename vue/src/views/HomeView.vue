@@ -77,10 +77,6 @@ import ForumsCard from '../components/ForumsCard.vue'
   
 }
 
-.{
-
-}
-
 
 
 
