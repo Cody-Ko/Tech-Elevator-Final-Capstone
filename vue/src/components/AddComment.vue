@@ -35,7 +35,7 @@ export default {
         errorNeedingAddressed(error, toBeDone) {
             if(error.response) {
                 if(error.response.status == 404) {
-                    this.$router.push({name: 'Home'})
+                    this.$router.push({name: 'home'})
                     //Need a Something went wrong view
                 } else {
                     `This ${toBeDone} has not occurred.  Server could not be reached.`
