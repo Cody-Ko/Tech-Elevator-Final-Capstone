@@ -74,4 +74,17 @@ CREATE TABLE user_moderator_forum (
         FOREIGN KEY (forum_id) REFERENCES forum(forum_id)
 );
 
+
+INSERT INTO users (username, password_hash, role) VALUES ('firstuser1', 'pas1', 'user');
+INSERT INTO users (username, password_hash, role) VALUES ('seconduser2', 'pas2', 'user');
+INSERT INTO users (username, password_hash, role) VALUES ('thirduser3', 'pas3', 'user');
+
+INSERT INTO forum (user_id, forum_name, time_stamp) VALUES (1, 'Movie Reviews', '2024-06-05 10:00:00');
+INSERT INTO forum (user_id, forum_name, time_stamp) VALUES (2, 'Book Recommendations', '2024-06-05 10:29:00');
+INSERT INTO forum (user_id, forum_name, time_stamp) VALUES (3, 'Software Things', '2024-06-05 10:36:00');
+
+INSERT INTO user_forum (user_id, forum_id) VALUES (1, 1);
+INSERT INTO user_forum (user_id, forum_id) VALUES (2, 2);
+INSERT INTO user_forum (user_id, forum_id) VALUES (3, 3);
+
 COMMIT TRANSACTION;
