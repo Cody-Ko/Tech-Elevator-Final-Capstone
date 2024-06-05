@@ -29,28 +29,29 @@ import PostCard from '../components/PostCard.vue'
     data(){
         return {
              forums: [
-              // REMOVE BELOW OBJECTS ONCE DATABASE HAS FORUMS TO USE
-              {
-                forumId: 1,
-                userId: 1,
-                forumName: "Testing Out Forums",
-                timeStamp: new Date("2024-06-04T08:00:00"),
-                favoritedForum: true
-              },
-              {
-                forumId: 2,
-                userId: 3,
-                forumName: "Testing Out Forums Again",
-                timeStamp: new Date("2024-06-04T08:30:00"),
-                favoritedForum: true
-              },
-              {
-                forumId: 3,
-                userId: 2,
-                forumName: "Testing Out Forums: Return of the Forums",
-                timeStamp: new Date("2024-06-04T09:00:00"),
-                favoritedForum: false
-              }
+
+              // // REMOVE BELOW OBJECTS ONCE DATABASE HAS FORUMS TO USE
+              // {
+              //   forumId: 1,
+              //   userId: 1,
+              //   forumName: "Testing Out Forums",
+              //   timeStamp: new Date("2024-06-04T08:00:00"),
+              //   favoritedForum: true
+              // },
+              // {
+              //   forumId: 2,
+              //   userId: 3,
+              //   forumName: "Testing Out Forums Again",
+              //   timeStamp: new Date("2024-06-04T08:30:00"),
+              //   favoritedForum: true
+              // },
+              // {
+              //   forumId: 3,
+              //   userId: 2,
+              //   forumName: "Testing Out Forums: Return of the Forums",
+              //   timeStamp: new Date("2024-06-04T09:00:00"),
+              //   favoritedForum: false
+              // }
              ],
              posts: [
               {
@@ -101,7 +102,7 @@ import PostCard from '../components/PostCard.vue'
         }
     },
     created(){
-        // ONCE DATABASE HAS FORUMS TO USE ---> this.getForums();
+        this.getForums();
     }
   };
   </script>
