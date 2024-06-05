@@ -87,4 +87,13 @@ INSERT INTO user_forum (user_id, forum_id) VALUES (1, 1);
 INSERT INTO user_forum (user_id, forum_id) VALUES (2, 2);
 INSERT INTO user_forum (user_id, forum_id) VALUES (3, 3);
 
+INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
+VALUES (1, 1, 'Welcome to Movie Reviews!', 'This is the first post in Movie Reviews :)', 10, 0, '2024-06-05 11:47:00', 'USA');
+
+INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
+VALUES (2, 1, 'Jurassic Park Review', 'Honestly, I''m just here for the dinosaurs', 20, 0, '2024-06-05 11:50:00', 'USA');
+
+INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
+VALUES (3, 1, 'Jurassic Park Review: Response', 'TO WHOEVER POSTED SAYING THEY''RE JUST WATCHING JURASSIC PARK CLEARLY ISN''T FULLY APPRECIATING THE ARTISTRY THAT COMES FROM SPIELBERG.', 0, 6, '2024-06-05 11:52:00', 'USA');
+
 COMMIT TRANSACTION;
