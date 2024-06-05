@@ -28,6 +28,7 @@ import ForumsCard from '../components/ForumsCard.vue'
     data(){
         return {
              forums: [
+              // REMOVE BELOW OBJECTS ONCE DATABASE HAS FORUMS TO USE
               {
                 forumId: 1,
                 userId: 1,
@@ -63,7 +64,7 @@ import ForumsCard from '../components/ForumsCard.vue'
         }
     },
     created(){
-        //this.getForums();
+        // ONCE DATABASE HAS FORUMS TO USE ---> this.getForums();
     }
   };
   </script>

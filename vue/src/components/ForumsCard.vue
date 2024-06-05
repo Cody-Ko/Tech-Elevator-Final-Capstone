@@ -1,17 +1,19 @@
 <template>
  <div class="card">
-    <!-- icon for liking a forum -->
+    <!-- icon to mark a forum as favorite 
+    Aiming to have the color change to yellow when the icon is clicked
+    commented-out code doesn't successfully change the color once clicked
+    (ONLY LOGGED IN USERS CAN FAVORITE - add pop up asking you to log in when clicked?)
+
+    <i v-bind:class="{'fas fa-star yellow-star': iconClick, 'fas fa-star white-star': !iconClick}" v-on:click="favorite"></i> -->
+    
+    <i class = "fas fa-star white-star"></i>
     <router-link class="ForumViewLink" v-bind:to="{ name: 'forumview', params:{forumId: forum.forumId} }">
     <header>
         <h1 class="forumName">{{ forum.forumName }}</h1>
     </header>
     </router-link>
     <div class="timeStamp">{{ forum.timeStamp }}</div>
-
-         <!-- what should the layout look like in the HomeView(s)? 
-        (i.e. forum name in the middle, 
-        timestamp at the bottom, 
-        ability to like a forum (IF SIGNED IN - otherwise hide)-->
     
     </div>
 </template>
@@ -21,6 +23,11 @@
 // import PostsComponent from '../components/PostsComponent'
 
 export default{
+    data(){
+        return{
+            iconClick: false
+        }
+    },
     components: {
         // PostsComponent
     },
@@ -30,20 +37,14 @@ export default{
             required: true
         }
         
-        /* 
-        What is this for/is it needed?
-        , 
-        enableAdd: {
-            type: Boolean,
-            default: false
-        }
-        */
-        
     },
     computed: {
 
     },
     methods: {
+        favorite(){
+            this.iconClick = !this.iconClick
+        }
 
     }
 
@@ -60,8 +61,6 @@ export default{
     width: 650px;
     height: 250px;
     margin: 20px;
-    /* text-align: center;
-    align-content: center; */
     margin: 0 auto;
     margin-bottom: 10px;
 }
@@ -71,7 +70,7 @@ export default{
     color: white;
     text-decoration: none;
     text-align: center;
-    margin-top: 95px;
+    margin-top: 1px;
 
 }
 
@@ -85,6 +84,21 @@ export default{
 .ForumViewLink{
     text-decoration: none;
 }
+
+.white-star{
+    color: white;
+    font-size: 35px;
+    margin-top: 10px;
+    margin-left: 550px;
+}
+
+.yellow-star{
+    color: yellow;
+    font-size: 35px;
+    margin-top: 10px;
+    margin-left: 550px;
+}
+
 
 /* Test */
 </style>
