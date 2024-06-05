@@ -14,9 +14,12 @@ public class Post {
     private int upVotes;
     private int downVotes;
     private LocalDateTime timeStamp;
+    private String location;
 
 
-    public Post(int postID, int userID, int forumID, String title, String messageDetails, int upVotes, int downVotes, LocalDateTime timeStamp) {
+
+    public Post(int postID, int userID, int forumID, String title, String messageDetails,
+                int upVotes, int downVotes, LocalDateTime timeStamp, String location) {
         this.postID = postID;
         this.userID = userID;
         this.forumID = forumID;
@@ -25,6 +28,7 @@ public class Post {
         this.upVotes = upVotes;
         this.downVotes = downVotes;
         this.timeStamp = timeStamp;
+        this.location = location;
     }
 
     //overload the constructor so that it can be declared before setting variables in the DAO
@@ -94,6 +98,9 @@ public class Post {
 
     public void setTimeStamp(LocalDateTime timeStamp) {
         this.timeStamp = timeStamp;
+    }
+    public void setLocation(String location){
+        this.location = location;
     }
     //overloaded setter for converting Date parameter to LocalDateTime property
     public void setTimeStamp(Date timeStamp){

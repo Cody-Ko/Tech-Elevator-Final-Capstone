@@ -42,12 +42,23 @@ public class JdbcPostDAO implements PostDAO {
         }
         return returnPost;
     }
+    @Override
     public Post getPostByTitle(String postTitle){
 
         String sql = "SELECT * FROM posts" +
                 " WHERE title = ?";
+        Post returnPost = new Post();
 
-        return new Post();
+        try{
+            SqlRowSet postRowSet = jdbcTemplate.queryForRowSet(sql, postTitle);
+            if (postRowSet.next()) {
+                returnPost = mapRowToPost(postRowSet);
+            }
+
+        } catch (NullPointerException e){
+            return null;
+        }
+        return returnPost;
     }
 
     /*** POST PROPERTY GETTERS ***/
@@ -129,6 +140,7 @@ public class JdbcPostDAO implements PostDAO {
         post.setUpVotes(rs.getInt("up_votes"));
         post.setDownVotes(rs.getInt("down_votes"));
         post.setTimeStamp(rs.getDate("time_stamp"));
+        post.setLocation(rs.getString("location"));
         return post;
     }
 
