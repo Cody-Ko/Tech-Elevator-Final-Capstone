@@ -83,7 +83,7 @@ public class JdbcForumDAO implements ForumDAO {
                 "JOIN users ON user_id.user_forum = user_id.users\n" +
                 "WHERE username = ?";
 
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, username);
 
         while(results.next()) {
             Forum forum = mapRowToForum(results);
@@ -96,7 +96,7 @@ public class JdbcForumDAO implements ForumDAO {
         List<Forum> forums = new ArrayList<>();
         String sql = "SELECT * FROM forum WHERE forum_name = ?";
 
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, name);
 
         while(results.next()) {
             Forum forum = mapRowToForum(results);
@@ -109,7 +109,7 @@ public class JdbcForumDAO implements ForumDAO {
         List<Forum> forums = new ArrayList<>();
         String sql = "SELECT * FROM forum WHERE forum_id = ?";
 
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, forumId);
 
         while(results.next()) {
             Forum forum = mapRowToForum(results);
@@ -124,7 +124,7 @@ public class JdbcForumDAO implements ForumDAO {
                 "JOIN user_favorite_forums ON forum_id.forum = forum.id.user_favorite_forums\n" +
                 "JOIN users ON forum_user_id = user_id.users\n" +
                 "WHERE username = ?";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, username);
 
         while(results.next()) {
             Forum forum = mapRowToForum(results);
@@ -152,7 +152,7 @@ public class JdbcForumDAO implements ForumDAO {
         List<Forum> forums = new ArrayList<>();
         String sql = "SELECT forum_name FROM forum WHERE forum_name LIKE ?";
 
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, keyword);
 
         while(results.next()) {
             Forum forum = mapRowToForum(results);

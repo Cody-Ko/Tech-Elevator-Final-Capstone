@@ -131,7 +131,7 @@ public class JdbcPostDAO implements PostDAO {
         try{
             SqlRowSet postRowSet = jdbcTemplate.queryForRowSet(sql, forumID);
             while (postRowSet.next()) {
-                Post post = mapRowToPost(postRowSet);
+                Post post = mapRowToPost(postRowSet);   //error is here? unsupported operation exception
                 rtnList.add(post);
             }
         } catch (NullPointerException e){
@@ -172,7 +172,7 @@ public class JdbcPostDAO implements PostDAO {
         post.setMessageDetails(rs.getString("message"));
         post.setUpVotes(rs.getInt("up_votes"));
         post.setDownVotes(rs.getInt("down_votes"));
-        post.setTimeStamp(rs.getDate("time_stamp"));
+        //post.setTimeStamp(rs.getDate("time_stamp"));
         post.setLocation(rs.getString("location"));
         return post;
     }
