@@ -74,6 +74,10 @@ CREATE TABLE user_moderator_forum (
         FOREIGN KEY (forum_id) REFERENCES forum(forum_id)
 );
 
+INSERT INTO users (username, password_hash, role) VALUES ('mattymattmattcat', '$2a$10$Nw1szXQbDHdsZ0UMGwDYuuj11LV.4KadomqE9qGDkTMxwK11x93xa', 'user');
+INSERT INTO users (username, password_hash, role) VALUES ('evenstephen', '$2a$10$sNsoK44rCWny3PZhArEAquufjxedqO9wME4NcyjBv2MUj8KNSJhci', 'user');
+INSERT INTO users (username, password_hash, role) VALUES ('codythegoat', '$2a$10$C9/OkOaFoKH6PR3nEfy26OTKb4WI3Gxv9tv.QkPaSXiW1ISBDGXwe', 'user');
+
 
 INSERT INTO forum (user_id, forum_name, time_stamp) VALUES (1, 'Movie Reviews', '2024-06-05 10:00:00');
 INSERT INTO forum (user_id, forum_name, time_stamp) VALUES (1, 'Book Recommendations', '2024-06-05 10:29:00');
