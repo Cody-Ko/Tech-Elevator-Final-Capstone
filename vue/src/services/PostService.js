@@ -5,8 +5,8 @@ const http = axios.create ({
 
 export default {
 
-  getAllPosts(forumId) {
-    return axios.get(`forum/${forumId}/posts`)
+  getPostsbyForumId(forumId) {
+    return axios.get(`/forums/${forumId}/posts/`)
   },
 
   getPost(postId) {
@@ -18,7 +18,7 @@ export default {
   },
 
   addPost(post) {
-    return http.post('add-post', post)
+    return http.post('/add-post', post)
   },
 
   deletePost(postId) {

@@ -1,11 +1,16 @@
 <template>
+
   <div class="PostCard">
-    <p></p>
-        <h1 class="postName"> {{ post.title }}</h1>
+    <router-link class="PostViewLink" v-bind:to="{ name: 'postview', params:{postId: post.postId} }">
+        <header>
+        <h1 class="postName">{{ post.title }}</h1>
+        
+        </header>
+    </router-link>
         <p class="messageDetails">{{ post.message }}</p>
-        <p class="timeStamp">{{ post.timeStamp }}</p>
         <!-- <router-link class="backtoforum" v-bind:to="{name: 'home'}">Return Home</router-link> -->
     <!-- Cycle through all comments for posts -->
+    <p class="timeStamp">{{ post.timeStamp }}</p>
 
   </div>
 </template>
@@ -16,7 +21,6 @@ import PostService from '../services/PostService.js'
 
 export default {
     components: {
-        //Post Components
         //Comment components
     },
     props: {
@@ -27,8 +31,8 @@ export default {
     },
 
     methods: {
-        getPost() {
-            PostService.getAllPosts(this.postId).then(
+        getPost(postId) {
+            PostService.getPost(this.postId).then(
                 (response) => {
                     if(response.status === 200) {
                         this.$router.push('posts');
@@ -44,8 +48,8 @@ export default {
                 }
             )
         },
-        getAllPosts() {
-            PostService.getAllPosts(this.posts).then(
+        getAllPostsForForum(forumId) {
+            PostService.getPostsbyForumId(this.posts.forumId).then(
                 (response) => {
                     if(response.status === 200) {
                         this.$router.push('posts');
@@ -113,10 +117,10 @@ export default {
     font-size: 1.5rem
 }
 
-/* .backtofourm {
+.PostViewLink {
     text-decoration: none;
-    color: rgb(250, 129, 240);
-} */
+    color: white;
+}
 
 
 
