@@ -38,16 +38,37 @@ public class UserController {
         this.userDAO = userDAO;
     }
 
+    // GETS ALL FORUMS
     @RequestMapping(value = "/forums", method = RequestMethod.GET)
     public List<Forum> getAllForums() {
         return forumDAO.getAllForums();
     }
 
+    // GETS FORUMS BY KEYWORD
     @RequestMapping(value = "/forums/{keyword}", method = RequestMethod.GET)
     public List<Forum> getForumsByKeyword(@PathVariable String keyword) {
         return forumDAO.getForumsByKeyword(keyword);
     }
 
+    // GETS FORUMS BY FORUM NAME
+    @RequestMapping(value = "/forums/{name}", method = RequestMethod.GET)
+    public List<Forum> getForumsByForumName(@PathVariable String name) {
+        return forumDAO.getForumsByForumName(name);
+    }
+
+    // GETS FORUMS BY FORUM ID
+    @RequestMapping(value = "/forums/{forumId}", method = RequestMethod.GET)
+    public List<Forum> getForumsByForumId(@PathVariable int forumId) {
+        return forumDAO.getForumsByForumId(forumId);
+    }
+
+    // GETS FORUMS BY USERNAME
+    @RequestMapping(value = "/forums/{username}", method = RequestMethod.GET)
+    public List<Forum> getForumsByUsername(@PathVariable String username) {
+        return forumDAO.getForumsByUsername(username);
+    }
+
+    // CREATES FORUM
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/forums", method = RequestMethod.POST)
     public void addForum(@Valid @RequestBody Forum forum) {

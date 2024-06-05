@@ -48,6 +48,8 @@ public class JdbcForumDAO implements ForumDAO {
         forum.setUserID(results.getInt("user_id"));
         return forum;
     }
+
+    // GETS USER ID OF PERSON WHO CREATED FORUM
     @Override
     public int getUserId(String name) {
         String sql = "SELECT user_id from forum WHERE forum_name = ?";
@@ -58,6 +60,8 @@ public class JdbcForumDAO implements ForumDAO {
             throw new UsernameNotFoundException("Forum " + name + " was not found.");
         }
     }
+
+    // GETS USERNAME OF PERSON WHO CREATED FORUM
     @Override
     public String getUsername(String name) {
         String sql = "SELECT username from users\n" +
@@ -101,7 +105,7 @@ public class JdbcForumDAO implements ForumDAO {
         return forums;
     }
     @Override
-    public List<Forum> getForumsbyForumId(int forumId) {
+    public List<Forum> getForumsByForumId(int forumId) {
         List<Forum> forums = new ArrayList<>();
         String sql = "SELECT * FROM forum WHERE forum_id = ?";
 
