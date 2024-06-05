@@ -99,12 +99,44 @@ public class JdbcPostDAO implements PostDAO {
         List<Post> rtnList = new ArrayList<Post>();
         return rtnList;
     }
+
+    /***** GET POSTS BY FORUM NAME, GET POSTS BY FORUM ID ***/
+    @Override
     public List<Post> getPostsByForumName(String forumName){
+        String sql = "SELECT * FROM posts" +
+                " JOIN forum ON posts.forum_id = forum.forum_id" +
+                " WHERE forum.name = ?";
         List<Post> rtnList = new ArrayList<Post>();
+
+        try{
+            SqlRowSet postRowSet = jdbcTemplate.queryForRowSet(sql, forumName);
+            while (postRowSet.next()) {
+                Post post = mapRowToPost(postRowSet);
+                rtnList.add(post);
+            }
+        } catch (NullPointerException e){
+            return null;
+        }
+
         return rtnList;
     }
+    @Override
     public List<Post> getPostsByForumID(int forumID){
+        String sql = "SELECT * FROM posts" +
+                " WHERE forum_id = ? ";
+
         List<Post> rtnList = new ArrayList<Post>();
+
+        try{
+            SqlRowSet postRowSet = jdbcTemplate.queryForRowSet(sql, forumID);
+            while (postRowSet.next()) {
+                Post post = mapRowToPost(postRowSet);
+                rtnList.add(post);
+            }
+        } catch (NullPointerException e){
+            return null;
+        }
+
         return rtnList;
     }
 
