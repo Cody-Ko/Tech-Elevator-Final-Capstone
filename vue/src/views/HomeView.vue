@@ -119,6 +119,11 @@ import PostCard from '../components/PostCard.vue'
   
 }
 
+.posts-description{
+  text-align: center;
+  margin-bottom: 5px;
+}
+
 
 
 

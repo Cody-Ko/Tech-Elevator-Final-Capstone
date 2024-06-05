@@ -13,7 +13,11 @@
         <h1 class="forumName">{{ forum.forumName }}</h1>
     </header>
     </router-link>
-    <router-link class="PostViewLink" v-bind:to="{ name: 'postview' }">Click here for the forum posts!</router-link>
+    <!-- 
+        "Click here for latest post" text links you to the most recent post within the forum
+        currently not working correctly - shows you all posts instead of a specific post
+    <router-link class="PostViewLink" v-bind:to="{ name: 'postview', params:{forumId: forum.forumId} }">Click here for the latest post!</router-link> 
+    -->
     <div class="timeStamp">{{ forum.timeStamp }}</div>
     
     </div>
@@ -36,7 +40,8 @@ export default{
         forum: {
             type: Object,
             required: true
-        }
+        },
+        post: {}
         
     },
     computed: {

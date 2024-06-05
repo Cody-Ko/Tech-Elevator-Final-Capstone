@@ -2,9 +2,9 @@
   <div class="PostCard">
     <p></p>
         <h1 class="postName"> {{ post.title }}</h1>
-        <p class="messageDetails">{{ post.message_details }}</p>
-        <p class="timeStamp"></p>
-        <router-link class="backtoforum" v-bind:to="{name: 'home'}">Return Home</router-link>
+        <p class="messageDetails">{{ post.message }}</p>
+        <p class="timeStamp">{{ post.timeStamp }}</p>
+        <!-- <router-link class="backtoforum" v-bind:to="{name: 'home'}">Return Home</router-link> -->
     <!-- Cycle through all comments for posts -->
 
   </div>
@@ -85,11 +85,11 @@ export default {
     justify-content: space-between;
     width: 650px;
     height: 250px;
-    margin: 20px;
+    /* margin: 20px; */
     margin: 0 auto;
     margin-bottom: 10px;
     border: 5px solid rgb(250, 129, 240);
-    font-size: 2.5rem;
+    /* font-size: 2.5rem; */
     color: white;
     margin-top: 1px;
     text-align: center;
@@ -98,7 +98,7 @@ export default {
 .messageDetails {
     font-size: 1.5rem;
     color: white;
-    align-self: flex-end;
+    align-self: center;
     margin-right: 10px;
 }
 
@@ -109,10 +109,10 @@ export default {
     margin-right: 10px;
 }
 
-.backtofourm {
+/* .backtofourm {
     text-decoration: none;
     color: rgb(250, 129, 240);
-}
+} */
 
 
 
