@@ -6,7 +6,7 @@
     </div>
     
     <div class="mainSection">
-      <ForumsCard class = "trendingCard" v-for="forum in forums" v-bind:forum="forum" v-bind:key="forum.forumId"/>
+      <GuestsForumsCard class = "trendingCard" v-for="forum in forums" v-bind:forum="forum" v-bind:key="forum.forumId"/>
 
     </div>
 
@@ -18,11 +18,11 @@
   <script>
 
 import ForumService from '../services/ForumService'
-import ForumsCard from '../components/ForumsCard.vue'
+import GuestsForumsCard from '../components/GuestsForumsCard.vue'
 
   export default {
     components: {
-      ForumsCard
+      GuestsForumsCard
 
     },
     data(){
