@@ -6,12 +6,12 @@
     </div>
     
     <div class="mainSection">
-      <ForumsCard v-for="forum in forums" v-bind:forum="forum" v-bind:key="forum.forumId"/>
+      <ForumsCard class = "trendingCard" v-for="forum in forums" v-bind:forum="forum" v-bind:key="forum.forumId"/>
 
-      <p>
-      <router-link class="Register" v-bind:to="{ name: 'register' }">Join the conversation!</router-link></p>
     </div>
-  
+
+    <p>
+      <router-link class="Register" v-bind:to="{ name: 'register' }">Join the conversation!</router-link></p>
 
   </template>
   
@@ -78,9 +78,12 @@ import ForumsCard from '../components/ForumsCard.vue'
 
 .mainSection{
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   
 }
+
+
+
 
 </style>
   
