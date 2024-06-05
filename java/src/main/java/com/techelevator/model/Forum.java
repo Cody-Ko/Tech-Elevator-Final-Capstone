@@ -21,7 +21,10 @@ public class Forum {
         this.userId = userId;
         this.forumId = forumId;
     }
+    //overload the constructor so that it can be declared before setting variables in the DAO
+    public Forum(){
 
+    }
 
     public String getName() {
         return name;
