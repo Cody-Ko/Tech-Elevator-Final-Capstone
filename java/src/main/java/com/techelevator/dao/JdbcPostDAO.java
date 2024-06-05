@@ -26,11 +26,21 @@ public class JdbcPostDAO implements PostDAO {
 
     /*** SINGLE POST GETTERS ***/
 
+    @Override
     public Post getPostByID(int postID){
         String sql = "SELECT * FROM posts" +
                 " WHERE post_id = ?";
+        Post returnPost = new Post();
+        try{
+            SqlRowSet postRowSet = jdbcTemplate.queryForRowSet(sql, postID);
+            if (postRowSet.next()) {
+                returnPost = mapRowToPost(postRowSet);
+            }
 
-        return new Post();
+        } catch (NullPointerException e){
+            return null;
+        }
+        return returnPost;
     }
     public Post getPostByTitle(String postTitle){
 
@@ -39,6 +49,8 @@ public class JdbcPostDAO implements PostDAO {
 
         return new Post();
     }
+
+    /*** POST PROPERTY GETTERS ***/
     public int getUserID(int postID){
         String sql = "SELECT user_id FROM posts" +
                 " WHERE post_id = ?";
@@ -47,18 +59,19 @@ public class JdbcPostDAO implements PostDAO {
     }
     public String getUserName(int postID){
         String sql = "SELECT ";
-            // do a join here
+        // do a join here
         return new String();
     }
 
     /*** LIST POST GETTERS ***/
+    @Override
     public List<Post> getAllPosts(){
         String sql = "SELECT * FROM posts";
         List<Post> postList = new ArrayList<>();
         try {
             SqlRowSet result= jdbcTemplate.queryForRowSet(sql);
             while(result.next()){
-                postList.add(mapRowToTransfer(result));
+                postList.add(mapRowToPost(result));
             }
         }
         catch (NullPointerException e){
@@ -106,7 +119,7 @@ public class JdbcPostDAO implements PostDAO {
         return 999;
     }
 
-    private Post mapRowToTransfer(SqlRowSet rs) {
+    private Post mapRowToPost(SqlRowSet rs) {
         Post post = new Post();
         post.setPostID(rs.getInt("post_id"));
         post.setUserID(rs.getInt("user_id"));
@@ -118,6 +131,7 @@ public class JdbcPostDAO implements PostDAO {
         post.setTimeStamp(rs.getDate("time_stamp"));
         return post;
     }
+
 
 
 }
