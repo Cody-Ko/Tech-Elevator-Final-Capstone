@@ -11,7 +11,7 @@ export default {
   },
 
   getForum(forumId) {
-    return axios.get(`/forum/${forumId}`)
+    return axios.get(`/forums/${forumId}`)
   },
 
   updateForum(forumId) {
@@ -19,12 +19,14 @@ export default {
   },
 
   addForum(forum) {
-    return http.post('add-fourm', forum)
+    return http.post('add-forum', forum)
   },
 
   deleteForum(forumId) {
     return http.delete(`/forums/${forumId}`)
   }
+
+  //Why is this happening?
 
 
 }
