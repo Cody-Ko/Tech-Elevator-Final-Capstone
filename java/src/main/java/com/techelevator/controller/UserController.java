@@ -81,9 +81,10 @@ public class UserController {
         return postDAO.getPostsByForumID(forumId);
     }
 
-    @RequestMapping(value = "/forums/{forumName}/posts", method = RequestMethod.GET)
+    //AMBIGUOUS SPRING MAPPING ERROR
+    /*@RequestMapping(value = "/forums/{forumName}/posts", method = RequestMethod.GET)
     public List<Post> getPostsByForumName(@PathVariable String forumName){
         return postDAO.getPostsByForumName(forumName);
-    }
+    }*/
 
 }
