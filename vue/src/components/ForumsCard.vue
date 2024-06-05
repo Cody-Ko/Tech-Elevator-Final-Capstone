@@ -13,6 +13,7 @@
         <h1 class="forumName">{{ forum.forumName }}</h1>
     </header>
     </router-link>
+    <router-link class="PostViewLink" v-bind:to="{ name: 'postview' }">Click here for the forum posts!</router-link>
     <div class="timeStamp">{{ forum.timeStamp }}</div>
     
     </div>
@@ -81,8 +82,9 @@ export default{
     margin-right: 10px;
 }
 
-.ForumViewLink{
+.ForumViewLink, .PostViewLink{
     text-decoration: none;
+    color: white;
 }
 
 .white-star{
