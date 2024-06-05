@@ -2,12 +2,12 @@
  <div class="card">
     <!-- icon to mark a forum as favorite 
     Aiming to have the color change to yellow when the icon is clicked
-    commented-out code doesn't successfully change the color once clicked
+    first commented-out code doesn't successfully change the color once clicked
     (ONLY LOGGED IN USERS CAN FAVORITE - add pop up asking you to log in when clicked?)
 
     <i v-bind:class="{'fas fa-star yellow-star': iconClick, 'fas fa-star white-star': !iconClick}" v-on:click="favorite"></i> -->
     
-    <i class = "fas fa-star white-star"></i>
+    <!-- <i class = "fas fa-star white-star"></i> -->
     <router-link class="ForumViewLink" v-bind:to="{ name: 'forumview', params:{forumId: forum.forumId} }">
     <header>
         <h1 class="forumName">{{ forum.forumName }}</h1>
