@@ -5,7 +5,7 @@
   </div>
   <h2 class="forums-description">Today's Exciting Forums</h2>
   <div class="forum-section">
-    <ForumsCard class = "active-forums" v-for="forum in forums" v-bind:forum="forum" v-bind:key="forum.forumId"/>
+    <ForumsCard class = "active-forums" v-for="forum in forums" v-bind:forum="forum" v-bind:key="forum.forum_id"/>
 
   </div>
   <h2 class="posts-description">Today's Trending Posts</h2>
@@ -92,19 +92,27 @@ import PostCard from '../components/PostCard.vue'
         };
     },
     methods: {
-        getForums(){
-            ForumService.getAllForums().then((response) =>{
-                this.forums = response.data;
-            })
-            // .catch(error =>{
+        // getForums(){
+        //     ForumService.getAllForums().then((response) =>{
+        //         this.forums = response.data;
+        //     })
+        //     // .catch(error =>{
                 
-            // })
-        }
+        //     // })
+        // }
     },
     created(){
-        this.getForums();
-    }
-  };
+        // this.getForums();
+
+        
+            ForumService.getAllForums().then((response) =>{
+                this.forums = response.data;
+            }).catch(error =>{
+                
+            })
+        }
+        
+    };
   </script>
 
 <style>
