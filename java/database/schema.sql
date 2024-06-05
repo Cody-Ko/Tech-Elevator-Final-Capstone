@@ -13,7 +13,6 @@ CREATE TABLE users (
 	username varchar(50) NOT NULL UNIQUE,
 	password_hash varchar(200) NOT NULL,
 	role varchar(50) NOT NULL,
-	location varchar(50) NOT NULL,
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
 
@@ -35,6 +34,7 @@ CREATE TABLE posts (
     	up_votes INT NOT NULL,
     	down_votes INT NOT NULL,
     	time_stamp TIMESTAMP NOT NULL,
+    	location varchar(50) NOT NULL,
     	FOREIGN KEY (forum_id) REFERENCES forum(forum_id),
     	FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
@@ -46,6 +46,7 @@ CREATE TABLE comments (
     	time_stamp TIMESTAMP NOT NULL,
     	post_id INT NOT NULL,
     	reply_to INT,
+    	location varchar(50) NOT NULL,
     	FOREIGN KEY (post_id) REFERENCES posts(post_id),
     	FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
