@@ -1,4 +1,6 @@
 package com.techelevator.model;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
@@ -6,14 +8,23 @@ import java.util.Date;
 
 public class Post {
 
+    @JsonProperty("post_id")
     private int postID;
+    @JsonProperty("user_id")
     private int userID;
+    @JsonProperty("forum_id")
     private int forumID;
+    @JsonProperty("title")
     private String title;
+    @JsonProperty("message")
     private String messageDetails;
+    @JsonProperty("up_votes")
     private int upVotes;
+    @JsonProperty("down_votes")
     private int downVotes;
+    @JsonProperty("time_stamp")
     private LocalDateTime timeStamp;
+    @JsonProperty("location")
     private String location;
 
 
