@@ -1,5 +1,5 @@
 <template>
-  <div class="PostCard">
+  <div class="PostCard" v-bind:to="{name: 'post', params:{forum: forum.forumId}}">
     <p></p>
         <h1 class="postName"> {{ post.title }}</h1>
         <p class="messageDetails">{{ post.message }}</p>
