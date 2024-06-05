@@ -24,22 +24,22 @@ public class JdbcForumDAO implements ForumDAO {
     public JdbcForumDAO(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
-
-    public void addForum(int forumId, String name, LocalDateTime timestamp, int userId, boolean favorite) {
+    @Override
+    public void addForum(int forumId, String name, LocalDateTime timestamp, int userId) {
         String sql = "INSERT into forum " +
                 "(forum_id, forum_name, " +
-                "forum_time_stamp, user_id, " +
-                "favorited_forum) VALUES " +
+                "forum_time_stamp, user_id " +
+                "VALUES " +
                 "(?,?,?,?,?);";
         try {
-            jdbcTemplate.update(sql, forumId, name, timestamp, userId, favorite);
+            jdbcTemplate.update(sql, forumId, name, timestamp, userId);
         } catch(CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
         } catch(DataIntegrityViolationException e) {
             throw new DaoException("Data integrity violation", e);
         }
     }
-
+    @Override
     public Forum mapRowToForum(SqlRowSet results) {
         Forum forum = new Forum();
         forum.setForumId(results.getInt("forum_id"));
@@ -48,7 +48,7 @@ public class JdbcForumDAO implements ForumDAO {
         forum.setUserID(results.getInt("user_id"));
         return forum;
     }
-
+    @Override
     public int getUserId(String name) {
         String sql = "SELECT user_id from forum WHERE forum_name = ?";
 
@@ -58,7 +58,7 @@ public class JdbcForumDAO implements ForumDAO {
             throw new UsernameNotFoundException("Forum " + name + " was not found.");
         }
     }
-
+    @Override
     public String getUsername(String name) {
         String sql = "SELECT username from users\n" +
                 "JOIN user_forum ON user_id.users = user_id.user_forum\n" +
@@ -71,7 +71,7 @@ public class JdbcForumDAO implements ForumDAO {
             throw new UsernameNotFoundException("Forum " + name + " was not found.");
         }
     }
-
+    @Override
     public List<Forum> getForumsByUsername(String username) {
         List<Forum> forums = new ArrayList<>();
         String sql = "SELECT forum_name FROM forum\n" +
@@ -87,7 +87,7 @@ public class JdbcForumDAO implements ForumDAO {
         }
         return forums;
     }
-
+    @Override
     public List<Forum> getFavoriteForums(String username) {
         List<Forum> forums = new ArrayList<>();
         String sql = "SELECT forum_name FROM forum\n" +
@@ -102,7 +102,7 @@ public class JdbcForumDAO implements ForumDAO {
         }
         return forums;
     }
-
+    @Override
     public List<Forum> getActiveForums() {
         List<Forum> forums = new ArrayList<>();
         String sql = "SELECT forum_name, time_stamp " +
@@ -117,10 +117,23 @@ public class JdbcForumDAO implements ForumDAO {
         }
         return forums;
     }
-
+    @Override
     public List<Forum> getForumsByKeyword(String keyword) {
         List<Forum> forums = new ArrayList<>();
         String sql = "SELECT forum_name FROM forum WHERE forum_name LIKE ?";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+
+        while(results.next()) {
+            Forum forum = mapRowToForum(results);
+            forums.add(forum);
+        }
+        return forums;
+    }
+    @Override
+    public List<Forum> getAllForums() {
+        List<Forum> forums = new ArrayList<>();
+        String sql = "SELECT * FROM forum";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
 

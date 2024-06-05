@@ -87,4 +87,26 @@ INSERT INTO user_forum (user_id, forum_id) VALUES (1, 1);
 INSERT INTO user_forum (user_id, forum_id) VALUES (2, 2);
 INSERT INTO user_forum (user_id, forum_id) VALUES (3, 3);
 
+INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
+VALUES (1, 1, 'Welcome to Movie Reviews!', 'This is the first post in Movie Reviews :)', 10, 0, '2024-06-05 11:47:00', 'USA');
+INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
+VALUES (2, 1, 'Jurassic Park Review', 'Honestly, I''m just here for the dinosaurs', 20, 0, '2024-06-05 11:50:00', 'USA');
+INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
+VALUES (3, 1, 'Jurassic Park Review: Response', 'TO WHOEVER POSTED SAYING THEY''RE JUST WATCHING JURASSIC PARK FOR THE DINOSAURS CLEARLY ISN''T FULLY APPRECIATING THE ARTISTRY THAT COMES FROM SPIELBERG.', 0, 6, '2024-06-05 11:52:00', 'USA');
+
+INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
+VALUES (2, 2, 'Welcome to Book Recommendations!', 'This is the first post in Book Recommendations :)', 10, 3, '2024-06-05 12:04:00', 'USA');
+INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
+VALUES (3, 2, 'My Favorite Books', 'I actually only reread Meditations by Marcus Aerelius every second of the day. Highly recommend!', 20, 8, '2024-06-05 12:10:00', 'USA');
+INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
+VALUES (1, 2, 'Recommendations needed!', 'I havent read in 25 years, I need my book fix. Any recs? My favorite genre is horror.', 5, 6, '2024-06-05 12:30:00', 'USA');
+
+INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
+VALUES (3, 3, 'Welcome to Software Things!', 'This is the first post in Software Things :)', 12, 3, '2024-06-05 12:13:00', 'USA');
+INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
+VALUES (1, 3, 'I need help with my code', 'How do I write a for loop? My instructor wont tell me', 5, 8, '2024-06-05 12:10:00', 'USA');
+INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
+VALUES (2, 3, 'Need Project ideas', 'Seriously guys, I cant think of anything.', 30, 6, '2024-06-05 12:30:00', 'USA');
+
+
 COMMIT TRANSACTION;
