@@ -109,6 +109,10 @@ export default {
     margin-right: 10px;
 }
 
+.postName{
+    font-size: 1.5rem
+}
+
 /* .backtofourm {
     text-decoration: none;
     color: rgb(250, 129, 240);
