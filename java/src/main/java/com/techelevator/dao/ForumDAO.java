@@ -15,7 +15,7 @@ public interface ForumDAO {
 
     List<Forum> getForumsByUsername(String username);
 
-    void addForum(int forumId, String name, LocalDateTime timestamp, int userId, boolean favorite);
+    void addForum(int forumId, String name, LocalDateTime timestamp, int userId);
 
     Forum mapRowToForum(SqlRowSet results);
 
@@ -24,4 +24,6 @@ public interface ForumDAO {
     List<Forum> getActiveForums();
 
     List<Forum> getForumsByKeyword(String keyword);
+
+    List<Forum> getAllForums();
 }

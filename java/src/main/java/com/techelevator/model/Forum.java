@@ -15,6 +15,13 @@ public class Forum {
     @JsonProperty("forum_id")
     private int forumId;
 
+    public Forum(String name, LocalDateTime timestamp, int userId, int forumId) {
+        this.name = name;
+        this.timestamp = timestamp;
+        this.userId = userId;
+        this.forumId = forumId;
+    }
+
 
     public String getName() {
         return name;
