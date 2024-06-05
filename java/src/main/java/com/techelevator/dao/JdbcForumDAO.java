@@ -88,6 +88,32 @@ public class JdbcForumDAO implements ForumDAO {
         return forums;
     }
     @Override
+    public List<Forum> getForumsByForumName(String name) {
+        List<Forum> forums = new ArrayList<>();
+        String sql = "SELECT * FROM forum WHERE forum_name = ?";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+
+        while(results.next()) {
+            Forum forum = mapRowToForum(results);
+            forums.add(forum);
+        }
+        return forums;
+    }
+    @Override
+    public List<Forum> getForumsbyForumId(int forumId) {
+        List<Forum> forums = new ArrayList<>();
+        String sql = "SELECT * FROM forum WHERE forum_id = ?";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+
+        while(results.next()) {
+            Forum forum = mapRowToForum(results);
+            forums.add(forum);
+        }
+        return forums;
+    }
+    @Override
     public List<Forum> getFavoriteForums(String username) {
         List<Forum> forums = new ArrayList<>();
         String sql = "SELECT forum_name FROM forum\n" +
