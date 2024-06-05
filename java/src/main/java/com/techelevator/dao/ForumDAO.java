@@ -29,6 +29,6 @@ public interface ForumDAO {
 
     List<Forum> getForumsByForumName(String name);
 
-    List<Forum> getForumsbyForumId(int forumId);
+    List<Forum> getForumsByForumId(int forumId);
 
 }
