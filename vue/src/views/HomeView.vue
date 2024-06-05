@@ -3,21 +3,27 @@
     <h1>Home</h1>
     <p>You are authenticated if you see this.</p>
   </div>
-  <h2 class="Forums Description">Today's Exciting Forums</h2>
-  <div class="mainSection">
-    <ForumsCard class = "Activeforums" v-for="forum in forums" v-bind:forum="forum" v-bind:key="forum.forumId"/>
+  <h2 class="forums-description">Today's Exciting Forums</h2>
+  <div class="forum-section">
+    <ForumsCard class = "active-forums" v-for="forum in forums" v-bind:forum="forum" v-bind:key="forum.forumId"/>
 
-    </div>
+  </div>
+  <h2 class="posts-description">Today's Trending Posts</h2>
+  <div class="post-section">
+    <PostCard class="trending-posts" v-for="post in posts" v-bind:post="post" v-bind:key="post.postId"/>
+  </div>
 </template>
 
 <script>
 
 import ForumService from '../services/ForumService'
 import ForumsCard from '../components/ForumsCard.vue'
+import PostCard from '../components/PostCard.vue'
 
   export default {
     components: {
-      ForumsCard
+      ForumsCard,
+      PostCard
 
     },
     data(){
@@ -45,6 +51,9 @@ import ForumsCard from '../components/ForumsCard.vue'
                 timeStamp: new Date("2024-06-04T09:00:00"),
                 favoritedForum: false
               }
+             ],
+             posts: [
+              
              ]
         };
     },
@@ -71,7 +80,7 @@ import ForumsCard from '../components/ForumsCard.vue'
 
 /* Test */
 
-.mainSection{
+.forum-section{
   display: flex;
   /* flex-direction: column; */
   
