@@ -1,12 +1,17 @@
 <template>
-    <div class="home">
+    <div class="GuestHome">
       <h1 class="pageHeader">Forums</h1>
       <!-- Header for Trending Forums (up-votes) and Active Forums (comments) within 24hr window
         Pull in a component that uses the ForumsCard to display the content -->
     </div>
-    <div>
+    
+    <div class="mainSection">
       <ForumsCard v-for="forum in forums" v-bind:forum="forum" v-bind:key="forum.forumId"/>
+
+      <p>
+      <router-link class="Register" v-bind:to="{ name: 'register' }">Join the conversation!</router-link></p>
     </div>
+  
 
   </template>
   
@@ -66,6 +71,14 @@ import ForumsCard from '../components/ForumsCard.vue'
 <style>
 .pageHeader{
   text-align: center;
+}
+
+/* Test */
+
+.mainSection{
+  display: flex;
+  flex-direction: column;
+  
 }
 
 </style>

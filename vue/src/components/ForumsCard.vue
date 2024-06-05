@@ -1,18 +1,19 @@
 <template>
+ <div class="card">
+    <!-- icon for liking a forum -->
     <router-link class="ForumViewLink" v-bind:to="{ name: 'forumview', params:{forumId: forum.forumId} }">
-    <div class="card">
     <header>
         <h1 class="forumName">{{ forum.forumName }}</h1>
     </header>
+    </router-link>
     <div class="timeStamp">{{ forum.timeStamp }}</div>
 
          <!-- what should the layout look like in the HomeView(s)? 
         (i.e. forum name in the middle, 
         timestamp at the bottom, 
         ability to like a forum (IF SIGNED IN - otherwise hide)-->
-        
+    
     </div>
-</router-link>
 </template>
 
 <script>
@@ -51,13 +52,16 @@ export default{
 
 <style scoped>
 .card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     border: 5px solid rgb(250, 129, 240);
     border-radius: 10px;
     width: 650px;
     height: 250px;
     margin: 20px;
-    text-align: center;
-    align-content: center;
+    /* text-align: center;
+    align-content: center; */
     margin: 0 auto;
     margin-bottom: 10px;
 }
@@ -66,17 +70,21 @@ export default{
     font-size: 2.5rem;
     color: white;
     text-decoration: none;
+    text-align: center;
+    margin-top: 95px;
 
 }
 
 .card .timeStamp{
-    font-size: 1.5rem;
-    color: white
+    font-size: 1rem;
+    color: white;
+    align-self: flex-end;
+    margin-right: 10px;
 }
 
 .ForumViewLink{
     text-decoration: none;
 }
 
-
+/* Test */
 </style>
