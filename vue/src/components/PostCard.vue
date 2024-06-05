@@ -1,6 +1,7 @@
 <template>
 
   <div class="PostCard">
+
     <router-link class="PostViewLink" v-bind:to="{ name: 'postview', params:{postId: post.postId} }">
         <header>
         <h1 class="postName">{{ post.title }}</h1>
@@ -8,8 +9,7 @@
         </header>
     </router-link>
         <p class="messageDetails">{{ post.message }}</p>
-        <!-- <router-link class="backtoforum" v-bind:to="{name: 'home'}">Return Home</router-link> -->
-    <!-- Cycle through all comments for posts -->
+    
     <p class="timeStamp">{{ post.timeStamp }}</p>
 
   </div>

@@ -87,7 +87,7 @@ export default{
     margin-right: 10px;
 }
 
-.ForumViewLink, .PostViewLink{
+.ForumViewLink {
     text-decoration: none;
     color: white;
 }
