@@ -82,7 +82,7 @@ export default {
 .PostCard {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 650px;
     height: 250px;
     margin: 20px;
