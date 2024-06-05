@@ -3,12 +3,81 @@
     <h1>Home</h1>
     <p>You are authenticated if you see this.</p>
   </div>
+  <h2 class="Forums Description">Today's Exciting Forums</h2>
+  <div class="mainSection">
+    <ForumsCard class = "Activeforums" v-for="forum in forums" v-bind:forum="forum" v-bind:key="forum.forumId"/>
+
+    </div>
 </template>
 
 <script>
-export default {
-};
-</script>
 
-<style scoped>
+import ForumService from '../services/ForumService'
+import ForumsCard from '../components/ForumsCard.vue'
+
+  export default {
+    components: {
+      ForumsCard
+
+    },
+    data(){
+        return {
+             forums: [
+              // REMOVE BELOW OBJECTS ONCE DATABASE HAS FORUMS TO USE
+              {
+                forumId: 1,
+                userId: 1,
+                forumName: "Testing Out Forums",
+                timeStamp: new Date("2024-06-04T08:00:00"),
+                favoritedForum: true
+              },
+              {
+                forumId: 2,
+                userId: 3,
+                forumName: "Testing Out Forums Again",
+                timeStamp: new Date("2024-06-04T08:30:00"),
+                favoritedForum: true
+              },
+              {
+                forumId: 3,
+                userId: 2,
+                forumName: "Testing Out Forums: Return of the Forums",
+                timeStamp: new Date("2024-06-04T09:00:00"),
+                favoritedForum: false
+              }
+             ]
+        };
+    },
+    methods: {
+        getForums(){
+            ForumService.getAllForums().then((response) =>{
+                this.forums = response.data;
+            })
+            // .catch(error =>{
+                
+            // })
+        }
+    },
+    created(){
+        // ONCE DATABASE HAS FORUMS TO USE ---> this.getForums();
+    }
+  };
+  </script>
+
+<style>
+.pageHeader{
+  text-align: center;
+}
+
+/* Test */
+
+.mainSection{
+  display: flex;
+  /* flex-direction: column; */
+  
+}
+
+
+
+
 </style>
