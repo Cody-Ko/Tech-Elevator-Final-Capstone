@@ -11,6 +11,7 @@
   <script>
 
 import ForumService from '../services/ForumService';
+import PostService from '../services/PostService';
 
 
   export default {
@@ -33,6 +34,23 @@ import ForumService from '../services/ForumService';
                 this.handleErrorResponse(error);
             });
             */
+        },
+        getAllPostsForForum(forumId) {
+            PostService.getPostsbyForumId(this.posts.forumId).then(
+                (response) => {
+                    if(response.status === 200) {
+                        this.$router.push('posts');
+                    }
+                }
+            ).catch(
+                (error) => {
+                    if(error.response) {
+                        this.errorNeedingAddressed(this.error.response, "Post not found");
+                    } else if (error.request) {
+                        this.errorNeedingAddressed(this.error.request, "Post not found");
+                    }
+                }
+            )
         },
         /*
         handleErrorResponse(error) {
