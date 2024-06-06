@@ -113,6 +113,20 @@ public class Post {
     public void setLocation(String location){
         this.location = location;
     }
+    public String getLocation(){
+        return location;
+    }
+
+    public void incrementUpVotes(){
+        this.upVotes++;
+    }
+    public void incrementDownVotes(){
+        this.downVotes++;
+    }
+    public int getScore(){
+        return this.upVotes - this.downVotes;
+    }
+
     //overloaded setter for converting Date parameter to LocalDateTime property
     public void setTimeStamp(Date timeStamp){
         LocalDateTime localDateTime = timeStamp.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();

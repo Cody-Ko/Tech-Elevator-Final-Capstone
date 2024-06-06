@@ -87,4 +87,10 @@ public class UserController {
         return postDAO.getPostsByForumName(forumName);
     }*/
 
+    /*** CONTROLLER METHOD TO CREATE A NEW POST ***/
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(path = "/forums/{forumId}/posts", method = RequestMethod.POST)
+    public void addForum(@Valid @RequestBody Post post) {
+         postDAO.createPost(post);
+    }
 }

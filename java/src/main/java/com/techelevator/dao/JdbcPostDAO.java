@@ -63,6 +63,7 @@ public class JdbcPostDAO implements PostDAO {
     }
 
     /*** POST PROPERTY GETTERS ***/
+    @Override
     public int getUserID(int postID){
         String sql = "SELECT user_id FROM posts" +
                 " WHERE post_id = ?";
@@ -92,16 +93,19 @@ public class JdbcPostDAO implements PostDAO {
 
         return postList;
     }
+    @Override
     public List<Post> getPostsByUsername(String Username){
         List<Post> rtnList = new ArrayList<Post>();
         return rtnList;
     }
+    @Override
     public List<Post> getPostsByUserID(int userID){
         List<Post> rtnList = new ArrayList<Post>();
         return rtnList;
     }
-
+    /*********************************************************/
     /***** GET POSTS BY FORUM NAME, GET POSTS BY FORUM ID ***/
+    /********************************************************/
     @Override
     public List<Post> getPostsByForumName(String forumName){
         String sql = "SELECT * FROM posts" +
@@ -109,16 +113,11 @@ public class JdbcPostDAO implements PostDAO {
                 " WHERE forum.name = ?";
         List<Post> rtnList = new ArrayList<Post>();
 
-        try{
-            SqlRowSet postRowSet = jdbcTemplate.queryForRowSet(sql, forumName);
-            while (postRowSet.next()) {
-                Post post = mapRowToPost(postRowSet);
-                rtnList.add(post);
-            }
-        } catch (NullPointerException e){
-            return null;
+        SqlRowSet postRowSet = jdbcTemplate.queryForRowSet(sql, forumName);
+        while (postRowSet.next()) {
+            Post post = mapRowToPost(postRowSet);
+            rtnList.add(post);
         }
-
         return rtnList;
     }
     @Override
@@ -128,19 +127,24 @@ public class JdbcPostDAO implements PostDAO {
         List<Post> rtnList = new ArrayList<Post>();
         SqlRowSet postRowSet = jdbcTemplate.queryForRowSet(sql, forumID);
         while (postRowSet.next()) {
-            Post post = mapRowToPost(postRowSet);   //error is here? unsupported operation exception
+            Post post = mapRowToPost(postRowSet);
             rtnList.add(post);
         }
         return rtnList;
     }
 
     /*** CREATE AND DELETE POSTS ***/
+    @Override
     public void createPost(Post toPost){
-
+        String sql = "INSERT INTO posts VALUES (DEFAULT, ?, ?, ?, ? , ?, ?, ?, ?)";
+        jdbcTemplate.update(sql, toPost.getUserID(), toPost.getForumID(), toPost.getTitle(),
+                toPost.getMessageDetails(), 0, 0, toPost.getTimeStamp(), toPost.getLocation());
     }
+    @Override
     public void deletePost(int postID){
 
     }
+    @Override
     public void deletePostsByUserID(int userID){
 
     }
