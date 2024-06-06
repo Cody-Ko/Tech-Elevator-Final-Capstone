@@ -8,7 +8,7 @@
         
         </header>
     </router-link>
-        <p class="messageDetails">{{ post.message }}</p>
+        <h3 class="messageDetails">{{ post.message }}</h3>
     
     <p class="timeStamp">{{ post.time_stamp }}</p>
 

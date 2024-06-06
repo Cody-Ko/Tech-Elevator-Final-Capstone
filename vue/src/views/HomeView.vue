@@ -143,15 +143,18 @@ import PostService from '../services/PostService';
 .posts-description{
   text-align: center;
   margin-bottom: 15px;
+  color: white;
 }
 
 .home{
   margin-left: .85%;
   margin-bottom: 2%;
+  color: white;
 }
 
 .forums-description{
   margin-left: .85%;
+  color: white;
 }
 
 
