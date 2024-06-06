@@ -9,7 +9,6 @@ import RegisterView from '../views/RegisterView.vue';
 import UnauthHomeView from '../views/UnauthHomeView.vue';
 import ForumView from '../views/ForumView.vue';
 import PostView from '../views/PostView.vue'
-import PostCardVue from '../components/PostCard.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
