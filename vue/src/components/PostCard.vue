@@ -10,7 +10,7 @@
     </router-link>
         <p class="messageDetails">{{ post.message }}</p>
     
-    <p class="timeStamp">{{ post.timeStamp }}</p>
+    <p class="timeStamp">{{ post.time_stamp }}</p>
 
   </div>
 </template>
