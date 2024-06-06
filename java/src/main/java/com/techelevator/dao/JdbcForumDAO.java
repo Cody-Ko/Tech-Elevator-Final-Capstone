@@ -155,7 +155,7 @@ public class JdbcForumDAO implements ForumDAO {
 
         String sql = "SELECT * FROM forum WHERE forum_name ILIKE CONCAT('%', ? ,'%')";
 
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, keyword); 
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, keyword);
 
         while(results.next()) {
             Forum forum = mapRowToForum(results);
