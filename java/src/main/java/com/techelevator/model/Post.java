@@ -1,6 +1,8 @@
 package com.techelevator.model;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
@@ -23,6 +25,7 @@ public class Post {
     @JsonProperty("down_votes")
     private int downVotes;
     @JsonProperty("time_stamp")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime timeStamp;
     @JsonProperty("location")
     private String location;
@@ -38,7 +41,7 @@ public class Post {
         this.messageDetails = messageDetails;
         this.upVotes = upVotes;
         this.downVotes = downVotes;
-        //this.timeStamp = timeStamp;
+        this.timeStamp = timeStamp;
         this.location = location;
     }
 
@@ -128,8 +131,9 @@ public class Post {
     }
 
     //overloaded setter for converting Date parameter to LocalDateTime property
-    public void setTimeStamp(Date timeStamp){
-        LocalDateTime localDateTime = timeStamp.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+    /*public void setTimeStamp(Date timeStamp){
+        Timestamp localDateTime = timeStamp.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
         this.timeStamp = localDateTime;
-    }
+    }*/
+
 }

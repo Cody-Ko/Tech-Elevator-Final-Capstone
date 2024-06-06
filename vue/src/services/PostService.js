@@ -5,6 +5,10 @@ const http = axios.create ({
 
 export default {
 
+  getAllPosts(){
+    return axios.get('/posts')
+  },
+
   getPostsbyForumId(forumId) {
     return axios.get(`/forums/${forumId}/posts/`)
   },

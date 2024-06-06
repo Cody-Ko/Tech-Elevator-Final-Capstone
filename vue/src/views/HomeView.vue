@@ -19,6 +19,7 @@
 import ForumService from '../services/ForumService'
 import ForumsCard from '../components/ForumsCard.vue'
 import PostCard from '../components/PostCard.vue'
+import PostService from '../services/PostService';
 
   export default {
     components: {
@@ -30,7 +31,7 @@ import PostCard from '../components/PostCard.vue'
         return {
              forums: [
 
-              // REMOVE BELOW OBJECTS ONCE DATABASE HAS FORUMS TO USE
+              // REMOVE HARD CODED OBJECTS ONCE DATABASE HAS FORUMS TO USE
               // {
               //   forumId: 1,
               //   userId: 1,
@@ -92,24 +93,26 @@ import PostCard from '../components/PostCard.vue'
         };
     },
     methods: {
-        // getForums(){
-        //     ForumService.getAllForums().then((response) =>{
-        //         this.forums = response.data;
-        //     })
-        //     // .catch(error =>{
-                
-        //     // })
-        // }
-    },
-    created(){
-        // this.getForums();
-
-        
+        getForums(){
             ForumService.getAllForums().then((response) =>{
                 this.forums = response.data;
-            }).catch(error =>{
+            })
+            .catch(error =>{
                 
             })
+        },
+        getPosts(){
+          PostService.getAllPosts().then((response) => {
+            this.posts = response.data;
+          })
+          .catch (error => {
+
+          })
+        },
+    },
+    created(){
+            this.getForums();
+            this.getPosts();
         }
         
     };
