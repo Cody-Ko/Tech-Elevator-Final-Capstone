@@ -32,15 +32,12 @@ public class JdbcPostDAO implements PostDAO {
         String sql = "SELECT * FROM posts" +
                 " WHERE post_id = ?";
         Post returnPost = new Post();
-        try{
-            SqlRowSet postRowSet = jdbcTemplate.queryForRowSet(sql, postID);
-            if (postRowSet.next()) {
-                returnPost = mapRowToPost(postRowSet);
-            }
-
-        } catch (NullPointerException e){
-            return null;
+        SqlRowSet postRowSet = jdbcTemplate.queryForRowSet(sql, postID);
+        if (postRowSet.next()) {
+            returnPost = mapRowToPost(postRowSet);
         }
+
+
         return returnPost;
     }
     @Override
@@ -50,15 +47,12 @@ public class JdbcPostDAO implements PostDAO {
                 " WHERE title = ?";
         Post returnPost = new Post();
 
-        try{
-            SqlRowSet postRowSet = jdbcTemplate.queryForRowSet(sql, postTitle);
-            if (postRowSet.next()) {
-                returnPost = mapRowToPost(postRowSet);
-            }
 
-        } catch (NullPointerException e){
-            return null;
+        SqlRowSet postRowSet = jdbcTemplate.queryForRowSet(sql, postTitle);
+        if (postRowSet.next()) {
+            returnPost = mapRowToPost(postRowSet);
         }
+
         return returnPost;
     }
 
@@ -138,7 +132,7 @@ public class JdbcPostDAO implements PostDAO {
     public void createPost(Post toPost){
         String sql = "INSERT INTO posts VALUES (DEFAULT, ?, ?, ?, ? , ?, ?, ?, ?)";
         jdbcTemplate.update(sql, toPost.getUserID(), toPost.getForumID(), toPost.getTitle(),
-                toPost.getMessageDetails(), 0, 0, toPost.getTimeStamp(), toPost.getLocation());
+                toPost.getMessageDetails(), toPost.getUpVotes(), toPost.getDownVotes(), toPost.getTimeStamp(), toPost.getLocation());
     }
     @Override
     public void deletePost(int postID){
@@ -169,7 +163,9 @@ public class JdbcPostDAO implements PostDAO {
         post.setMessageDetails(rs.getString("message"));
         post.setUpVotes(rs.getInt("up_votes"));
         post.setDownVotes(rs.getInt("down_votes"));
-        //post.setTimeStamp(rs.getDate("time_stamp"));
+        if (rs.getTimestamp("time_stamp") != null) {
+            post.setTimeStamp(rs.getTimestamp("time_stamp").toLocalDateTime());    //COMMENTED OUT -- NEED TO FIX LATER
+        }
         post.setLocation(rs.getString("location"));
         return post;
     }
