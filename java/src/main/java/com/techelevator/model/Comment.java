@@ -4,18 +4,24 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 public class Comment {
-
+    @JsonProperty("comment_id")
     private int commentID;
+    @JsonProperty("user_id")
     private int userID;
+    @JsonProperty("reply_to")
     private int replyToID; //null if replying to a post
+    @JsonProperty("post_id")
     private int postID;
+    @JsonProperty("message")
     private String messageDetails;
     @JsonProperty("time_stamp")
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime timeStamp;
+
+    @JsonProperty("location")
+    private String location;
     //Getters
 
     public int getCommentID() {
@@ -41,6 +47,9 @@ public class Comment {
     public LocalDateTime getTimeStamp() {
         return timeStamp;
     }
+    public String getLocation(){
+        return location;
+    }
 
     //Setters
     public void setCommentID(int commentID){
@@ -59,11 +68,15 @@ public class Comment {
     }
 
     public void setMessageDetails(String messageDetails){
-        //this.messageDetails() = messageDetails();
+        this.messageDetails = messageDetails;
     }
 
     public void setTimeStamp(LocalDateTime  timeStamp) {
         this.timeStamp = timeStamp;
+    }
+
+    public void setLocation(String location){
+        this.location = location;
     }
 
 }
