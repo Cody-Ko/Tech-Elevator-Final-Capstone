@@ -68,13 +68,22 @@ public class UserController {
     }
 
     // CREATES FORUM
+    @PreAuthorize("isAuthenticated()")
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/forums", method = RequestMethod.POST)
     public void addForum(@Valid @RequestBody Forum forum) {
         forumDAO.addForum(forum);
     }
 
-    /*** CONTROLLER METHODS TO GET POSTS BY FORUM ***/
+    /*** CREATE A NEW POST ***/
+    @PreAuthorize("isAuthenticated()")
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(path = "/forums/{forumId}/posts", method = RequestMethod.POST)
+    public void createPost(@Valid @RequestBody Post post) {
+        postDAO.createPost(post);
+    }
+
+    /*** GET POSTS BY FORUM ***/
     @RequestMapping(value = "/forums/{forumId}/posts", method = RequestMethod.GET)
     public List<Post> getPostsByForumId(@PathVariable int forumId) {
         return postDAO.getPostsByForumID(forumId);
@@ -86,19 +95,19 @@ public class UserController {
         return postDAO.getPostsByForumName(forumName);
     }*/
 
-    /*** CONTROLLER METHOD TO CREATE A NEW POST ***/
-    @PreAuthorize("isAuthenticated()")
-
-    @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/forums/{forumId}/posts", method = RequestMethod.POST)
-    public void createPost(@Valid @RequestBody Post post) {
-         postDAO.createPost(post);
-    }
+    /*** GET ALL POSTS ***/
     @RequestMapping(value = "/posts", method = RequestMethod.GET)
     public List<Post> getAllPosts() {
         return postDAO.getAllPosts();
     }
 
+    /*** GET POST BY POST_ID ***/
+    @RequestMapping(value = "/posts/{postId}", method = RequestMethod.GET)
+    public Post getPostByPostId(@PathVariable int postId) {
+        return postDAO.getPostByID(postId);
+    }
+    
+    /*** GET POSTS BY KEYWORD ***/
 
 
 }

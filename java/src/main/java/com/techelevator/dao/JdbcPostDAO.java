@@ -37,7 +37,6 @@ public class JdbcPostDAO implements PostDAO {
             returnPost = mapRowToPost(postRowSet);
         }
 
-
         return returnPost;
     }
     @Override
@@ -127,10 +126,10 @@ public class JdbcPostDAO implements PostDAO {
     /*** CREATE AND DELETE POSTS ***/
     @Override
     public void createPost(Post toPost){
-        String sql = "INSERT INTO posts VALUES (DEFAULT, ?, ?, ?, ? , ?, ?, ?, ?)";
+        String sql = "INSERT INTO posts VALUES (DEFAULT, ?, ?, ?, ? , ?, ?, CURRENT_TIMESTAMP, ?)";
         jdbcTemplate.update(sql, toPost.getUserID(), toPost.getForumID(), toPost.getTitle(),
                 toPost.getMessageDetails(), toPost.getUpVotes(), toPost.getDownVotes(),
-                toPost.getTimeStamp(), toPost.getLocation());
+                toPost.getLocation());
     }
     @Override
     public void deletePost(int postID){
