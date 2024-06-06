@@ -88,16 +88,18 @@ export default {
     flex-direction: column;
     justify-content: space-between;
     border-radius: 25px;
-    max-width: 750px;
+    width: 50%;
+    /* max-width: 750px; */
     min-width: 600px;
     /* height: 250px; */
+    min-height: 500px;  
     /* margin: 20px; */
     margin: 0 auto;
-    margin-bottom: 10px;
+    margin-bottom: 1%;
     border: 5px solid rgb(250, 129, 240);
     /* font-size: 2.5rem; */
     color: white;
-    margin-top: 1px;
+    margin-top: .5%;
     text-align: center;
 }
 
@@ -112,7 +114,8 @@ export default {
     font-size: 1rem;
     color: white;
     align-self: flex-end;
-    margin-right: 10px;
+    margin-bottom: 2%;
+    margin-right: 2%
 }
 
 .postName{

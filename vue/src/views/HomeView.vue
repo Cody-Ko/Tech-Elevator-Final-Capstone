@@ -142,7 +142,7 @@ import PostService from '../services/PostService';
 
 .posts-description{
   text-align: center;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
 }
 
 

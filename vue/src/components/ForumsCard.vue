@@ -64,8 +64,8 @@ export default{
     justify-content: space-between;
     border: 5px solid rgb(250, 129, 240);
     border-radius: 25px;
-    max-width: 450px;
-    /* height: 250px; */
+    min-width: 450px;
+    height: 250px;
     /* margin: 20px; */
     /* margin: 0 auto; */
     margin-bottom: 10px;
@@ -96,16 +96,24 @@ export default{
     color: white;
     font-size: 35px;
     margin-top: 5px;
-    margin-left: 550px;
+    margin-left: 85%;
     margin-right: 10px;
 }
 
 .yellow-star{
-    color: yellow;
+    color: white;
     font-size: 35px;
     margin-top: 5px;
-    margin-left: 550px;
+    margin-left: 85%;
     margin-right: 10px;
+}
+
+.forumName{
+    margin: 5%;
+}
+
+.timeStamp{
+    margin-bottom: 2%;
 }
 
 
