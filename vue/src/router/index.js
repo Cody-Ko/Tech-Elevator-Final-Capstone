@@ -60,7 +60,7 @@ const routes = [
     }
   },
   {
-    path: "/forum/:forumId",
+    path: "/forums/:forumId",
     name: "forumview",
     component: ForumView,
     meta: {

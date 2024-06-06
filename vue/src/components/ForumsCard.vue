@@ -8,7 +8,7 @@
     <i v-bind:class="{'fas fa-star yellow-star': iconClick, 'fas fa-star white-star': !iconClick}" v-on:click="favorite"></i> -->
     
     <i class = "fas fa-star white-star"></i>
-    <!-- <router-link class="ForumViewLink" v-bind:to="{ name: 'forumview', params:{forumId: forum.forumId} }"> -->
+    <router-link class="ForumViewLink" v-bind:to="{ name: 'forumview', params:{forumId: forum.forum_id} }"/>
     <header>
         <h1 class="forumName">{{ forum.forum_name }}</h1>
     </header>
