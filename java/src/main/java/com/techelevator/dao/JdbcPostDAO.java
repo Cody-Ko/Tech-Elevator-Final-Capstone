@@ -75,15 +75,12 @@ public class JdbcPostDAO implements PostDAO {
     public List<Post> getAllPosts(){
         String sql = "SELECT * FROM posts";
         List<Post> postList = new ArrayList<>();
-        try {
             SqlRowSet result= jdbcTemplate.queryForRowSet(sql);
-            while(result.next()){
+            while(result.next()) {
                 postList.add(mapRowToPost(result));
             }
-        }
-        catch (NullPointerException e){
-            return null;
-        }
+
+
 
         return postList;
     }
@@ -132,7 +129,8 @@ public class JdbcPostDAO implements PostDAO {
     public void createPost(Post toPost){
         String sql = "INSERT INTO posts VALUES (DEFAULT, ?, ?, ?, ? , ?, ?, ?, ?)";
         jdbcTemplate.update(sql, toPost.getUserID(), toPost.getForumID(), toPost.getTitle(),
-                toPost.getMessageDetails(), toPost.getUpVotes(), toPost.getDownVotes(), toPost.getTimeStamp(), toPost.getLocation());
+                toPost.getMessageDetails(), toPost.getUpVotes(), toPost.getDownVotes(),
+                toPost.getTimeStamp(), toPost.getLocation());
     }
     @Override
     public void deletePost(int postID){

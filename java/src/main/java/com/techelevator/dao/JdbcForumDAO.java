@@ -152,9 +152,10 @@ public class JdbcForumDAO implements ForumDAO {
     @Override
     public List<Forum> getForumsByKeyword(String keyword) {
         List<Forum> forums = new ArrayList<>();
-        String sql = "SELECT forum_name FROM forum WHERE forum_name LIKE ?";
 
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, keyword);
+        String sql = "SELECT * FROM forum WHERE forum_name ILIKE CONCAT('%', ? ,'%')";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, keyword); 
 
         while(results.next()) {
             Forum forum = mapRowToForum(results);

@@ -44,7 +44,7 @@ public class UserController {
     }
 
     // GETS FORUMS BY KEYWORD
-    @RequestMapping(value = "/forums/{keyword}", method = RequestMethod.GET)
+    @RequestMapping(value = "/forums/keyword/{keyword}", method = RequestMethod.GET)
     public List<Forum> getForumsByKeyword(@PathVariable String keyword) {
         return forumDAO.getForumsByKeyword(keyword);
     }
@@ -100,5 +100,5 @@ public class UserController {
     }
 
 
-    
+
 }
