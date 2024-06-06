@@ -5,7 +5,11 @@
         Pull in a component that uses the ForumsCard to display the content -->
       <h1 class="linksandsearches">
       <router-link class="register" v-bind:to="{ name: 'register' }">Join the conversation!</router-link>
-      <input class="searchforums" type="text" id="searcher" v-model="filter.forumName"/>    
+
+      <div class="searchbar">
+        <input type="text" v-model="forum" placeholder="Search here for your criteria!"/>
+        <button @click="getForumsByKeyword">Search</button>
+      </div>
       </h1>
     </div>
     
@@ -28,6 +32,7 @@
 import ForumService from '../services/ForumService'
 import GuestsForumsCard from '../components/GuestsForumsCard.vue'
 import PostCard from '../components/PostCard.vue';
+import SearchCard from '../components/SearchCard.vue';
 
   export default {
     components: {
@@ -108,11 +113,25 @@ import PostCard from '../components/PostCard.vue';
             // .catch(error =>{
                 
             // })
-        }
+        },
+        getForumsByKeyword(keyword){
+          this.keyword = this.$router.forum.keyword
+            this.$router.push({name: 'searchview', params: {forumkeyword: this.keyword}})
+        },
+        // getForumsByKeyword(forumkeyword){
+        //     ForumService.getForum(forumkeyword).then((response)=>{
+        //         this.forum = response.data;
+        //     })
+        //     /*
+        //     .catch((error) =>{
+        //         this.handleErrorResponse(error);
+        //     });
+        //     */
+        // },
+        
     },
     created(){
         // ONCE DATABASE HAS FORUMS TO USE ---> this.getForums();
-        this.getForums();
     }
   };
   </script>
@@ -130,7 +149,7 @@ import PostCard from '../components/PostCard.vue';
   
 }
 
-.searchforums {
+.searchbar {
   justify-content: right;
   grid-area: searchforums;
   top: 250px;
@@ -141,7 +160,7 @@ import PostCard from '../components/PostCard.vue';
 .register {
   display: flex;
   grid-area: register;
-  margin-left: 50px;
+  margin-left: 150px;
   
 }
 

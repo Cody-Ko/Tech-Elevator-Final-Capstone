@@ -66,7 +66,7 @@ import PostService from '../services/PostService';
     },
     created(){
         this.getForum();
-        this.getForumByKeyword();
+
     }
   };
   </script>
