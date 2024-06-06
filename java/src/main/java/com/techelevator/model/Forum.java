@@ -1,4 +1,5 @@
 package com.techelevator.model;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.LocalDateTime;
@@ -9,6 +10,7 @@ public class Forum {
     @JsonProperty("forum_name")
     private String name;
     @JsonProperty("time_stamp")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime timestamp;
     @JsonProperty("user_id")
     private int userId;

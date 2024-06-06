@@ -44,7 +44,9 @@ public class JdbcForumDAO implements ForumDAO {
         Forum forum = new Forum();
         forum.setForumId(results.getInt("forum_id"));
         forum.setName(results.getString("forum_name"));
-        //forum.setTimestamp(results.getDate("time_stamp"));    //COMMENTED OUT -- NEED TO FIX LATER
+        if (results.getTimestamp("time_stamp") != null) {
+            forum.setTimestamp(results.getTimestamp("time_stamp").toLocalDateTime());    //COMMENTED OUT -- NEED TO FIX LATER
+        }
         forum.setUserID(results.getInt("user_id"));
         return forum;
     }
