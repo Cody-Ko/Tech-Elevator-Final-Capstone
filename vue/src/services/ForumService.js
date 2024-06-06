@@ -24,6 +24,10 @@ export default {
 
   deleteForum(forumId) {
     return http.delete(`/forums/${forumId}`)
+  },
+
+  getForumByKeyword(keyword) {
+    return http.delete(`/forums/keyword/${keyword}`)
   }
 
   //Why is this happening?

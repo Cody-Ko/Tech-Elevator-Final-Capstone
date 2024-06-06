@@ -10,6 +10,7 @@ import UnauthHomeView from '../views/UnauthHomeView.vue';
 import ForumView from '../views/ForumView.vue';
 import PostView from '../views/PostView.vue';
 import CommentView from '../views/CommentView.vue';
+import SearchView from '../views/SearchView.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -80,6 +81,14 @@ const routes = [
     path: "/comments/:comment_id",
     name: "commentview",
     component: CommentView,
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/forum/keyword/:keyword",
+    name: "searchview",
+    component: SearchView,
     meta: {
       requiresAuth: false
     }
