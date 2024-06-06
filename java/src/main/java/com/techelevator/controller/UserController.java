@@ -68,10 +68,19 @@ public class UserController {
     }
 
     // CREATES FORUM
+    @PreAuthorize("isAuthenticated()")
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/forums", method = RequestMethod.POST)
     public void addForum(@Valid @RequestBody Forum forum) {
         forumDAO.addForum(forum);
+    }
+
+    /*** CONTROLLER METHOD TO CREATE A NEW POST ***/
+    @PreAuthorize("isAuthenticated()")
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(path = "/forums/{forumId}/posts", method = RequestMethod.POST)
+    public void createPost(@Valid @RequestBody Post post) {
+        postDAO.createPost(post);
     }
 
     /*** CONTROLLER METHODS TO GET POSTS BY FORUM ***/
@@ -86,14 +95,7 @@ public class UserController {
         return postDAO.getPostsByForumName(forumName);
     }*/
 
-    /*** CONTROLLER METHOD TO CREATE A NEW POST ***/
-    @PreAuthorize("isAuthenticated()")
 
-    @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/forums/{forumId}/posts", method = RequestMethod.POST)
-    public void createPost(@Valid @RequestBody Post post) {
-         postDAO.createPost(post);
-    }
     @RequestMapping(value = "/posts", method = RequestMethod.GET)
     public List<Post> getAllPosts() {
         return postDAO.getAllPosts();

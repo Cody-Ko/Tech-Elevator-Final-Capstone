@@ -7,21 +7,24 @@ import java.time.ZoneId;
 import java.util.Date;
 
 public class Forum {
+
+    @JsonProperty("forum_id")
+    private int forumId;
+    @JsonProperty("user_id")
+    private int userId;
     @JsonProperty("forum_name")
     private String name;
     @JsonProperty("time_stamp")
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime timestamp;
-    @JsonProperty("user_id")
-    private int userId;
-    @JsonProperty("forum_id")
-    private int forumId;
 
-    public Forum(String name, LocalDateTime timestamp, int userId, int forumId) {
+
+
+    public Forum(int forumId, int userId, String name, LocalDateTime timestamp) {
+        this.forumId = forumId;
+        this.userId = userId;
         this.name = name;
         this.timestamp = timestamp;
-        this.userId = userId;
-        this.forumId = forumId;
     }
     //overload the constructor so that it can be declared before setting variables in the DAO
     public Forum(){
@@ -43,10 +46,7 @@ public class Forum {
     public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
     }
-    public void setTimestamp(Date timestamp) {
-        LocalDateTime localDateTime = timestamp.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-        this.timestamp = localDateTime;
-    }
+
 
     public int getUserId() {
         return userId;
