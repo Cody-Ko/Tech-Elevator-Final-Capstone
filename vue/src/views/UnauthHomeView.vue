@@ -112,6 +112,7 @@ import PostCard from '../components/PostCard.vue';
     },
     created(){
         // ONCE DATABASE HAS FORUMS TO USE ---> this.getForums();
+        this.getForums();
     }
   };
   </script>

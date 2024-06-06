@@ -21,6 +21,7 @@ import PostService from '../services/PostService';
     data(){
         return {
             forumId: this.$route.params.forumId,
+            forumkeyword: "",
             forum: {}
         };
     },
@@ -65,6 +66,7 @@ import PostService from '../services/PostService';
     },
     created(){
         this.getForum();
+        this.getForumByKeyword();
     }
   };
   </script>
