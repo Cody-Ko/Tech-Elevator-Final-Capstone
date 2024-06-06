@@ -8,7 +8,8 @@ import LogoutView from '../views/LogoutView.vue';
 import RegisterView from '../views/RegisterView.vue';
 import UnauthHomeView from '../views/UnauthHomeView.vue';
 import ForumView from '../views/ForumView.vue';
-import PostView from '../views/PostView.vue'
+import PostView from '../views/PostView.vue';
+import CommentView from '../views/CommentView.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -74,7 +75,15 @@ const routes = [
     meta: {
       requiresAuth: false
     }
-  }
+  },
+  {
+    path: "/comments/:comment_id",
+    name: "commentview",
+    component: CommentView,
+    meta: {
+      requiresAuth: false
+    }
+  },
 ];
 
 // Create the router
