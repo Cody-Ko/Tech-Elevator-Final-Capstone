@@ -164,7 +164,7 @@ public class JdbcPostDAO implements PostDAO {
         post.setUpVotes(rs.getInt("up_votes"));
         post.setDownVotes(rs.getInt("down_votes"));
         if (rs.getTimestamp("time_stamp") != null) {
-            post.setTimeStamp(rs.getTimestamp("time_stamp").toLocalDateTime());    //COMMENTED OUT -- NEED TO FIX LATER
+            post.setTimeStamp(rs.getTimestamp("time_stamp").toLocalDateTime());
         }
         post.setLocation(rs.getString("location"));
         return post;

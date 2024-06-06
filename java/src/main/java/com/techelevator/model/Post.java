@@ -41,7 +41,7 @@ public class Post {
         this.messageDetails = messageDetails;
         this.upVotes = upVotes;
         this.downVotes = downVotes;
-        //this.timeStamp = timeStamp;
+        this.timeStamp = timeStamp;
         this.location = location;
     }
 

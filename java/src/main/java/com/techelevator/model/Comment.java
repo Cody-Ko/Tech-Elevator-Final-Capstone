@@ -1,5 +1,8 @@
 package com.techelevator.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -10,8 +13,9 @@ public class Comment {
     private int replyToID; //null if replying to a post
     private int postID;
     private String messageDetails;
+    @JsonProperty("time_stamp")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime timeStamp;
-
     //Getters
 
     public int getCommentID() {
