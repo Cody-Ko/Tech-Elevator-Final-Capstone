@@ -71,7 +71,7 @@ public class UserController {
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/forums", method = RequestMethod.POST)
     public void addForum(@Valid @RequestBody Forum forum) {
-        //return forumDAO.addForum(forum);
+        forumDAO.addForum(forum);
     }
 
     /*** CONTROLLER METHODS TO GET POSTS BY FORUM ***/

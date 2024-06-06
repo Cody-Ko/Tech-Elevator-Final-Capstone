@@ -25,14 +25,14 @@ public class JdbcForumDAO implements ForumDAO {
         this.jdbcTemplate = jdbcTemplate;
     }
     @Override
-    public void addForum(int forumId, String name, LocalDateTime timestamp, int userId) {
+    public void addForum(Forum forum) {
         String sql = "INSERT into forum " +
                 "(forum_id, forum_name, " +
                 "forum_time_stamp, user_id " +
                 "VALUES " +
                 "(?,?,?,?,?);";
         try {
-            jdbcTemplate.update(sql, forumId, name, timestamp, userId);
+            jdbcTemplate.update(sql, forum.getForumId(), forum.getName(), forum.getTimestamp(), forum.getUserId());
         } catch(CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
         } catch(DataIntegrityViolationException e) {

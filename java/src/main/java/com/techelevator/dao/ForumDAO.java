@@ -15,7 +15,7 @@ public interface ForumDAO {
 
     List<Forum> getForumsByUsername(String username);
 
-    void addForum(int forumId, String name, LocalDateTime timestamp, int userId);
+    void addForum(Forum forum);
 
     Forum mapRowToForum(SqlRowSet results);
 
