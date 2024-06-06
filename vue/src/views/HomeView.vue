@@ -145,8 +145,14 @@ import PostService from '../services/PostService';
   margin-bottom: 15px;
 }
 
+.home{
+  margin-left: .85%;
+  margin-bottom: 2%;
+}
 
-
+.forums-description{
+  margin-left: .85%;
+}
 
 
 </style>
