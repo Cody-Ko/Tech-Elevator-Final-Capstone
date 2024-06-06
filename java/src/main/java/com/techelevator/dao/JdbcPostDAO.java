@@ -125,19 +125,12 @@ public class JdbcPostDAO implements PostDAO {
     public List<Post> getPostsByForumID(int forumID){
         String sql = "SELECT * FROM posts" +
                 " WHERE forum_id = ? ";
-
         List<Post> rtnList = new ArrayList<Post>();
-
-        try{
-            SqlRowSet postRowSet = jdbcTemplate.queryForRowSet(sql, forumID);
-            while (postRowSet.next()) {
-                Post post = mapRowToPost(postRowSet);   //error is here? unsupported operation exception
-                rtnList.add(post);
-            }
-        } catch (NullPointerException e){
-            return null;
+        SqlRowSet postRowSet = jdbcTemplate.queryForRowSet(sql, forumID);
+        while (postRowSet.next()) {
+            Post post = mapRowToPost(postRowSet);   //error is here? unsupported operation exception
+            rtnList.add(post);
         }
-
         return rtnList;
     }
 
