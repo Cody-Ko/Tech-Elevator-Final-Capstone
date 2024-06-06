@@ -17,7 +17,6 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@PreAuthorize("isAuthenticated()")
 @CrossOrigin
 public class UserController {
 
@@ -88,9 +87,18 @@ public class UserController {
     }*/
 
     /*** CONTROLLER METHOD TO CREATE A NEW POST ***/
+    @PreAuthorize("isAuthenticated()")
+
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/forums/{forumId}/posts", method = RequestMethod.POST)
     public void createPost(@Valid @RequestBody Post post) {
          postDAO.createPost(post);
     }
+    @RequestMapping(value = "/posts", method = RequestMethod.GET)
+    public List<Post> getAllPosts() {
+        return postDAO.getAllPosts();
+    }
+
+
+    
 }

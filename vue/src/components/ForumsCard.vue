@@ -63,9 +63,9 @@ export default{
     flex-direction: column;
     justify-content: space-between;
     border: 5px solid rgb(250, 129, 240);
-    border-radius: 10px;
-    width: 650px;
-    height: 250px;
+    border-radius: 25px;
+    /* width: 650px; */
+    /* height: 250px; */
     margin: 20px;
     margin: 0 auto;
     margin-bottom: 10px;
@@ -96,16 +96,18 @@ export default{
     color: white;
     font-size: 35px;
     margin-top: 5px;
-    margin-left: 575px;
+    margin-left: 550px;
+    margin-right: 10px;
 }
 
 .yellow-star{
     color: yellow;
     font-size: 35px;
-    margin-top: 10px;
+    margin-top: 5px;
     margin-left: 550px;
+    margin-right: 10px;
 }
 
 
-/* Test2 */
+/* Test 2.5 */
 </style>
