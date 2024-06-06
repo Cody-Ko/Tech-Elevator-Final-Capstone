@@ -9,6 +9,7 @@
 
 import ForumService from '../services/ForumService';
 import ForumsCard from '../components/ForumsCard.vue';
+import SearchCard from '../components/SearchCard.vue';
 
 export default {
     components: {
