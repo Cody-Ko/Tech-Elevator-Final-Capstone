@@ -10,7 +10,7 @@
   </div>
   <h2 class="posts-description">Today's Trending Posts</h2>
   <div class="post-section">
-    <PostCard class="trending-posts" v-for="post in posts" v-bind:post="post" v-bind:key="post.postId"/>
+    <PostCard class="trending-posts" v-for="post in posts" v-bind:post="post" v-bind:key="post.post_id"/>
   </div>
 </template>
 
@@ -135,6 +135,7 @@ import PostService from '../services/PostService';
   text-align: center;
   margin-bottom: 5px;
 }
+
 
 
 
