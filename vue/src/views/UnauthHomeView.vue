@@ -1,11 +1,12 @@
 <template>
     <div class="GuestHome">
       <h1 class="pageHeader">Forums</h1>
-      <input class="searchforums" type="text" id="searcher" v-model="filter.forumName"/>
       <!-- Header for Trending Forums (up-votes) and Active Forums (comments) within 24hr window
         Pull in a component that uses the ForumsCard to display the content -->
-      <h1>
-      <router-link class="register" v-bind:to="{ name: 'register' }">Join the conversation!</router-link></h1>
+      <h1 class="linksandsearches">
+      <router-link class="register" v-bind:to="{ name: 'register' }">Join the conversation!</router-link>
+      <input class="searchforums" type="text" id="searcher" v-model="filter.forumName"/>    
+      </h1>
     </div>
     
     <div class="mainSection">
@@ -129,8 +130,27 @@ import PostCard from '../components/PostCard.vue';
 }
 
 .searchforums {
+  justify-content: right;
+  grid-area: searchforums;
+  top: 250px;
+  width: 250px;
+  margin-left: 750px;
+}
+
+.register {
   display: flex;
-  justify-content: flex-end;
+  grid-area: register;
+  margin-left: 50px;
+  
+}
+
+.linksandsearches {
+  display: grid;
+  grid-template-columns: 3fr, 3fr, 1fr;
+  grid: 0%;
+  grid-template-areas:
+  "register . searchforums"
+  ;
 }
 
 
