@@ -128,6 +128,7 @@ import PostService from '../services/PostService';
 
 .forum-section{
   display: flex;
+  justify-content: center;
   /* flex-direction: column; */
   flex-wrap: wrap;  
   justify-content: space-around;
