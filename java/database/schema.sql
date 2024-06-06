@@ -20,7 +20,7 @@ CREATE TABLE forum (
 	forum_id SERIAL PRIMARY KEY,
     	user_id INT NOT NULL,
     	forum_name VARCHAR(50) NOT NULL UNIQUE,
-    	time_stamp DATETIME NOT NULL,
+    	time_stamp TIMESTAMP NOT NULL,
     	FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
@@ -32,7 +32,7 @@ CREATE TABLE posts (
     	message VARCHAR(1000) NOT NULL,
     	up_votes INT NOT NULL,
     	down_votes INT NOT NULL,
-    	time_stamp DATETIME NOT NULL,
+    	time_stamp TIMESTAMP NOT NULL,
     	location varchar(50) NOT NULL,
     	FOREIGN KEY (forum_id) REFERENCES forum(forum_id),
     	FOREIGN KEY (user_id) REFERENCES users(user_id)
@@ -42,7 +42,7 @@ CREATE TABLE comments (
 	comment_id SERIAL PRIMARY KEY,
     	user_id INT NOT NULL,
     	message VARCHAR(1000) NOT NULL,
-    	time_stamp DATETIME NOT NULL,
+    	time_stamp TIMESTAMP NOT NULL,
     	post_id INT NOT NULL,
     	reply_to INT,
     	location varchar(50) NOT NULL,
