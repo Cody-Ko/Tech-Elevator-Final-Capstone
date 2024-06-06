@@ -75,7 +75,7 @@ public class UserController {
         forumDAO.addForum(forum);
     }
 
-    /*** CONTROLLER METHOD TO CREATE A NEW POST ***/
+    /*** CREATE A NEW POST ***/
     @PreAuthorize("isAuthenticated()")
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/forums/{forumId}/posts", method = RequestMethod.POST)
@@ -83,7 +83,7 @@ public class UserController {
         postDAO.createPost(post);
     }
 
-    /*** CONTROLLER METHODS TO GET POSTS BY FORUM ***/
+    /*** GET POSTS BY FORUM ***/
     @RequestMapping(value = "/forums/{forumId}/posts", method = RequestMethod.GET)
     public List<Post> getPostsByForumId(@PathVariable int forumId) {
         return postDAO.getPostsByForumID(forumId);
@@ -95,12 +95,19 @@ public class UserController {
         return postDAO.getPostsByForumName(forumName);
     }*/
 
-
+    /*** GET ALL POSTS ***/
     @RequestMapping(value = "/posts", method = RequestMethod.GET)
     public List<Post> getAllPosts() {
         return postDAO.getAllPosts();
     }
 
+    /*** GET POST BY POST_ID ***/
+    @RequestMapping(value = "/posts/{postId}", method = RequestMethod.GET)
+    public Post getPostByPostId(@PathVariable int postId) {
+        return postDAO.getPostByID(postId);
+    }
+    
+    /*** GET POSTS BY KEYWORD ***/
 
 
 }

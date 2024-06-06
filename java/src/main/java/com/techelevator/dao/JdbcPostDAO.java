@@ -37,7 +37,6 @@ public class JdbcPostDAO implements PostDAO {
             returnPost = mapRowToPost(postRowSet);
         }
 
-
         return returnPost;
     }
     @Override
