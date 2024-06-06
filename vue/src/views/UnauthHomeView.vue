@@ -1,6 +1,7 @@
 <template>
     <div class="GuestHome">
       <h1 class="pageHeader">Forums</h1>
+      <input class="searchforums" type="text" id="searcher" v-model="filter.forumName"/>
       <!-- Header for Trending Forums (up-votes) and Active Forums (comments) within 24hr window
         Pull in a component that uses the ForumsCard to display the content -->
       <h1>
@@ -94,7 +95,8 @@ import PostCard from '../components/PostCard.vue';
                 timeStamp: new Date("2024-06-04T08:01:00"),
                 location: "England"
               },
-             ]
+             ],
+             filter: 0,
         };
     },
     methods: {
@@ -122,8 +124,13 @@ import PostCard from '../components/PostCard.vue';
 
 .mainSection{
   display: flex;
-  /* flex-direction: column; */
+  flex-direction: column;
   
+}
+
+.searchforums {
+  display: flex;
+  justify-content: flex-end;
 }
 
 
