@@ -64,10 +64,10 @@ export default{
     justify-content: space-between;
     border: 5px solid rgb(250, 129, 240);
     border-radius: 25px;
-    /* width: 650px; */
+    max-width: 350px;
     /* height: 250px; */
-    margin: 20px;
-    margin: 0 auto;
+    /* margin: 20px; */
+    /* margin: 0 auto; */
     margin-bottom: 10px;
 }
 

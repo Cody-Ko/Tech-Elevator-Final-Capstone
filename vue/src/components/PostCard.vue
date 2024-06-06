@@ -2,7 +2,7 @@
 
   <div class="PostCard">
 
-    <router-link class="PostViewLink" v-bind:to="{ name: 'postview', params:{postId: post.postId} }">
+    <router-link class="PostViewLink" v-bind:to="{ name: 'postview', params:{postId: post.post_id} }">
         <header>
         <h1 class="postName">{{ post.title }}</h1>
         
@@ -88,8 +88,9 @@ export default {
     flex-direction: column;
     justify-content: space-between;
     border-radius: 25px;
-    width: 650px;
-    height: 250px;
+    max-width: 750px;
+    min-width: 600px;
+    /* height: 250px; */
     /* margin: 20px; */
     margin: 0 auto;
     margin-bottom: 10px;
@@ -124,5 +125,5 @@ export default {
 }
 
 
-
+/* Test 2.5 */
 </style>

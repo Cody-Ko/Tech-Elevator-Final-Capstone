@@ -119,6 +119,7 @@ import PostService from '../services/PostService';
   </script>
 
 <style>
+
 .pageHeader{
   text-align: center;
 }
@@ -128,7 +129,14 @@ import PostService from '../services/PostService';
 .forum-section{
   display: flex;
   /* flex-direction: column; */
-  
+  flex-wrap: wrap;  
+  justify-content: space-around;
+}
+
+.post-section{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .posts-description{
