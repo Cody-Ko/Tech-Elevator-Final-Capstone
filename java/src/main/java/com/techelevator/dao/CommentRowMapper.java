@@ -16,10 +16,12 @@ public class CommentRowMapper implements RowMapper <Comment> {
         comment.setPostID(rs.getInt("post_id"));
         comment.setReplyToID(rs.getObject("reply_to") != null ? rs.getInt("reply_to") : 0); // default 0 if null
         comment.setMessageDetails(rs.getString("message"));
+        comment.setLocation(rs.getString("location"));
 
         if (rs.getTimestamp("time_stamp") != null) {
             comment.setTimeStamp(rs.getTimestamp("time_stamp").toLocalDateTime());
         }
+
 
         //comment.setTimeStamp(rs.getObject("time_stamp", LocalDateTime.class));
         return comment;

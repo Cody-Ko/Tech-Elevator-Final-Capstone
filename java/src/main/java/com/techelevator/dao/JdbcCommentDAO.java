@@ -22,7 +22,7 @@ public class JdbcCommentDAO implements CommentDAO {
     //Add addComment method eventually
     @Override
     public void addComment(Comment comment) {
-        String sql = "INSERT INTO comments (user_id, reply_to_id, post_id, message, time_stamp) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO comments (user_id, reply_to_id, post_id, message, time_stamp, location) VALUES (?, ?, ?, ?, ?, ?)";
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
         jdbcTemplate.update(connection -> {
@@ -32,6 +32,7 @@ public class JdbcCommentDAO implements CommentDAO {
             ps.setObject(3, comment.getReplyToID() == 0 ? null : comment.getReplyToID());
             ps.setString(4, comment.getMessageDetails());
             ps.setObject(5, comment.getTimeStamp());
+            ps.setString(6, comment.getLocation());
             return ps;
         }, keyHolder);
 
@@ -64,8 +65,8 @@ public class JdbcCommentDAO implements CommentDAO {
 
     @Override
     public void updateComment(Comment comment) {
-        String sql = "UPDATE comments SET user_id = ?, post_id = ?, reply_to = ?, message = ?, time_stamp = ? WHERE comment_id = ?";
-        jdbcTemplate.update(sql, comment.getUserID(), comment.getPostID(), comment.getReplyToID() == 0 ? null : comment.getReplyToID(), comment.getMessageDetails(), comment.getTimeStamp(), comment.getCommentID());
+        String sql = "UPDATE comments SET user_id = ?, post_id = ?, reply_to = ?, message = ?, time_stamp = ?, location = ? WHERE comment_id = ?";
+        jdbcTemplate.update(sql, comment.getUserID(), comment.getPostID(), comment.getReplyToID() == 0 ? null : comment.getReplyToID(), comment.getMessageDetails(), comment.getTimeStamp(), comment.getLocation(), comment.getCommentID());
     }
 
     @Override
