@@ -106,8 +106,25 @@ public class UserController {
     public Post getPostByPostId(@PathVariable int postId) {
         return postDAO.getPostByID(postId);
     }
-    
-    /*** GET POSTS BY KEYWORD ***/
 
+    /*** GET POSTS BY KEYWORD ***/
+    @RequestMapping(value = "/posts/keyword/{keyword}", method = RequestMethod.GET)
+    public List<Post> getPostsByKeyword(@PathVariable String keyword) {
+        return postDAO.getPostsByKeyword(keyword);
+    }
+
+    /*** GET POST BY POST_ID ***/
+    @RequestMapping(value = "/posts/{postId}/upvote", method = RequestMethod.PUT)
+    public void upvotePost(@PathVariable int postId) {
+        postDAO.upvotePost(postId);
+    }
+    @RequestMapping(value = "/posts/{postId}/downvote", method = RequestMethod.PUT)
+    public void downvotePost(@PathVariable int postId) {
+        postDAO.downvotePost(postId);
+    }
+    @RequestMapping(value = "/posts/{postId}/getscore", method = RequestMethod.GET)
+    public void getPostScore(@PathVariable int postId) {
+        postDAO.getPostScore(postId);
+    }
 
 }

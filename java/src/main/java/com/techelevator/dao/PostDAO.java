@@ -18,8 +18,11 @@ public interface PostDAO {
     List<Post> getPostsByUserID(int userID);
     List<Post> getPostsByForumName(String forumName);
     List<Post> getPostsByForumID(int forumID);
+    List<Post> getPostsByKeyword(String keyword);
+    List<Post> get10MostPopularPosts();
 
-    /*** CREATE AND DELETE POSTS ***/
+
+        /*** CREATE AND DELETE POSTS ***/
     void createPost(Post toPost);
     void deletePost(int postID);
     void deletePostsByUserID(int userID);
@@ -28,4 +31,6 @@ public interface PostDAO {
     void upvotePost(int postID);
     void downvotePost(int postID);
     int getPostScore(int postID);
+
+
 }

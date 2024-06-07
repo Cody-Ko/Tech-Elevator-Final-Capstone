@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Forum;
 import com.techelevator.model.Post;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -93,6 +94,22 @@ public class JdbcPostDAO implements PostDAO {
         List<Post> rtnList = new ArrayList<Post>();
         return rtnList;
     }
+
+    @Override
+    public List<Post> getPostsByKeyword(String keyword) {
+        List<Post> posts = new ArrayList<>();
+
+        String sql = "SELECT * FROM posts WHERE title ILIKE CONCAT('%', ? ,'%')" +
+                "OR message ILIKE CONCAT('%', ? ,'%')";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, keyword, keyword);
+
+        while(results.next()) {
+            Post post = mapRowToPost(results);
+            posts.add(post);
+        }
+        return posts;
+    }
     /*********************************************************/
     /***** GET POSTS BY FORUM NAME, GET POSTS BY FORUM ID ***/
     /********************************************************/
@@ -142,13 +159,21 @@ public class JdbcPostDAO implements PostDAO {
 
     /*** METHODS FOR VOTING ON POSTS ***/
     public void upvotePost(int postID){
-
+        String sql = "UPDATE posts SET up_votes = up_votes + 1 WHERE post_id = ?";
+        jdbcTemplate.update(sql, postID);
     }
     public void downvotePost(int postID){
-
+        String sql = "UPDATE posts SET up_votes = up_votes - 1 WHERE post_id = ?";
+        jdbcTemplate.update(sql, postID);
     }
     public int getPostScore(int postID){
-        return 999;
+        String sql = "SELECT * FROM posts WHERE post_id = ?";
+        return jdbcTemplate.queryForObject(sql, int.class, postID);
+    }
+    public List<Post> get10MostPopularPosts(){
+        List<Post> rtnList = new ArrayList<Post>();
+        return rtnList;
+
     }
 
     private Post mapRowToPost(SqlRowSet rs) {
