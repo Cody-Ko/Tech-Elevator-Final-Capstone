@@ -62,7 +62,7 @@ export default{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border: 5px solid rgb(250, 129, 240);
+    border: 8px solid rgb(250, 129, 240);
     border-radius: 25px;
     min-width: 450px;
     height: 250px;
@@ -117,5 +117,5 @@ export default{
 }
 
 
-/* Test 2.5 */
+/* Test 2.75 */
 </style>

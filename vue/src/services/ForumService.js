@@ -26,7 +26,7 @@ export default {
     return http.delete(`/forums/${forumId}`)
   },
 
-  getForumByKeyword(keyword) {
+  getForumsByKeyword(keyword) {
     return http.delete(`/forums/keyword/${keyword}`)
   }
 
