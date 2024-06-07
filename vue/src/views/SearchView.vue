@@ -1,6 +1,7 @@
 <template>
-  Here is what we found!
   <div class ='searchforum'>
+    Here is what we found!
+    <ForumsCard v-for="forum in forums" v-bind:forum="forum" v-bind:key="forum.forum_id"/>
 
   </div>
 </template>
@@ -13,18 +14,19 @@ import SearchCard from '../components/SearchCard.vue';
 
 export default {
     components: {
-
+        ForumsCard
     },
 
     data() {
         return {
-            forumkeyword: this.$route.params.forumkeyword,
+            keyword: this.$route.params.keyword,
+            foundForums:[],
         }
     },
     methods: {
-        getForumsByKeyword(forumkeyword){
-            ForumService.getForum(forumkeyword).then((response)=>{
-                this.forum = response.data;
+        getForumsByKeyword(keyword){
+            ForumService.getForum(keyword).then((response)=>{
+                this.foundForums = response.data;
             })
             /*
             .catch((error) =>{
@@ -34,7 +36,7 @@ export default {
         },
     },
     created(){
-        this.getForumsByKeyword;
+        this.getForumsByKeyword(this.keyword);
     }
 }
 </script>

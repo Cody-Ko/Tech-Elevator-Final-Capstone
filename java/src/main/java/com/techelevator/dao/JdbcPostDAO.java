@@ -114,7 +114,7 @@ public class JdbcPostDAO implements PostDAO {
     public List<Post> getPostsByForumName(String forumName){
         String sql = "SELECT * FROM posts" +
                 " JOIN forum ON posts.forum_id = forum.forum_id" +
-                " WHERE forum.name = ?";
+                " WHERE forum.forum_name = ?";
         List<Post> rtnList = new ArrayList<Post>();
 
         SqlRowSet postRowSet = jdbcTemplate.queryForRowSet(sql, forumName);
