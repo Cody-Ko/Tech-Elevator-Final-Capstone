@@ -1,6 +1,6 @@
 <template>
   <div class="post">
-    PostView
+    {{ post.title }}
   </div>
 </template>
 
@@ -11,7 +11,7 @@ export default {
     data() {
         return {
             post: {},
-            postId: this.$route.params.postId,
+            postId: parseInt(this.$route.params.postId),
             // forumId: this.$route.params.forumId,
         };
     },
@@ -23,8 +23,8 @@ export default {
         //         }
         //     )
         // },
-        getPost() {
-            PostService.getPost(this.post.post_id).then(
+        getPost(postId) {
+            PostService.getPost(this.postId).then(
                 (response) => {
                     this.post = response.data;
                 }
