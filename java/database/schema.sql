@@ -172,11 +172,11 @@ VALUES (1, '"for (int i = 0; i < array.length; i++) {System.out.println(i);}" , 
 
 --Comments for "Need Project ideas"
 INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
-VALUES (1, 'Maybe try creating a vending machine application', '2024-06-07 10:34:00', 2, NULL, 'USA');
+VALUES (1, 'Maybe try creating a vending machine application', '2024-06-07 10:34:00', 9, NULL, 'USA');
 INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
-VALUES (1, 'You should make something like Venmo! But, call it something else.', '2024-06-07 10:38:00', 2, NULL, 'USA');
+VALUES (1, 'You should make something like Venmo! But, call it something else.', '2024-06-07 10:38:00', 9, NULL, 'USA');
 INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
-VALUES (1, 'You should make a message board or something.', '2024-06-07 10:39:00', 2, NULL, 'USA');
+VALUES (1, 'You should make a message board or something.', '2024-06-07 10:39:00', 9, NULL, 'USA');
 
 
 COMMIT TRANSACTION;
