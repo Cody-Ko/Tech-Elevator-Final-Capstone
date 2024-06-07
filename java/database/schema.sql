@@ -108,5 +108,7 @@ VALUES (1, 3, 'I need help with my code', 'How do I write a for loop? My instruc
 INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
 VALUES (1, 3, 'Need Project ideas', 'Seriously guys, I cant think of anything.', 30, 6, '2024-06-05 12:30:00', 'USA');
 
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (1, 'I prefer Jaws', '2024-06-07 9:34:00', 3, null, USA);
 
 COMMIT TRANSACTION;
