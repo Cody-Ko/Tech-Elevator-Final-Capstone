@@ -93,6 +93,14 @@ const routes = [
       requiresAuth: false
     }
   },
+  // {
+  //   path: "/posts",
+  //   name: "AllPostsView",
+  //   component: AllPostsView,
+  //   meta: {
+  //     requiresAuth: false
+  //   }
+  // },
 ];
 
 // Create the router

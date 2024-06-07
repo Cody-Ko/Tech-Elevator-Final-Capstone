@@ -32,7 +32,7 @@
 import ForumService from '../services/ForumService'
 import GuestsForumsCard from '../components/GuestsForumsCard.vue'
 import PostCard from '../components/PostCard.vue';
-import SearchCard from '../components/SearchCard.vue';
+// import SearchCard from '../components/SearchCard.vue';
 
   export default {
     components: {
