@@ -1,7 +1,9 @@
 <template>
   <div class ='searchforum'>
     Here is what we found!
-    <ForumsCard v-for="forum in forums" v-bind:forum="forum" v-bind:key="forum.forum_id"/>
+    <div>
+        <ForumsCard v-for="forum in forums" v-bind:forum="forum" v-bind:key="forum.forum_name"/>
+    </div>
 
   </div>
 </template>
@@ -10,7 +12,7 @@
 
 import ForumService from '../services/ForumService';
 import ForumsCard from '../components/ForumsCard.vue';
-import SearchCard from '../components/SearchCard.vue';
+// import SearchCard from '../components/SearchCard.vue';
 
 export default {
     components: {
