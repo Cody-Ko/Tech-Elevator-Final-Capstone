@@ -34,7 +34,7 @@ export default {
         },
     },
     created(){
-        this.getForumsByKeyword
+        this.getForumsByKeyword;
     }
 }
 </script>
