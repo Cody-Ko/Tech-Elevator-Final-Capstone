@@ -5,11 +5,14 @@
         Pull in a component that uses the ForumsCard to display the content -->
       <h1 class="linksandsearches">
       <router-link class="register" v-bind:to="{ name: 'register' }">Join the conversation!</router-link>
+      
+      <form @submit.prevent="searchforums">
+        <div class="searchbar">
+          <input type="text" v-model="keyword" placeholder="Search here for your criteria!"/>
+          <button type="submit">Search</button>
+        </div>
+      </form>
 
-      <div class="searchbar">
-        <input type="text" v-model="forum" placeholder="Search here for your criteria!"/>
-        <button @click="getForumsByKeyword">Search</button>
-      </div>
       </h1>
     </div>
     
@@ -44,65 +47,65 @@ import PostCard from '../components/PostCard.vue';
         return {
              forums: [
               // REMOVE BELOW OBJECTS ONCE DATABASE HAS FORUMS TO USE
-              {
-                forumId: 1,
-                userId: 1,
-                forumName: "Testing Out Forums",
-                timeStamp: new Date("2024-06-04T08:00:00"),
-                favoritedForum: true
-              },
-              {
-                forumId: 2,
-                userId: 3,
-                forumName: "Testing Out Forums Again",
-                timeStamp: new Date("2024-06-04T08:30:00"),
-                favoritedForum: true
-              },
-              {
-                forumId: 3,
-                userId: 2,
-                forumName: "Testing Out Forums: Return of the Forums",
-                timeStamp: new Date("2024-06-04T09:00:00"),
-                favoritedForum: false
-              }
+              // {
+              //   forumId: 1,
+              //   userId: 1,
+              //   forumName: "Testing Out Forums",
+              //   timeStamp: new Date("2024-06-04T08:00:00"),
+              //   favoritedForum: true
+              // },
+              // {
+              //   forumId: 2,
+              //   userId: 3,
+              //   forumName: "Testing Out Forums Again",
+              //   timeStamp: new Date("2024-06-04T08:30:00"),
+              //   favoritedForum: true
+              // },
+              // {
+              //   forumId: 3,
+              //   userId: 2,
+              //   forumName: "Testing Out Forums: Return of the Forums",
+              //   timeStamp: new Date("2024-06-04T09:00:00"),
+              //   favoritedForum: false
+              // }
              ],
              posts: [
-              {
-                postId: 1,
-                userId: 2,
-                forumId: 3,
-                title: "Here's a post about Return of the Forums",
-                message: "I like this",
-                upVotes: 100,
-                downVotes: 5,
-                timeStamp: new Date("2024-06-04T09:30:00"),
-                location: "America"
+              // {
+              //   postId: 1,
+              //   userId: 2,
+              //   forumId: 3,
+              //   title: "Here's a post about Return of the Forums",
+              //   message: "I like this",
+              //   upVotes: 100,
+              //   downVotes: 5,
+              //   timeStamp: new Date("2024-06-04T09:30:00"),
+              //   location: "America"
 
-              },
-              {
-                postId: 2,
-                userId: 3,
-                forumId: 2,
-                title: "Here's a post about Testing Out Forums Again",
-                message: "This isn't too bad",
-                upVotes: 50,
-                downVotes: 10,
-                timeStamp: new Date("2024-06-04T08:35:00"),
-                location: "Ghana"
-              },
-              {
-                postId: 3,
-                userId: 1,
-                forumId: 1,
-                title: "Here's a post about Testing Out Forums",
-                message: "Forums is cool",
-                upVotes: 100,
-                downVotes: 1,
-                timeStamp: new Date("2024-06-04T08:01:00"),
-                location: "England"
-              },
+              // },
+              // {
+              //   postId: 2,
+              //   userId: 3,
+              //   forumId: 2,
+              //   title: "Here's a post about Testing Out Forums Again",
+              //   message: "This isn't too bad",
+              //   upVotes: 50,
+              //   downVotes: 10,
+              //   timeStamp: new Date("2024-06-04T08:35:00"),
+              //   location: "Ghana"
+              // },
+              // {
+              //   postId: 3,
+              //   userId: 1,
+              //   forumId: 1,
+              //   title: "Here's a post about Testing Out Forums",
+              //   message: "Forums is cool",
+              //   upVotes: 100,
+              //   downVotes: 1,
+              //   timeStamp: new Date("2024-06-04T08:01:00"),
+              //   location: "England"
+              // },
              ],
-             filter: 0,
+             keyword: '',
         };
     },
     methods: {
@@ -115,9 +118,12 @@ import PostCard from '../components/PostCard.vue';
             // })
         },
         getForumsByKeyword(keyword){
-          this.keyword = this.$router.forum.keyword
-            this.$router.push({name: 'searchview', params: {forumkeyword: this.keyword}})
+            this.$router.push({name: 'searchview', params: {keyword: keyword}})
         },
+
+        searchforums() {
+          this.getForumsByKeyword(this.keyword)
+        }
         // getForumsByKeyword(forumkeyword){
         //     ForumService.getForum(forumkeyword).then((response)=>{
         //         this.forum = response.data;
