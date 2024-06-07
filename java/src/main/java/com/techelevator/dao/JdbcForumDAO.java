@@ -76,7 +76,7 @@ public class JdbcForumDAO implements ForumDAO {
     @Override
     public List<Forum> getForumsByUsername(String username) {
         List<Forum> forums = new ArrayList<>();
-        String sql = "SELECT forum_name FROM forum\n" +
+        String sql = "SELECT * FROM forum\n" +
                 "JOIN user_forum ON forum_id.forum = forum_id.user_forum\n" +
                 "JOIN users ON user_id.user_forum = user_id.users\n" +
                 "WHERE username = ?";
@@ -118,7 +118,7 @@ public class JdbcForumDAO implements ForumDAO {
     @Override
     public List<Forum> getFavoriteForums(String username) {
         List<Forum> forums = new ArrayList<>();
-        String sql = "SELECT forum_name FROM forum\n" +
+        String sql = "SELECT * FROM forum\n" +
                 "JOIN user_favorite_forums ON forum_id.forum = forum.id.user_favorite_forums\n" +
                 "JOIN users ON forum_user_id = user_id.users\n" +
                 "WHERE username = ?";
@@ -133,7 +133,7 @@ public class JdbcForumDAO implements ForumDAO {
     @Override
     public List<Forum> getActiveForums() {
         List<Forum> forums = new ArrayList<>();
-        String sql = "SELECT forum_name, time_stamp " +
+        String sql = "SELECT * " +
                 "FROM forum " +
                 "ORDER BY time_stamp DESC " +
                 "LIMIT 5";
@@ -158,6 +158,18 @@ public class JdbcForumDAO implements ForumDAO {
             forums.add(forum);
         }
         return forums;
+    }
+    @Override
+    public void deleteForumByForumName(String name) {
+
+    }
+    @Override
+    public void deleteForumByForumId(int forumId) {
+
+    }
+    @Override
+    public void deleteForumsByUserId(String username) {
+
     }
     @Override
     public List<Forum> getAllForums() {

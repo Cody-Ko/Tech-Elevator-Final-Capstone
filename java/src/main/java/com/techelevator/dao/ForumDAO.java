@@ -31,4 +31,10 @@ public interface ForumDAO {
 
     List<Forum> getForumsByForumId(int forumId);
 
+    void deleteForumByForumName(String name);
+
+    void deleteForumByForumId(int forumId);
+
+    void deleteForumsByUserId(String username);
+
 }
