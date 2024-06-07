@@ -130,4 +130,53 @@ VALUES (1, 'DINOSAURS RAHHHHHH ! ! !', '2024-06-07 09:38:00', 2, NULL, 'USA');
 INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
 VALUES (1, 'THIS GUY GETS IT.', '2024-06-07 09:39:00', 2, NULL, 'USA');
 
+-- Comments for "Welcome to Book Recommendations!"
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (1, 'Yay!! It''s like our own little bookclub!', '2024-06-07 09:34:00', 4, NULL, 'USA');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (1, 'Can we recommend comics?', '2024-06-07 09:38:00', 4, NULL, 'USA');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (1, 'I''m writing a 500 book series with 50 books per arc, would I be allowed to post 3 of my books a day? It''d TECHNICALLY be a recommendation if you think about it.', '2024-06-07 09:39:00', 4, NULL, 'USA');
+
+--Comments for "My Favorite Books"
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (1, 'Wow! Every second of the day? When do you find the time to sleep??', '2024-06-07 09:34:00', 5, NULL, 'USA');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (1, 'Who asked', '2024-06-07 09:38:00', 5, NULL, 'USA');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (1, 'I LOVE THAT BOOK!!', '2024-06-07 09:39:00', 5, NULL, 'USA');
+
+--Comments for "Recommendations needed!"
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (1, 'Seeing as you haven''t read for 25 years, could you provide some context to what your current reading level is?', '2024-06-07 09:34:00', 6, NULL, 'USA');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (1, 'House of Leaves by Mark Danielewski', '2024-06-07 09:38:00', 6, NULL, 'USA');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (1, 'fix??', '2024-06-07 09:39:00', 6, NULL, 'USA');
+
+--Comments for "Welcome to Software Things!"
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (1, 'Make me mod :)', '2024-06-07 10:34:00', 7, NULL, 'USA');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (1, 'Make me mod :))', '2024-06-07 10:38:00', 7, NULL, 'USA');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (1, 'Ban the other two guys :)))', '2024-06-07 10:39:00', 7, NULL, 'USA');
+
+--Comments for "I need help with my code"
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (1, 'Same issue here, my instructor refuses to rexplain to me arrays for the 46th time :/', '2024-06-07 10:34:00', 8, NULL, 'USA');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (1, 'Yeah, I''m not helping you with that.', '2024-06-07 10:38:00', 8, NULL, 'USA');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (1, '"for (int i = 0; i < array.length; i++) {System.out.println(i);}" , Hope that helps!', '2024-06-07 10:39:00', 8, NULL, 'USA');
+
+--Comments for "Need Project ideas"
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (1, 'Maybe try creating a vending machine application', '2024-06-07 10:34:00', 2, NULL, 'USA');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (1, 'You should make something like Venmo! But, call it something else.', '2024-06-07 10:38:00', 2, NULL, 'USA');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (1, 'You should make a message board or something.', '2024-06-07 10:39:00', 2, NULL, 'USA');
+
+
 COMMIT TRANSACTION;
