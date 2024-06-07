@@ -5,7 +5,7 @@
     <h1 class="linksandsearches">
       <h5 class="welcome">Welcome back!</h5>
 
-      <form @submit.prevent="searchforums">
+      <form @submit.prevent="searchForums(keyword)">
           <div class="searchbar">
             <input type="text" v-model="keyword" placeholder="Search here for your criteria!"/>
             <button type="submit">Search</button>
@@ -100,7 +100,8 @@ import PostService from '../services/PostService';
               //   timeStamp: new Date("2024-06-04T08:01:00"),
               //   location: "England"
               // },
-             ]
+             ],
+             keyword: "",
         };
     },
     methods: {
@@ -130,8 +131,8 @@ import PostService from '../services/PostService';
             
         },
 
-        searchforums() {
-          this.getForumsByKeyword(this.keyword)
+        searchForums(keyword) {
+          this.getForumsByKeyword(keyword)
         }
     },
     created(){
@@ -144,6 +145,9 @@ import PostService from '../services/PostService';
 
 <style scoped>
 
+.pageHeader{
+  text-align: center;
+}
 
 /* Test */
 

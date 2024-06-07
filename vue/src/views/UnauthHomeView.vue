@@ -5,7 +5,7 @@
     <h1 class="linksandsearches">
       <router-link class="register" v-bind:to="{ name: 'register' }">Join the conversation!</router-link>
 
-      <form @submit.prevent="searchforums">
+      <form @submit.prevent="searchForums(keyword)">
           <div class="searchbar">
             <input type="text" v-model="keyword" placeholder="Search here for your criteria!"/>
             <button type="submit">Search</button>
@@ -38,6 +38,10 @@ import PostCard from '../components/PostCard.vue'
 import PostService from '../services/PostService';
 
   export default {
+    props: {
+      // keyword: Object,
+    },
+
     components: {
       ForumsCard,
       PostCard
@@ -48,7 +52,8 @@ import PostService from '../services/PostService';
              forums: [
              ],
              posts: [
-             ]
+             ],
+             keyword: "",
         };
     },
     methods: {
@@ -74,12 +79,11 @@ import PostService from '../services/PostService';
               this.forums = response.data;
               this.$router.push({name: 'searchview', params: {keyword: keyword}})
             }
-          )
-            
+          )            
         },
 
-        searchforums() {
-          this.getForumsByKeyword(this.keyword)
+        searchForums(keyword) {
+          this.getForumsByKeyword(keyword)
         }
     },
     created(){

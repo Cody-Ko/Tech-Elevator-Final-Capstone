@@ -27,7 +27,7 @@ export default {
   },
 
   getForumsByKeyword(keyword) {
-    return http.get(`/forums/keyword/${keyword}`)
+    return axios.get(`/forums/keyword/${keyword}`)
   }
 
   //Why is this happening?
