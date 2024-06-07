@@ -1,5 +1,8 @@
 BEGIN TRANSACTION;
 
+--Drop tables
+DROP TABLE IF EXISTS votes_comment;
+DROP TABLE IF EXISTS votes_post;
 DROP TABLE IF EXISTS user_moderator_forum;
 DROP TABLE IF EXISTS user_favorite_forum;
 DROP TABLE IF EXISTS user_forum;
@@ -8,6 +11,7 @@ DROP TABLE IF EXISTS posts;
 DROP TABLE IF EXISTS forum;
 DROP TABLE IF EXISTS users;
 
+--Create tables
 CREATE TABLE users (
     user_id SERIAL PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
@@ -45,6 +49,8 @@ CREATE TABLE comments (
     post_id INT NOT NULL,
     reply_to INT,
     location VARCHAR(50) NOT NULL,
+    --Reply_to foreign key set to comment_id (idk if this will work how we want it to, but hopefully)
+    FOREIGN KEY (reply_to) REFERENCES (comment_id),
     FOREIGN KEY (post_id) REFERENCES posts(post_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
@@ -73,18 +79,40 @@ CREATE TABLE user_moderator_forum (
     FOREIGN KEY (forum_id) REFERENCES forum(forum_id)
 );
 
+CREATE TABLE votes_post {
+    user_id INT NOT NULL,
+    post_id INT NOT NULL,
+    is_upvote BOOLEAN NOT NULL,
+    PRIMARY KEY (user_id, post_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (post_id) REFERENCES posts(post_id)
+};
+
+CREATE TABLE votes_comment {
+    user_id INT NOT NULL,
+    comment_id INT NOT NULL,
+    is_upvote BOOLEAN NOT NULL,
+    PRIMARY KEY (user_id, comment_id_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (comment_id) REFERENCES comments(comment_id)
+};
+
+--Insert users
 INSERT INTO users (username, password_hash, role) VALUES ('mattymattmattcat', '$2a$10$Nw1szXQbDHdsZ0UMGwDYuuj11LV.4KadomqE9qGDkTMxwK11x93xa', 'user');
 INSERT INTO users (username, password_hash, role) VALUES ('evenstephen', '$2a$10$sNsoK44rCWny3PZhArEAquufjxedqO9wME4NcyjBv2MUj8KNSJhci', 'user');
 INSERT INTO users (username, password_hash, role) VALUES ('codythegoat', '$2a$10$C9/OkOaFoKH6PR3nEfy26OTKb4WI3Gxv9tv.QkPaSXiW1ISBDGXwe', 'user');
 
+--Insert forums
 INSERT INTO forum (user_id, forum_name, time_stamp) VALUES (1, 'Movie Reviews', '2024-06-05 10:00:00');
 INSERT INTO forum (user_id, forum_name, time_stamp) VALUES (1, 'Book Recommendations', '2024-06-05 10:29:00');
 INSERT INTO forum (user_id, forum_name, time_stamp) VALUES (1, 'Software Things', '2024-06-05 10:36:00');
 
+--Insert user forums
 INSERT INTO user_forum (user_id, forum_id) VALUES (1, 1);
 INSERT INTO user_forum (user_id, forum_id) VALUES (1, 2);
 INSERT INTO user_forum (user_id, forum_id) VALUES (1, 3);
 
+--Movie Reviews posts
 INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
 VALUES (1, 1, 'Welcome to Movie Reviews!', 'This is the first post in Movie Reviews :)', 10, 0, '2024-06-05 11:47:00', 'USA');
 INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
@@ -92,6 +120,7 @@ VALUES (1, 1, 'Jurassic Park Review', 'Honestly, I''m just here for the dinosaur
 INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
 VALUES (1, 1, 'Jurassic Park Review: Response', 'TO WHOEVER POSTED SAYING THEY''RE JUST WATCHING JURASSIC PARK FOR THE DINOSAURS CLEARLY ISN''T FULLY APPRECIATING THE ARTISTRY THAT COMES FROM SPIELBERG.', 0, 6, '2024-06-05 11:52:00', 'USA');
 
+--Book Recommendations posts
 INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
 VALUES (1, 2, 'Welcome to Book Recommendations!', 'This is the first post in Book Recommendations :)', 10, 3, '2024-06-05 12:04:00', 'USA');
 INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
@@ -99,6 +128,7 @@ VALUES (1, 2, 'My Favorite Books', 'I actually only reread Meditations by Marcus
 INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
 VALUES (1, 2, 'Recommendations needed!', 'I havent read in 25 years, I need my book fix. Any recs? My favorite genre is horror.', 5, 6, '2024-06-05 12:30:00', 'USA');
 
+--Software Things posts
 INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
 VALUES (1, 3, 'Welcome to Software Things!', 'This is the first post in Software Things :)', 12, 3, '2024-06-05 12:13:00', 'USA');
 INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
