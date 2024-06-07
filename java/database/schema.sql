@@ -11,6 +11,9 @@ DROP TABLE IF EXISTS posts;
 DROP TABLE IF EXISTS forum;
 DROP TABLE IF EXISTS users;
 
+--Upvotes and downvotes enum type created
+CREATE TYPE vote AS ENUM ('upvote','downvote');
+
 --Create tables
 CREATE TABLE users (
     user_id SERIAL PRIMARY KEY,
@@ -79,10 +82,11 @@ CREATE TABLE user_moderator_forum (
     FOREIGN KEY (forum_id) REFERENCES forum(forum_id)
 );
 
+--Vote tables
 CREATE TABLE votes_post (
     user_id INT NOT NULL,
     post_id INT NOT NULL,
-    is_upvote BOOLEAN NOT NULL,
+    vote vote,
     PRIMARY KEY (user_id, post_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id),
     FOREIGN KEY (post_id) REFERENCES posts(post_id)
@@ -91,7 +95,7 @@ CREATE TABLE votes_post (
 CREATE TABLE votes_comment (
     user_id INT NOT NULL,
     comment_id INT NOT NULL,
-    is_upvote BOOLEAN NOT NULL,
+    vote vote,
     PRIMARY KEY (user_id, comment_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id),
     FOREIGN KEY (comment_id) REFERENCES comments(comment_id)
