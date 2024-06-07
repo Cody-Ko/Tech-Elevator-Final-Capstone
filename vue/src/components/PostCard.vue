@@ -121,6 +121,7 @@ export default {
     color: white;
     align-self: center;
     margin-right: 10px;
+    padding-top: 3% 
 }
 
 .timeStamp {
@@ -130,7 +131,8 @@ export default {
     align-self: flex-end;
     justify-self: flex-end;
     margin-bottom: 2%;
-    margin-right: 2%
+    margin-right: 2%;
+    padding-top: 3%
 }
 
 .postName{

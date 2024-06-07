@@ -3,8 +3,8 @@
     Different layout from the ForumsCard
     Should feature more details like posts and comments,
     and incorporate a way to add post, comments, or likes (IF SIGNED IN - otherwise hide)-->
-    <div class="forum">
-    
+    <div class="forumCard">
+    <ForumsCard class = "forums" v-bind:forum="forum" v-bind:key="forum.forum_id"/>
     </div>
   </template>
   
@@ -12,24 +12,25 @@
 
 import ForumService from '../services/ForumService';
 import PostService from '../services/PostService';
+import ForumsCard from '../components/ForumsCard.vue';
 
 
   export default {
     components: {
-        
+        ForumsCard
     },
     data(){
         return {
-            forumId: this.$route.params.forumId,
+            forumId: parseInt(this.$route.params.forumId),
             forumkeyword: "",
             forum: {}
         };
     },
     methods: {
         getForum(forumId){
-            ForumService.getForum(forumId).then((response)=>{
+            ForumService.getForum(this.forumId).then((response) => {
                 this.forum = response.data;
-            })
+            });
             /*
             .catch((error) =>{
                 this.handleErrorResponse(error);
@@ -71,3 +72,6 @@ import PostService from '../services/PostService';
   };
   </script>
   
+<style>
+
+</style>

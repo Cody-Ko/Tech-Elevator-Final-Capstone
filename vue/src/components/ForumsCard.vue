@@ -66,6 +66,7 @@ export default{
     border-radius: 25px;
     min-width: 450px;
     height: 250px;
+    max-width: 650px;
     /* margin: 20px; */
     /* margin: 0 auto; */
     margin-bottom: 10px;

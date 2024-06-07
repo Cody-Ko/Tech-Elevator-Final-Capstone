@@ -13,6 +13,10 @@ export default {
     return axios.get(`/comment/${commentId}`)
   },
 
+  getCommentsbyPostId(postId) {
+    return axios.get(`/posts/${postId}/comments/`)
+  },
+
   updateComment(commentId) {
     return axios.put(`/update-comment`, commentId);
   },

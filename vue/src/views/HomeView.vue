@@ -144,9 +144,6 @@ import PostService from '../services/PostService';
 
 <style scoped>
 
-.pageHeader{
-  text-align: center;
-}
 
 /* Test */
 
