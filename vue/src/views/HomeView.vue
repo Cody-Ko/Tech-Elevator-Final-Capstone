@@ -1,7 +1,18 @@
 <template>
   <div class="home">
     <h1>Home</h1>
-    <p>You are authenticated if you see this.</p>
+
+    <h1 class="linksandsearches">
+      <h5 class="welcome">Welcome back!</h5>
+
+      <form @submit.prevent="searchforums">
+          <div class="searchbar">
+            <input type="text" v-model="keyword" placeholder="Search here for your criteria!"/>
+            <button type="submit">Search</button>
+          </div>
+        </form>
+      </h1>
+
   </div>
   <h2 class="forums-description">Today's Exciting Forums</h2>
   <div class="forum-section">
@@ -109,6 +120,19 @@ import PostService from '../services/PostService';
 
           })
         },
+        getForumsByKeyword(keyword){
+          ForumService.getForumsByKeyword(keyword).then(
+            (response) => {
+              this.forums = response.data;
+              this.$router.push({name: 'searchview', params: {keyword: keyword}})
+            }
+          )
+            
+        },
+
+        searchforums() {
+          this.getForumsByKeyword(this.keyword)
+        }
     },
     created(){
             this.getForums();
@@ -118,7 +142,7 @@ import PostService from '../services/PostService';
     };
   </script>
 
-<style>
+<style scoped>
 
 .pageHeader{
   text-align: center;
@@ -155,6 +179,28 @@ import PostService from '../services/PostService';
 .forums-description{
   margin-left: .85%;
   color: white;
+}
+
+.searchbar {
+  justify-content: right;
+  grid-area: searchforums;
+  top: 300px;
+  width: 250px;
+  margin-left: 300px;
+}
+
+.welcome {
+  display: flex;
+  grid-area: welcome;
+}
+
+.linksandsearches {
+  display: grid;
+  grid-template-columns: 3fr, 3fr, 1fr;
+  grid: 0%;
+  grid-template-areas:
+  "welcome . searchforums"
+  ;
 }
 
 

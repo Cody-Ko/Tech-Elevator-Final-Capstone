@@ -27,7 +27,7 @@ export default {
   },
 
   getForumsByKeyword(keyword) {
-    return http.delete(`/forums/keyword/${keyword}`)
+    return http.get(`/forums/keyword/${keyword}`)
   }
 
   //Why is this happening?
