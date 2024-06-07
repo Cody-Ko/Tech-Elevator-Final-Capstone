@@ -161,16 +161,25 @@ public class JdbcForumDAO implements ForumDAO {
         return forums;
     }
     @Override
-    public void deleteForumByForumName(String name) {
-
+    public int deleteForumByForumName(String name) {
+        int numberOfRows = 0;
+        String sql = "DELETE * FROM forum WHERE forum_name = ?";
+        numberOfRows = jdbcTemplate.update(sql, name);
+        return numberOfRows;
     }
     @Override
-    public void deleteForumByForumId(int forumId) {
-
+    public int deleteForumByForumId(int forumId) {
+        int numberOfRows = 0;
+        String sql = "DELETE * FROM forum WHERE forum_id = ?";
+        numberOfRows = jdbcTemplate.update(sql, forumId);
+        return numberOfRows;
     }
     @Override
-    public void deleteForumsByUserId(String username) {
-
+    public int deleteForumsByUserId(int userId) {
+        int numberOfRows = 0;
+        String sql = "DELETE * FROM forum WHERE user_name = ?";
+        numberOfRows = jdbcTemplate.update(sql, userId);
+        return numberOfRows;
     }
     @Override
     public List<Forum> getAllForums() {

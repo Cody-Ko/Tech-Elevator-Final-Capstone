@@ -31,10 +31,10 @@ public interface ForumDAO {
 
     Forum getForumById(int forumId);
 
-    void deleteForumByForumName(String name);
+    int deleteForumByForumName(String name);
 
-    void deleteForumByForumId(int forumId);
+    int deleteForumByForumId(int forumId);
 
-    void deleteForumsByUserId(String username);
+    int deleteForumsByUserId(int userId);
 
 }
