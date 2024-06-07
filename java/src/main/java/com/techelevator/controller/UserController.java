@@ -76,6 +76,30 @@ public class UserController {
         forumDAO.addForum(forum);
     }
 
+    // DELETES FORUM BY FORUM NAME
+    @PreAuthorize("isAuthenticated()")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping(path= "forums/deleteforum/{forumname}")
+    public void deleteForumByForumName(@PathVariable String name) {
+        forumDAO.deleteForumByForumName(name);
+    }
+
+    // DELETES FORUM BY FORUM ID
+    @PreAuthorize("isAuthenticated()")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping(path= "forums/deleteforum/id/{forum_id}")
+    public void deleteForumByForumId(@PathVariable int forumId) {
+        forumDAO.deleteForumByForumId(forumId);
+    }
+
+    // DELETES FORUM BY USERNAME
+    @PreAuthorize("isAuthenticated()")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping(path= "forums/deleteforum/{user_id}/userId")
+    public void deleteForumByUsername(@PathVariable int userId) {
+        forumDAO.deleteForumsByUserId(userId);
+    }
+
     /*** CREATE A NEW POST ***/
     @PreAuthorize("isAuthenticated()")
     @ResponseStatus(HttpStatus.CREATED)
