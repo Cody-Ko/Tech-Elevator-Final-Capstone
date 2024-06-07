@@ -8,47 +8,51 @@ import java.time.LocalDateTime;
 public class Comment {
     @JsonProperty("comment_id")
     private int commentID;
+
     @JsonProperty("user_id")
     private int userID;
-    @JsonProperty("reply_to")
-    private int replyToID; //null if replying to a post
-    @JsonProperty("post_id")
-    private int postID;
+
     @JsonProperty("message")
     private String messageDetails;
+
     @JsonProperty("time_stamp")
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime timeStamp;
+    @JsonProperty("post_id")
+    private int postID;
+
+    @JsonProperty("reply_to")
+    private int replyToID; //null if replying to a post
 
     @JsonProperty("location")
     private String location;
     //Getters
 
     public int getCommentID() {
-        return commentID;
+        return this.commentID;
     }
 
     public int getUserID(){
-        return userID;
+        return this.userID;
     }
 
     public int getReplyToID(){
-        return replyToID;
+        return this.replyToID;
     }
 
     public int getPostID(){
-        return getPostID();
+        return this.postID;
     }
 
     public String getMessageDetails(){
-        return getMessageDetails();
+        return this.messageDetails;
     }
 
     public LocalDateTime getTimeStamp() {
-        return timeStamp;
+        return this.timeStamp;
     }
     public String getLocation(){
-        return location;
+        return this.location;
     }
 
     //Setters

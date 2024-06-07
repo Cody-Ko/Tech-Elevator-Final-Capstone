@@ -136,7 +136,7 @@ public class UserController {
 
     /*** GET COMMENTS BY POST ID ***/
     @RequestMapping(value = "/posts/{postId}/comments", method = RequestMethod.GET)
-    public List<Comment> getCommentsByPostId(int postId){
+    public List<Comment> getCommentsByPostId(@PathVariable int postId){
         return commentDAO.getCommentsByPostId(postId);
     }
 }

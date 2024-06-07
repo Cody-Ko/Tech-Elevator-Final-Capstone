@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -54,7 +55,9 @@ public class JdbcCommentDAO implements CommentDAO {
     @Override
     public List<Comment> getCommentsByPostId(int postID) {
         String sql = "SELECT * FROM comments WHERE post_id = ? ORDER BY time_stamp";
-        return jdbcTemplate.query(sql, new CommentRowMapper(), postID);
+        List<Comment> rtnComments = new ArrayList<Comment>();
+        rtnComments = jdbcTemplate.query(sql, new CommentRowMapper(), postID);
+        return rtnComments;
     }
 
     @Override
