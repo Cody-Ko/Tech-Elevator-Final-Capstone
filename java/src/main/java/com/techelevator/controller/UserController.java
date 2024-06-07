@@ -114,17 +114,22 @@ public class UserController {
     }
 
     /*** GET POST BY POST_ID ***/
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/posts/{postId}/upvote", method = RequestMethod.PUT)
     public void upvotePost(@PathVariable int postId) {
         postDAO.upvotePost(postId);
     }
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/posts/{postId}/downvote", method = RequestMethod.PUT)
     public void downvotePost(@PathVariable int postId) {
         postDAO.downvotePost(postId);
     }
     @RequestMapping(value = "/posts/{postId}/getscore", method = RequestMethod.GET)
-    public void getPostScore(@PathVariable int postId) {
-        postDAO.getPostScore(postId);
+    public int getPostScore(@PathVariable int postId) {
+        return postDAO.getPostScore(postId);
     }
-
+    @RequestMapping(value = "/posts/topvoted", method = RequestMethod.GET)
+    public List<Post> get10MostPopularPosts() {
+        return postDAO.get10MostPopularPosts();
+    }
 }

@@ -75,13 +75,10 @@ public class JdbcPostDAO implements PostDAO {
     public List<Post> getAllPosts(){
         String sql = "SELECT * FROM posts";
         List<Post> postList = new ArrayList<>();
-            SqlRowSet result= jdbcTemplate.queryForRowSet(sql);
-            while(result.next()) {
-                postList.add(mapRowToPost(result));
-            }
-
-
-
+        SqlRowSet result= jdbcTemplate.queryForRowSet(sql);
+        while(result.next()) {
+            postList.add(mapRowToPost(result));
+        }
         return postList;
     }
     @Override
@@ -168,12 +165,25 @@ public class JdbcPostDAO implements PostDAO {
     }
     public int getPostScore(int postID){
         String sql = "SELECT * FROM posts WHERE post_id = ?";
-        return jdbcTemplate.queryForObject(sql, int.class, postID);
-    }
-    public List<Post> get10MostPopularPosts(){
-        List<Post> rtnList = new ArrayList<Post>();
-        return rtnList;
+        Post returnPost = new Post();
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, postID);
 
+        if (rowSet.next()) {
+            returnPost = mapRowToPost(rowSet);
+        }
+
+        return returnPost.getScore();
+    }
+
+
+    public List<Post> get10MostPopularPosts(){
+        String sql = "SELECT * FROM posts order by up_votes-down_votes DESC limit 10 ";
+        List<Post> postList = new ArrayList<Post>();
+        SqlRowSet result= jdbcTemplate.queryForRowSet(sql);
+        while(result.next()) {
+            postList.add(mapRowToPost(result));
+        }
+        return postList;
     }
 
     private Post mapRowToPost(SqlRowSet rs) {
