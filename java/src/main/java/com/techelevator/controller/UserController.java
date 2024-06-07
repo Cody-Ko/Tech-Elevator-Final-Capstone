@@ -7,6 +7,7 @@ import com.techelevator.dao.PostDAO;
 import com.techelevator.dao.UserDAO;
 
 //import spring framework resources
+import com.techelevator.model.Comment;
 import com.techelevator.model.Forum;
 import com.techelevator.model.Post;
 import org.springframework.http.HttpStatus;
@@ -131,5 +132,11 @@ public class UserController {
     @RequestMapping(value = "/posts/topvoted", method = RequestMethod.GET)
     public List<Post> get10MostPopularPosts() {
         return postDAO.get10MostPopularPosts();
+    }
+
+    /*** GET COMMENTS BY POST ID ***/
+    @RequestMapping(value = "/posts/{postId}/comments", method = RequestMethod.GET)
+    public List<Comment> getCommentsByPostId(int postId){
+        return commentDAO.getCommentsByPostId(postId);
     }
 }
