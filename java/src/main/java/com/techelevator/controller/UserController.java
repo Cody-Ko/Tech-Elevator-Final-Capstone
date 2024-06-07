@@ -51,22 +51,22 @@ public class UserController {
     }
 
     // GETS FORUMS BY FORUM NAME
-    @RequestMapping(value = "/forums/{name}", method = RequestMethod.GET)
+    @RequestMapping(value = "/forums/forumname/{name}", method = RequestMethod.GET)
     public List<Forum> getForumsByForumName(@PathVariable String name) {
         return forumDAO.getForumsByForumName(name);
     }
 
     // GETS FORUMS BY FORUM ID
     @RequestMapping(value = "/forums/{forumId}", method = RequestMethod.GET)
-    public List<Forum> getForumsByForumId(@PathVariable int forumId) {
-        return forumDAO.getForumsByForumId(forumId);
+    public Forum getForumById(@PathVariable int forumId) {
+        return forumDAO.getForumById(forumId);
     }
 
     // GETS FORUMS BY USERNAME
-    @RequestMapping(value = "/forums/{username}", method = RequestMethod.GET)
+    /*@RequestMapping(value = "/forums/{username}", method = RequestMethod.GET)
     public List<Forum> getForumsByUsername(@PathVariable String username) {
         return forumDAO.getForumsByUsername(username);
-    }
+    }*/
 
     // CREATES FORUM
     @PreAuthorize("isAuthenticated()")

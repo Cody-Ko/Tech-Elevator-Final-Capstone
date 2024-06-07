@@ -29,7 +29,7 @@ public interface ForumDAO {
 
     List<Forum> getForumsByForumName(String name);
 
-    List<Forum> getForumsByForumId(int forumId);
+    Forum getForumById(int forumId);
 
     void deleteForumByForumName(String name);
 
