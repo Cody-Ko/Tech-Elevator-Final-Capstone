@@ -9,75 +9,73 @@ DROP TABLE IF EXISTS forum;
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
-	user_id SERIAL,
-	username varchar(50) NOT NULL UNIQUE,
-	password_hash varchar(200) NOT NULL,
-	role varchar(50) NOT NULL,
-	CONSTRAINT PK_user PRIMARY KEY (user_id)
+    user_id SERIAL PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password_hash VARCHAR(200) NOT NULL,
+    role VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE forum (
-	forum_id SERIAL PRIMARY KEY,
-    	user_id INT NOT NULL,
-    	forum_name VARCHAR(50) NOT NULL UNIQUE,
-    	time_stamp TIMESTAMP NOT NULL,
-    	FOREIGN KEY (user_id) REFERENCES users(user_id)
+    forum_id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL,
+    forum_name VARCHAR(50) NOT NULL UNIQUE,
+    time_stamp TIMESTAMP NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
 CREATE TABLE posts (
-	post_id SERIAL PRIMARY KEY,
-    	user_id INT NOT NULL,
-    	forum_id INT NOT NULL,
-    	title VARCHAR(50) NOT NULL,
-    	message VARCHAR(1000) NOT NULL,
-    	up_votes INT NOT NULL,
-    	down_votes INT NOT NULL,
-    	time_stamp TIMESTAMP NOT NULL,
-    	location varchar(50) NOT NULL,
-    	FOREIGN KEY (forum_id) REFERENCES forum(forum_id),
-    	FOREIGN KEY (user_id) REFERENCES users(user_id)
+    post_id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL,
+    forum_id INT NOT NULL,
+    title VARCHAR(50) NOT NULL,
+    message VARCHAR(1000) NOT NULL,
+    up_votes INT NOT NULL,
+    down_votes INT NOT NULL,
+    time_stamp TIMESTAMP NOT NULL,
+    location VARCHAR(50) NOT NULL,
+    FOREIGN KEY (forum_id) REFERENCES forum(forum_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
 CREATE TABLE comments (
-	comment_id SERIAL PRIMARY KEY,
-    	user_id INT NOT NULL,
-    	message VARCHAR(1000) NOT NULL,
-    	time_stamp TIMESTAMP NOT NULL,
-    	post_id INT NOT NULL,
-    	reply_to INT,
-    	location varchar(50) NOT NULL,
-    	FOREIGN KEY (post_id) REFERENCES posts(post_id),
-    	FOREIGN KEY (user_id) REFERENCES users(user_id)
+    comment_id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL,
+    message VARCHAR(1000) NOT NULL,
+    time_stamp TIMESTAMP NOT NULL,
+    post_id INT NOT NULL,
+    reply_to INT,
+    location VARCHAR(50) NOT NULL,
+    FOREIGN KEY (post_id) REFERENCES posts(post_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
 CREATE TABLE user_forum (
-	user_id INT NOT NULL,
-    	forum_id INT NOT NULL,
-    	PRIMARY KEY (user_id, forum_id),
-    	FOREIGN KEY (user_id) REFERENCES users(user_id),
-    	FOREIGN KEY (forum_id) REFERENCES forum(forum_id)
+    user_id INT NOT NULL,
+    forum_id INT NOT NULL,
+    PRIMARY KEY (user_id, forum_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (forum_id) REFERENCES forum(forum_id)
 );
 
 CREATE TABLE user_favorite_forum (
     forum_id INT NOT NULL,
-        forum_user_id INT NOT NULL,
-        PRIMARY KEY (forum_id, forum_user_id),
-        FOREIGN KEY (forum_user_id) REFERENCES users(user_id),
-        FOREIGN KEY (forum_id) REFERENCES forum(forum_id)
+    forum_user_id INT NOT NULL,
+    PRIMARY KEY (forum_id, forum_user_id),
+    FOREIGN KEY (forum_user_id) REFERENCES users(user_id),
+    FOREIGN KEY (forum_id) REFERENCES forum(forum_id)
 );
 
 CREATE TABLE user_moderator_forum (
     forum_id INT NOT NULL,
-        moderator_user_id INT NOT NULL,
-        PRIMARY KEY (forum_id, moderator_user_id),
-        FOREIGN KEY (moderator_user_id) REFERENCES users(user_id),
-        FOREIGN KEY (forum_id) REFERENCES forum(forum_id)
+    moderator_user_id INT NOT NULL,
+    PRIMARY KEY (forum_id, moderator_user_id),
+    FOREIGN KEY (moderator_user_id) REFERENCES users(user_id),
+    FOREIGN KEY (forum_id) REFERENCES forum(forum_id)
 );
 
 INSERT INTO users (username, password_hash, role) VALUES ('mattymattmattcat', '$2a$10$Nw1szXQbDHdsZ0UMGwDYuuj11LV.4KadomqE9qGDkTMxwK11x93xa', 'user');
 INSERT INTO users (username, password_hash, role) VALUES ('evenstephen', '$2a$10$sNsoK44rCWny3PZhArEAquufjxedqO9wME4NcyjBv2MUj8KNSJhci', 'user');
 INSERT INTO users (username, password_hash, role) VALUES ('codythegoat', '$2a$10$C9/OkOaFoKH6PR3nEfy26OTKb4WI3Gxv9tv.QkPaSXiW1ISBDGXwe', 'user');
-
 
 INSERT INTO forum (user_id, forum_name, time_stamp) VALUES (1, 'Movie Reviews', '2024-06-05 10:00:00');
 INSERT INTO forum (user_id, forum_name, time_stamp) VALUES (1, 'Book Recommendations', '2024-06-05 10:29:00');
@@ -108,28 +106,28 @@ VALUES (1, 3, 'I need help with my code', 'How do I write a for loop? My instruc
 INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
 VALUES (1, 3, 'Need Project ideas', 'Seriously guys, I cant think of anything.', 30, 6, '2024-06-05 12:30:00', 'USA');
 
---Comments for "Jurrasic Park Review: Response"
+-- Comments for "Jurassic Park Review: Response"
 INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
-VALUES (1, 'I prefer Jaws', '2024-06-07 9:34:00', 3, null, USA);
+VALUES (1, 'I prefer Jaws', '2024-06-07 09:34:00', 3, NULL, 'USA');
 INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
-VALUES (1, 'The dinosaurs are why we''re all here bro', '2024-06-07 9:38:00', 3, null, USA);
+VALUES (1, 'The dinosaurs are why we''re all here bro', '2024-06-07 09:38:00', 3, NULL, 'USA');
 INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
-VALUES (1, 'I kinda agree tho', '2024-06-07 9:39:00', 3, null, USA);
+VALUES (1, 'I kinda agree tho', '2024-06-07 09:39:00', 3, NULL, 'USA');
 
---Comments for "Welcome to Movie Reviews"
+-- Comments for "Welcome to Movie Reviews"
 INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
-VALUES (1, 'Make me mod.', '2024-06-07 9:34:00', 1, null, USA);
+VALUES (1, 'Make me mod.', '2024-06-07 09:34:00', 1, NULL, 'USA');
 INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
-VALUES (1, 'Can you ban the spielburg guy?', '2024-06-07 9:38:00', 1, null, USA);
+VALUES (1, 'Can you ban the spielberg guy?', '2024-06-07 09:38:00', 1, NULL, 'USA');
 INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
-VALUES (1, 'Hi!! Make me admin pls :)', '2024-06-07 9:39:00', 1, null, USA);
+VALUES (1, 'Hi!! Make me admin pls :)', '2024-06-07 09:39:00', 1, NULL, 'USA');
 
---Comments for "Jurrasic Park Review"
+-- Comments for "Jurassic Park Review"
 INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
-VALUES (1, 'YESS, SO ARE WE!!!', '2024-06-07 9:34:00', 2, null, USA);
+VALUES (1, 'YESS, SO ARE WE!!!', '2024-06-07 09:34:00', 2, NULL, 'USA');
 INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
-VALUES (1, 'DINOSAURS RAHHHHHH ! ! !', '2024-06-07 9:38:00', 2, null, USA);
+VALUES (1, 'DINOSAURS RAHHHHHH ! ! !', '2024-06-07 09:38:00', 2, NULL, 'USA');
 INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
-VALUES (1, 'THIS GUY GETS IT.', '2024-06-07 9:39:00', 2, null, USA);
+VALUES (1, 'THIS GUY GETS IT.', '2024-06-07 09:39:00', 2, NULL, 'USA');
 
 COMMIT TRANSACTION;
