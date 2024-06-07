@@ -2,6 +2,7 @@ package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Forum;
+import com.techelevator.model.Post;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
@@ -103,18 +104,18 @@ public class JdbcForumDAO implements ForumDAO {
         return forums;
     }
     @Override
-    public List<Forum> getForumsByForumId(int forumId) {
-        List<Forum> forums = new ArrayList<>();
+    public Forum getForumById(int forumId) {
+        Forum returnForum = new Forum();
         String sql = "SELECT * FROM forum WHERE forum_id = ?";
-
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, forumId);
 
-        while(results.next()) {
-            Forum forum = mapRowToForum(results);
-            forums.add(forum);
+        if(results.next()) {
+            returnForum = mapRowToForum(results);
         }
-        return forums;
+        return returnForum;
     }
+
+
     @Override
     public List<Forum> getFavoriteForums(String username) {
         List<Forum> forums = new ArrayList<>();
