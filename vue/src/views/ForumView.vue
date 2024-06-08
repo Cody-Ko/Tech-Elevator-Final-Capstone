@@ -3,9 +3,10 @@
     Different layout from the ForumsCard
     Should feature more details like posts and comments,
     and incorporate a way to add post, comments, or likes (IF SIGNED IN - otherwise hide)-->
-    <div class="forumCard">
-    <ForumsCard class = "forums" v-bind:forum="forum" v-bind:key="forum.forum_id"/>
+    <div class="forum-section">
+    <ForumsCard class = "forum-card" v-bind:forum="forum" v-bind:key="forum.forum_id"/>
     </div>
+    <PostCard v-for="post in posts" v-bind:post="post" v-bind:key="post.post_id"/>
   </template>
   
   <script>
@@ -13,17 +14,20 @@
 import ForumService from '../services/ForumService';
 import PostService from '../services/PostService';
 import ForumsCard from '../components/ForumsCard.vue';
+import PostCard from '../components/PostCard.vue';
 
 
   export default {
     components: {
-        ForumsCard
+        ForumsCard,
+        PostCard
     },
     data(){
         return {
             forumId: parseInt(this.$route.params.forumId),
             forumkeyword: "",
-            forum: {}
+            forum: {},
+            posts:[]
         };
     },
     methods: {
@@ -37,21 +41,22 @@ import ForumsCard from '../components/ForumsCard.vue';
             });
             */
         },
-        getAllPostsForForum(forumId) {
-            PostService.getPostsbyForumId(this.posts.forumId).then(
+        getAllPostsForForum() {
+            PostService.getPostsbyForumId(this.forumId).then(
                 (response) => {
-                    if(response.status === 200) {
-                        this.$router.push('posts');
-                    }
+                    this.posts = response.data;
+                    // if(response.status === 200) {
+                    //     this.$router.push('posts');
+                    // }
                 }
             ).catch(
-                (error) => {
-                    if(error.response) {
-                        this.errorNeedingAddressed(this.error.response, "Post not found");
-                    } else if (error.request) {
-                        this.errorNeedingAddressed(this.error.request, "Post not found");
-                    }
-                }
+                // (error) => {
+                //     if(error.response) {
+                //         this.errorNeedingAddressed(this.error.response, "Post not found");
+                //     } else if (error.request) {
+                //         this.errorNeedingAddressed(this.error.request, "Post not found");
+                //     }
+                // }
             )
         },
         /*
@@ -67,11 +72,21 @@ import ForumsCard from '../components/ForumsCard.vue';
     },
     created(){
         this.getForum();
+        this.getAllPostsForForum();
 
     }
   };
   </script>
   
-<style>
+<style scoped>
+.forum-section{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding-top: 3%;
+}
+.forum-card{
 
+}
 </style>

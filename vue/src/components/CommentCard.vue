@@ -35,7 +35,7 @@ export default{
 };
 </script>
 
-<style>
+<style scoped>
 
 .CommentCard{
     display: flex;

@@ -104,7 +104,7 @@ export default {
     /* height: 250px; */
     min-height: 500px;  
     /* margin: 20px; */
-    margin: 0 auto;
+    margin: 0 auto;   /* this keeps the card in the middle of the page */
     margin-bottom: 1%;
     border: 8px solid rgb(250, 129, 240);
     /* font-size: 2.5rem; */

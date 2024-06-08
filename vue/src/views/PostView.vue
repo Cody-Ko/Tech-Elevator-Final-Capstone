@@ -49,11 +49,17 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .comments-section{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
+.post-section{
+    padding-top: 3%;
+
+}
+
 </style>
