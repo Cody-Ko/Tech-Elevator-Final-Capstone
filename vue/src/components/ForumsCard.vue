@@ -64,9 +64,9 @@ export default{
     justify-content: space-between;
     border: 8px solid rgb(250, 129, 240);
     border-radius: 25px;
-    min-width: 450px;
+    min-width: 20%;
     height: 250px;
-    max-width: 650px;
+    max-width: 30%;
     /* margin: 20px; */
     /* margin: 0 auto; */
     margin-bottom: 10px;

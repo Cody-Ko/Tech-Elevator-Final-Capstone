@@ -11,6 +11,7 @@ import ForumView from '../views/ForumView.vue';
 import PostView from '../views/PostView.vue';
 import CommentView from '../views/CommentView.vue';
 import SearchView from '../views/SearchView.vue';
+import ResourcesView from '../views/ResourcesView.vue'
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -93,6 +94,16 @@ const routes = [
       requiresAuth: false
     }
   },
+  {
+    path: "/resources",
+    name: "resources",
+    component: ResourcesView,
+    meta: {
+      requiresAuth: false
+    }
+  },
+
+
   // {
   //   path: "/posts",
   //   name: "AllPostsView",

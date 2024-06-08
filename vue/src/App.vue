@@ -71,7 +71,7 @@ label {
 }
 
 html, body, content {
-  width: 100vw;
+  width: auto;
   height: 100vh;
   margin: 0;
   background-attachment: fixed;
