@@ -56,9 +56,9 @@
 
 <script>
 
-import ForumService from '../services/ForumService'
-import ForumsCard from '../components/ForumsCard.vue'
-import PostCard from '../components/PostCard.vue'
+import ForumService from '../services/ForumService';
+import ForumsCard from '../components/ForumsCard.vue';
+import PostCard from '../components/PostCard.vue';
 import PostService from '../services/PostService';
 
   export default {
