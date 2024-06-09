@@ -27,6 +27,10 @@ export default {
 
   deletePost(postId) {
     return http.delete(`/posts/${postId}`)
+  },
+
+  getPostScore(postId){
+    return http.get(`/posts/${postId}/getscore`)
   }
 
 }

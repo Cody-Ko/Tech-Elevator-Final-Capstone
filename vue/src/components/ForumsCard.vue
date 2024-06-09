@@ -105,6 +105,7 @@ export default{
 }
 
 .white-star{
+    cursor: pointer;
     color: white;
     font-size: 35px;
     margin-top: 5px;
@@ -113,6 +114,7 @@ export default{
 }
 
 .yellow-star{
+    cursor: pointer;
     color: gold;
     font-size: 35px;
     margin-top: 5px;

@@ -2,9 +2,15 @@
 
   <div class="PostCard">
     <div class="top-row">
-    <i class="fa-solid fa-meteor vote-up"></i>
+    <span>
+        <i class="fa-solid fa-meteor vote-up"></i>
+    </span>
+    <!-- how to make this pull the computed score from database -->
+    <span>{{ postScore }}</span>
+    <span>
+        <i class="fa-solid fa-meteor vote-down" style=""></i>
+    </span>
     
-    <i class="fa-solid fa-meteor vote-down" style=""></i>
     </div>
     
     <router-link class="PostViewLink" v-bind:to="{ name: 'postview', params:{postId: post.post_id} }">
@@ -25,6 +31,12 @@
 import PostService from '../services/PostService.js'
 
 export default {
+    data(){
+        return{
+            postId: this.post.post_id,
+            postScore: 0
+        }
+    },
     components: {
         //Comment components
     },
@@ -82,7 +94,13 @@ export default {
                 `This ${toBeDone} has not occurred.  Server could not be reached.`
             }
         },
-    }
+        getScore(postId){
+            PostService.getPostScore(postId).then((response) =>{
+                this.postScore = response.data;
+            })
+        }
+
+    },
 
 };
 </script>
@@ -155,6 +173,7 @@ margin-right: 10px;
 margin-left: 20px;
 margin-top: 20px;
 rotate: 140deg;
+cursor: pointer;
 }
 
 .vote-down{
@@ -164,6 +183,7 @@ align-self: flex-start;
 margin-left: 10px;
 margin-top: 20px;
 rotate: -40deg;
+cursor: pointer;
 }
 
 .top-row{
