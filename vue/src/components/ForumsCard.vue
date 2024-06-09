@@ -5,9 +5,11 @@
     first commented-out code doesn't successfully change the color once clicked
     (ONLY LOGGED IN USERS CAN FAVORITE - add pop up asking you to log in when clicked?)
 
-    <i v-bind:class="{'fas fa-star yellow-star': iconClick, 'fas fa-star white-star': !iconClick}" v-on:click="favorite"></i> -->
-    
-    <i class = "fas fa-star white-star"></i>
+     -->
+     <span v-on:click="favorite" class="favorite-star">
+     <i v-bind:class="{'fas fa-star yellow-star': iconClick, 'fas fa-star white-star': !iconClick}"></i>
+    </span>
+    <!-- <i class = "fas fa-star white-star"></i> -->
     <router-link class="ForumViewLink" v-bind:to="{ name: 'forumview', params:{forumId: forum.forum_id} }">
     <header>
         <h1 class="forumName">{{ forum.forum_name }}</h1>
@@ -30,11 +32,11 @@
 export default{
     data(){
         return{
-            // iconClick: false
+            iconClick: false
         }
     },
     components: {
-        // PostsComponent
+
     },
     props: {
         forum: {
@@ -49,7 +51,7 @@ export default{
     },
     methods: {
         favorite(){
-            this.iconClick = !this.iconClick
+            this.iconClick = !this.iconClick;
         }
 
     }
@@ -93,6 +95,10 @@ export default{
     color: white;
 }
 
+.favorite-star{
+    /* cursor: pointer; */
+}
+
 .white-star{
     color: white;
     font-size: 35px;
@@ -102,7 +108,7 @@ export default{
 }
 
 .yellow-star{
-    color: white;
+    color: gold;
     font-size: 35px;
     margin-top: 5px;
     margin-left: 85%;
