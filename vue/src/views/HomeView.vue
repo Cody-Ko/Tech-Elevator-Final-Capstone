@@ -2,9 +2,17 @@
   <section class="whole-page">
     <section class="left-panel">
       <h1 class="home-text">Home</h1>
-      <router-link class="ResourcesViewLink" v-bind:to="{name: 'resources'}">
+      <router-link class="ResourcesViewLink" 
+      v-bind:to="{name: 'resources'}">
         <h1 class="resources-link"> Resources</h1>
       </router-link>
+      <router-link class="CreateForumViewLink" 
+      v-bind:to="{name: 'createforum'}">
+        <h1 class="create-forum">Create Forum</h1>
+      </router-link>
+      <!-- <router-link class="CreatePostViewLink" v-bind:to="{name: 'createpost'}">
+        <h1 class="create-post">Create A Post</h1>
+      </router-link> -->
     </section>
     <section class="main-section">
       <section class ="top-section">
@@ -12,7 +20,8 @@
           <h1 class="welcome">Welcome back!</h1>
     <form @submit.prevent="searchForums(keyword)">
         <div class="searchbar">
-          <input type="text" v-model="keyword" placeholder="Search here for your criteria!"/>
+          <input type="text" v-model="keyword" 
+          placeholder="Search here for your criteria!"/>
           <button type="submit">Search</button>
         </div>
       </form>
@@ -22,12 +31,15 @@
       <h2 class="forums-description">Today's Exciting Forums</h2>
 
   <div class="forum-section">
-    <ForumsCard class = "active-forums" v-for="forum in forums" v-bind:forum="forum" v-bind:key="forum.forum_id"/>
+    <ForumsCard class = "active-forums" v-for="forum in forums" 
+    v-bind:forum="forum" v-bind:key="forum.forum_id"/>
 
   </div>
   <h2 class="posts-description">Today's Trending Posts</h2>
   <div class="post-section">
-    <PostCard class="trending-posts" v-for="post in posts" v-bind:post="post" v-bind:key="post.post_id"/>
+    <PostCard class="trending-posts" v-for="post in posts" 
+    v-bind:post="post" 
+    v-bind:key="post.post_id"/>
   </div>
     </section>
     </section>
@@ -180,6 +192,13 @@ import PostService from '../services/PostService';
   text-decoration: none;
   color: white;
 }
+
+.CreateForumViewLink{
+  text-decoration: none;
+  color: white;
+}
+
+
 
 .resources-link{
   border-bottom: 5px solid rgb(250, 129, 240);

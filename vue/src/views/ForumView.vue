@@ -2,8 +2,9 @@
     <!-- View for a Forum that's been opened 
     Different layout from the ForumsCard
     Should feature more details like posts and comments,
-    and incorporate a way to add post, comments, or likes (IF SIGNED IN - otherwise hide)-->
+    -->
     <div class="forum-section">
+    <!-- Need: ADD POST AND LIKE POST FUNCTIONALITY (IF SIGNED IN - otherwise disable) -->
     <ForumsCard class = "forum-card" v-bind:forum="forum" v-bind:key="forum.forum_id"/>
     </div>
     <PostCard v-for="post in posts" v-bind:post="post" v-bind:key="post.post_id"/>
@@ -86,7 +87,5 @@ justify-content: center;
 align-items: center;
 padding-top: 3%;
 }
-.forum-card{
 
-}
 </style>

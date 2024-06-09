@@ -6,20 +6,24 @@
     (ONLY LOGGED IN USERS CAN FAVORITE - add pop up asking you to log in when clicked?)
 
      -->
-     <span v-on:click="favorite" class="favorite-star">
-     <i v-bind:class="{'fas fa-star yellow-star': iconClick, 'fas fa-star white-star': !iconClick}"></i>
-    </span>
+     <!-- <button v-on:click="favorite" class="favorite-star"> -->
+     <!-- <button v-bind:class="{'fas fa-star yellow-star': iconClick, 'fas fa-star white-star': !iconClick}" v-on:click="favorite"></button> -->
+     
+        <span v-if="iconClick" @click="favorite">
+            <i class="fas fa-star yellow-star"></i>
+        </span>
+        <span v-else @click="favorite">
+            <i class="fas fa-star white-star"></i>
+        </span>
+
+     <!-- </button> -->
     <!-- <i class = "fas fa-star white-star"></i> -->
     <router-link class="ForumViewLink" v-bind:to="{ name: 'forumview', params:{forumId: forum.forum_id} }">
     <header>
         <h1 class="forumName">{{ forum.forum_name }}</h1>
     </header>
     </router-link>
-    <!-- 
-        "Click here for latest post" text links you to the most recent post within the forum
-        currently not working correctly - shows you all posts instead of a specific post
-    <router-link class="PostViewLink" v-bind:to="{ name: 'postview', params:{forumId: forum.forumId} }">Click here for the latest post!</router-link> 
-    -->
+    
     <div class="timeStamp">{{ forum.time_stamp }}</div>
     
     </div>
@@ -32,7 +36,7 @@
 export default{
     data(){
         return{
-            iconClick: false
+            iconClick: true
         }
     },
     components: {
@@ -52,6 +56,7 @@ export default{
     methods: {
         favorite(){
             this.iconClick = !this.iconClick;
+            console.log(this.iconClick);
         }
 
     }
