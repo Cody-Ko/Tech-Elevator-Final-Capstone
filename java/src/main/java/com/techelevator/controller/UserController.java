@@ -163,4 +163,10 @@ public class UserController {
     public List<Comment> getCommentsByPostId(@PathVariable int postId){
         return commentDAO.getCommentsByPostId(postId);
     }
+
+    /*** DELETE COMMENTS BY ID ***/
+    @RequestMapping (value= "/comments/{commentId}", method = RequestMethod.GET)
+    public void deleteComment(@PathVariable int commentId){
+        commentDAO.deleteComment(commentId);
+    }
 }
