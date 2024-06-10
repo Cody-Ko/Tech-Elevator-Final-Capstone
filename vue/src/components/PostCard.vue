@@ -115,7 +115,7 @@ export default {
         upVoteScore(){
             PostService.upVotePost(this.post.post_id).then((response)=>{
                 if(response.status === 200){
-                    // this.getScore();
+                    this.getScore();
 
                 }
             })
@@ -125,7 +125,7 @@ export default {
         downVoteScore(){
             PostService.downVotePost(this.post.post_id).then((response)=>{
                 if(response.status === 200){
-                    // this.getScore();
+                    this.getScore();
                 }
             })
 
