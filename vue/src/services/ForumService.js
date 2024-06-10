@@ -19,7 +19,7 @@ export default {
   },
 
   addForum(forum) {
-    return http.post('add-forum', forum)
+    return http.post('/add-forum', forum)
   },
 
   deleteForum(forumId) {
