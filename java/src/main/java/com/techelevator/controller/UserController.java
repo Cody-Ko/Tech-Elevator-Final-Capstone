@@ -168,6 +168,7 @@ public class UserController {
     }
 
     /*** DELETE COMMENTS BY ID ***/
+    @PreAuthorize("hasAnyRole('MOD','ADMIN')")
     @RequestMapping (value= "/comments/{commentId}", method = RequestMethod.DELETE)
     public void deleteComment(@PathVariable int commentId){
         commentDAO.deleteComment(commentId);
@@ -179,11 +180,18 @@ public class UserController {
     }
 
     /*** GET FAVORITE FORUMS BY USERNAME ***/
-    @RequestMapping (value= "/favorite", method = RequestMethod.GET)
+    @PreAuthorize("isAuthenticated()")
+    @RequestMapping (value= "/forums/favorite", method = RequestMethod.GET)
     public List<Forum> getFavoriteForumsByUser(Principal currUser){
         return forumDAO.getFavoriteForumsByUsername(currUser.getName());
     }
-
+    /*** ADD A NEW FAVORITED FORUM ***/
+    @PreAuthorize("isAuthenticated()")
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping (value= "/forums/favorite/{forumId}", method = RequestMethod.POST)
+    public void addFavoriteForum(@PathVariable int forumId, Principal currUser){
+        forumDAO.addFavoriteForum(forumId, currUser.getName());
+    }
 /*
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/posts/{postId}/upvote", method = RequestMethod.PUT)
@@ -193,11 +201,12 @@ public class UserController {
         postDAO.upvotePost(postId);
     }
 */
-    /*** ADD A NEW FAVORITED FORUM ***/
     /*
     @RequestMapping (value= "/favorite/{forumId}", method = RequestMethod.POST)
     public Forum addFavoriteForum(Principal currUser){
         return forumDAO.getFavoriteForumsByUsername(currUser.getName());
     }*/
+
+
 
 }

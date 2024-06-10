@@ -120,13 +120,12 @@ public class JdbcForumDAO implements ForumDAO {
 
    // GETS ALL FAVORITE FORUMS BY USERNAME
     @Override
-    public List<Forum> getFavoriteForumsByUsername(String username) {
+    public List<Forum> getFavoriteForumsByUsername(String usrnm) {
         List<Forum> forums = new ArrayList<>();
-        String sql = "SELECT * FROM forum\n" +
-                "JOIN user_favorite_forums ON forum_id.forum = forum.id.user_favorite_forums\n" +
-                "JOIN users ON forum_user_id = user_id.users\n" +
-                "WHERE username = ?";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, username);
+        String sql = "SELECT forum_id, forum_user_id FROM user_favorite_forum " +
+                "JOIN users ON user_favorite_forum.forum_user_id = users.user_id " +
+                "WHERE username = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, usrnm); //THROWS ERROR HERE
 
         while(results.next()) {
             Forum forum = mapRowToForum(results);
@@ -135,14 +134,13 @@ public class JdbcForumDAO implements ForumDAO {
         return forums;
     }
 
+// user mattymattmattcat
 
     // CREATES A FAVORITE FORUM (MAKES A FORUM A FAVORITE FOR A SPECIFIC USER)
     @Override
     public void addFavoriteForum(int forumId, String username) {
-        String sql = "INSERT into user_favorite_forums" +
-                     " VALUES ?, (" +
-                     "SELECT user_id FROM users WHERE username = ?)";
-        jdbcTemplate.update(sql, forumId, username);
+        String sql = "INSERT INTO user_favorite_forum VALUES (1, (SELECT user_id FROM users WHERE username = 'mattymattmattcat'));";
+        jdbcTemplate.update(sql/*, forumId, username*/);
     }
 
 
