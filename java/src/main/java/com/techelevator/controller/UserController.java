@@ -87,7 +87,7 @@ public class UserController {
     // DELETES FORUM BY FORUM ID
     @PreAuthorize("isAuthenticated()")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @RequestMapping(path= "forums/deleteforum/id/{forum_id}")
+    @RequestMapping(path= "forums/{forumId}/delete")
     public void deleteForumByForumId(@PathVariable int forumId) {
         forumDAO.deleteForumByForumId(forumId);
     }
