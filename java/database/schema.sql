@@ -13,7 +13,7 @@ DROP TABLE IF EXISTS users;
 
 --Upvotes and downvotes enum type created
 CREATE TYPE vote AS ENUM ('upvote','downvote');
-CREATE TYPE role AS ENUM ('user','mod','admin','banned')
+CREATE TYPE role AS ENUM ('user','mod','admin','banned');
 
 --Create tables
 CREATE TABLE users (
