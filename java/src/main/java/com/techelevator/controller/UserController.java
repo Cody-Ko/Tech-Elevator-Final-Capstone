@@ -70,12 +70,26 @@ public class UserController {
     }*/
 
     // CREATES FORUM
-    @PreAuthorize("isAuthenticated()")
+    // OLD -- MC
+    /*@PreAuthorize("isAuthenticated()")
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/forums", method = RequestMethod.POST)
     public void addForum(@Valid @RequestBody Forum forum) {
         forumDAO.addForum(forum);
+    }*/
+
+    @PreAuthorize("isAuthenticated()")
+    @RequestMapping (value= "/forums/favorite", method = RequestMethod.GET)
+    public List<Forum> getFavoriteForumsByUser(Principal currUser){
+        return forumDAO.getFavoriteForumsByUsername(currUser.getName());
     }
+    @PreAuthorize("isAuthenticated()")
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(path = "/forums", method = RequestMethod.POST)
+    public void addForum(Principal currUser, @RequestBody String forumName) {
+        forumDAO.addForum(currUser, forumName);
+    }
+
 
     // DELETES FORUM BY FORUM NAME
     @PreAuthorize("isAuthenticated()")
@@ -143,8 +157,6 @@ public class UserController {
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/posts/{postId}/upvote", method = RequestMethod.PUT)
     public void upvotePost(@PathVariable int postId, Principal currUser) {
-        System.out.println(currUser.getName());
-        System.out.println(currUser.getClass());
         postDAO.upvotePost(postId);
     }
     @PreAuthorize("isAuthenticated()")
@@ -180,11 +192,11 @@ public class UserController {
     }
 
     /*** GET FAVORITE FORUMS BY USERNAME ***/
-    @PreAuthorize("isAuthenticated()")
+   /* @PreAuthorize("isAuthenticated()")
     @RequestMapping (value= "/forums/favorite", method = RequestMethod.GET)
     public List<Forum> getFavoriteForumsByUser(Principal currUser){
         return forumDAO.getFavoriteForumsByUsername(currUser.getName());
-    }
+    }*/
     /*** ADD A NEW FAVORITED FORUM ***/
     @PreAuthorize("isAuthenticated()")
     @ResponseStatus(HttpStatus.CREATED)

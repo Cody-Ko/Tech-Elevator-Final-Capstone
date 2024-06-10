@@ -11,6 +11,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
+import java.security.Principal;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -27,18 +28,18 @@ public class JdbcForumDAO implements ForumDAO {
     }
 
     // CREATES A FORUM
-    @Override
-    public void addForum(Forum forum) {
+    /*@Override
+    public void addForum(Principal currUser, String forumName) {
         String sql = "INSERT into forum VALUES (DEFAULT, ?,?, CURRENT_TIMESTAMP);";
-       /* try {*/
-            jdbcTemplate.update(sql, forum.getUserId(), forum.getName());
-       /* } catch(CannotGetJdbcConnectionException e) {
-            throw new DaoException("Unable to connect to server or database", e);
-        } catch(DataIntegrityViolationException e) {
-            throw new DaoException("Data integrity violation", e);
-        }*/
+        jdbcTemplate.update(sql, currUser.getName(), forumName);
+    }*/
+    @Override
+    public void addForum(Principal currUser, String forumName) {
+        String sql = "INSERT into forum VALUES (DEFAULT, " +
+                "(select user_id from users where username = ?)," +
+                "?, CURRENT_TIMESTAMP);";
+        jdbcTemplate.update(sql, currUser.getName(), forumName);
     }
-
 
     // GETS USER ID OF PERSON WHO CREATED FORUM
     @Override
