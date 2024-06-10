@@ -22,23 +22,23 @@ export default {
   },
 
   addPost(post) {
-    return http.post('/add-post', post)
+    return axios.post('/add-post', post)
   },
 
   deletePost(postId) {
-    return http.delete(`/posts/${postId}`)
+    return axios.delete(`/posts/${postId}`)
   },
 
   getPostScore(postId){
-    return http.get(`/posts/${postId}/getscore`)
+    return axios.get(`/posts/${postId}/getscore`)
   },
 
   upVotePost(postId){
-    return http.put(`/posts/${postId}/upvote`)
+    return axios.put(`/posts/${postId}/upvote`)
   },
 
   downVotePost(postId){
-    return http.put(`/posts/${postId}/downvote`)
+    return axios.put(`/posts/${postId}/downvote`)
   }
 
 }

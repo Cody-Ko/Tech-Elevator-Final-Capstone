@@ -11,11 +11,11 @@ export default {
   },
 
   addUpVote(vote) {
-    return http.post('add-up-vote', vote)
+    return axios.post('add-up-vote', vote)
   },
 
   addDownVote(vote) {
-    return http.post('add-down-vote', vote)
+    return axios.post('add-down-vote', vote)
   }
 
 }

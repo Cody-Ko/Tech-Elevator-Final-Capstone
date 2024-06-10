@@ -223,7 +223,7 @@ import PostService from '../services/PostService';
   position: fixed;
   display:flex;
   flex-direction: column;
-  width: 5%;
+  width: 6%;
   border-right: 5px solid rgb(250, 129, 240);
   height: 100vh;
   /* padding-top: 2px; */
