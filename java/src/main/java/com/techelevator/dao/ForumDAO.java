@@ -37,4 +37,6 @@ public interface ForumDAO {
 
     int deleteForumsByUserId(int userId);
 
+    void addFavoriteForum(int forumId, int userId);
+
 }
