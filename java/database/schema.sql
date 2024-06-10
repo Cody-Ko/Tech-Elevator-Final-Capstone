@@ -13,13 +13,14 @@ DROP TABLE IF EXISTS users;
 
 --Upvotes and downvotes enum type created
 CREATE TYPE vote AS ENUM ('upvote','downvote');
+CREATE TYPE role AS ENUM ('user','mod','admin','banned')
 
 --Create tables
 CREATE TABLE users (
     user_id SERIAL PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
     password_hash VARCHAR(200) NOT NULL,
-    role VARCHAR(50) NOT NULL
+    role role
 );
 
 CREATE TABLE forum (
@@ -142,7 +143,19 @@ VALUES (1, 3, 'Need Project ideas', 'Seriously guys, I cant think of anything.',
 
 --Misc. posts
 INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
-VALUES (1, null, 'Hi Stephen', '', 200, 0, '2024-06-10 12:13:00', 'NRL');
+VALUES (1, null, 'Hi Stephen', 'Hi Stephen', 200, 0, '2024-06-10 12:13:00', 'NRL');
+
+--Comments for misc. posts
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (2, 'Hi Stephen', '2024-06-07 12:34:00', 10, NULL, 'NLR');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (2, 'Hi Stephen', '2024-06-07 12:34:00', 10, NULL, 'NLR');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (2, 'Hi Stephen', '2024-06-07 12:34:00', 10, NULL, 'NLR');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (2, 'Hi Stephen', '2024-06-07 12:34:00', 10, NULL, 'NLR');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (2, 'Hi Stephen', '2024-06-07 12:34:00', 10, NULL, 'NLR');
 
 -- Comments for "Jurassic Park Review: Response"
 INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
