@@ -138,9 +138,11 @@ public class JdbcForumDAO implements ForumDAO {
 
     // CREATES A FAVORITE FORUM (MAKES A FORUM A FAVORITE FOR A SPECIFIC USER)
     @Override
-    public void addFavoriteForum(int forumId, int userId) {
-        String sql = "INSERT into user_favorite_forums VALUES ?, ?";
-        jdbcTemplate.update(sql, forumId, userId);
+    public void addFavoriteForum(int forumId, String username) {
+        String sql = "INSERT into user_favorite_forums" +
+                     " VALUES ?, (" +
+                     "SELECT user_id FROM users WHERE username = ?)";
+        jdbcTemplate.update(sql, forumId, username);
     }
 
 
