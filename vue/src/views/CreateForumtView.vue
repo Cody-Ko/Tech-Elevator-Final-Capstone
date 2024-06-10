@@ -14,12 +14,13 @@ import CreateForumCard from '../components/CreateForumCard.vue';
     },
     data() {
       return {
-        forum: {
-          editForum: {
-          id: 0,
+        changeForum: {
+          // id: 0,
+          // forum_user_id: 0,
           forum_name: '',
+          // time_stamp: Date,
         }
-        }
+        
       }
     }
 
