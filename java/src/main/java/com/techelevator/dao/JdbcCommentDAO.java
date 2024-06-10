@@ -1,9 +1,11 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Comment;
+import com.techelevator.model.Post;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import java.sql.PreparedStatement;
@@ -15,8 +17,10 @@ import java.util.List;
 public class JdbcCommentDAO implements CommentDAO {
 
     private final JdbcTemplate jdbcTemplate;
+    private final CommentRowMapper commentRowMapper;
 
     public JdbcCommentDAO(JdbcTemplate jdbcTemplate){
+        this.commentRowMapper = new CommentRowMapper();
         this.jdbcTemplate = jdbcTemplate;
     }
 
@@ -44,6 +48,17 @@ public class JdbcCommentDAO implements CommentDAO {
     public Comment getCommentById(int commentID) {
         String sql = "SELECT * FROM comments WHERE comment_id = ?";
         return jdbcTemplate.queryForObject(sql, new CommentRowMapper(), commentID);
+
+        // MATT'S GARBAGE 2  - THE SQL (GET IT?) STILL SORRY
+//        String sql = "SELECT * FROM comments" +
+//                " WHERE comment_id = ?";
+//        Comment returnComment = new Comment();
+//        SqlRowSet postRowSet = jdbcTemplate.queryForRowSet(sql, commentID);
+//        if (postRowSet.next()) {
+//            returnComment = commentRowMapper.mapRow(postRowSet);
+//        }
+//
+//        return returnComment;
     }
 
     @Override
