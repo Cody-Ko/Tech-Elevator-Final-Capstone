@@ -2,12 +2,12 @@
 
   <div class="PostCard">
     <div class="top-row">
-    <span id="increase" @:click="updateScore($event)">
+    <span id="increase" @:click="upVoteScore">
         <i class="fa-solid fa-meteor vote-up"></i>
     </span>
     <!-- how to make this pull the computed score from database -->
     <span>{{ postScore }}</span>
-    <span id="decrease" @:click="updateScore($event)">
+    <span id="decrease" @:click="downVoteScore">
         <i class="fa-solid fa-meteor vote-down" style=""></i>
     </span>
     
@@ -34,7 +34,19 @@ export default {
     data(){
         return{
             postId: this.post.post_id,
-            postScore: 0
+            postScore: 0,
+            editPost: {
+                post_id: this.post_id,
+                user_id: this.user_id,
+                forum_id: this.forum_id,
+                title: this.title,
+                message: this.message,
+                up_votes: this.up_votes,
+                down_votes: this.down_votes,
+                time_stamp: this.time_stamp,
+                location: this.location
+
+            }
         }
     },
     components: {
@@ -100,19 +112,24 @@ export default {
             })
         },
 
-        updateScore(event){
-            if (event.target.id === "increase"){
-                PostService.upVotePost(this.post.post_id).then(() =>{
-                    this.getScore();
-                })
-                // .catch() =>{
+        upVoteScore(){
+            PostService.upVotePost(this.post.post_id).then((response)=>{
+                if(response.status === 200){
+                    // this.getScore();
 
-                // }
-            } else {
-                PostService.downVotePost(this.post.post_id).then(() =>{
-                    this.getScore();
-                })
-            }
+                }
+            })
+            console.log('up')
+        },
+
+        downVoteScore(){
+            PostService.downVotePost(this.post.post_id).then((response)=>{
+                if(response.status === 200){
+                    // this.getScore();
+                }
+            })
+
+            console.log('down')
         }
 
 
@@ -211,6 +228,8 @@ cursor: pointer;
 
 }
 
-
+#increase, #decrease{
+    size: 2px;
+}
 /* Test 2.8 */
 </style>
