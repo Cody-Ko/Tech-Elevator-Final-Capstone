@@ -21,6 +21,10 @@ export default{
   font-family: Arial, Helvetica, sans-serif;
   background-color: rgb(250, 228, 248);
   text-decoration-color: rgb(250, 129, 240);
+  position: fixed;
+  width: 100vw;
+  z-index: 1;
+  top: 0;
 }
 
 div {

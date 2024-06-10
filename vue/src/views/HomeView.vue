@@ -1,19 +1,25 @@
 <template>
   <section class="whole-page">
+
     <section class="left-panel">
+
       <h1 class="home-text">Home</h1>
+
       <router-link class="ResourcesViewLink" 
       v-bind:to="{name: 'resources'}">
         <h1 class="resources-link"> Resources</h1>
       </router-link>
+
       <router-link class="CreateForumViewLink" 
       v-bind:to="{name: 'createforum'}">
         <h1 class="create-forum">Create Forum</h1>
       </router-link>
+
       <!-- <router-link class="CreatePostViewLink" v-bind:to="{name: 'createpost'}">
         <h1 class="create-post">Create A Post</h1>
       </router-link> -->
     </section>
+
     <section class="main-section">
       <section class ="top-section">
         <!-- <h1 class="linksandsearches"> -->
@@ -27,6 +33,7 @@
       </form>
     <!-- </h1> -->
     </section>
+
     <section class="main-content">
       <h2 class="forums-description">Today's Exciting Forums</h2>
 
@@ -206,6 +213,12 @@ import PostService from '../services/PostService';
   padding-bottom: 10%;
 }
 
+.create-forum{
+  border-bottom: 5px solid rgb(250, 129, 240);
+  margin-right: 10px;
+  padding-bottom: 10%;
+}
+
 .left-panel{
   position: fixed;
   display:flex;
@@ -217,6 +230,7 @@ import PostService from '../services/PostService';
   padding-left: 3px;
   color: white;
   font-size: 1rem;
+  z-index: 0;
 }
 
 
@@ -285,6 +299,10 @@ import PostService from '../services/PostService';
 .welcome {
   font-size: 3rem;
   color: white;
+}
+
+input {
+  size: 100px;
 }
 
 /* .linksandsearches {
