@@ -168,8 +168,13 @@ public class UserController {
     }
 
     /*** DELETE COMMENTS BY ID ***/
-    @RequestMapping (value= "/comments/{commentId}", method = RequestMethod.GET)
+    @RequestMapping (value= "/comments/{commentId}", method = RequestMethod.DELETE)
     public void deleteComment(@PathVariable int commentId){
         commentDAO.deleteComment(commentId);
+    }
+    /*** GET COMMENT BY ID **/
+    @RequestMapping (value= "/comments/{commentId}", method = RequestMethod.GET)
+    public Comment getCommentById(@PathVariable int commentId){
+        return commentDAO.getCommentById(commentId);
     }
 }
