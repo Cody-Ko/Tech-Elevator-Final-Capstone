@@ -100,9 +100,9 @@ export default{
     color: white;
 }
 
-.favorite-star{
-    /* cursor: pointer; */
-}
+/* .favorite-star{
+    cursor: pointer;
+} */
 
 .white-star{
     cursor: pointer;
