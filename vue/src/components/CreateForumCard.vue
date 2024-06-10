@@ -1,22 +1,54 @@
 <template>
 
-    <div class="."></div>
+<div class="create-forum-home"> Create A Forum</div>
+    <form v-on:submit.prevent="addForum">
+      
+      <label for="forum_name">Name of Forum</label>
+      <input type="text" id="forum_name" name="forum_name" v-model="changeForum.forum_name"/>
+      
+      <div class="submissions">
+        <button class="submitBtn" type="submit">Submit</button>
+        <button class="cancelBtn" type="button" v-on:click="cancelButton">Cancel</button>
+      </div>
+    </form>
+
 </template>
   
 <script>
+
+import ForumService from '../services/ForumService';
+
   
 export default {
-      components: {
-
-      },
-      props: {
-          
-          posts: [],
-      },
-  
-      methods: {
-          
+    props: {
+      forum: {
+        type: Object,
+        required: true,
       }
+    },
+    data() {
+      return {
+        changeForum: {
+          id: 0,
+          forum_name: '',
+        }
+
+      }
+    },
+    methods: {
+      addForum() {
+        ForumService.addForum(this.forum).then (
+          (response) => {
+            if(response.status === 201) {
+              this.$router.push('forumview')
+            }
+          }
+        )
+      },
+      cancelButton() {
+        this.$router.push({name: 'home'});
+      }
+    },
   
   };
   </script>
