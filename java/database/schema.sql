@@ -33,7 +33,7 @@ CREATE TABLE forum (
 CREATE TABLE posts (
     post_id SERIAL PRIMARY KEY,
     user_id INT NOT NULL,
-    forum_id INT NOT NULL,
+    forum_id INT,
     title VARCHAR(50) NOT NULL,
     message VARCHAR(1000) NOT NULL,
     up_votes INT NOT NULL,
@@ -139,6 +139,10 @@ INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time
 VALUES (1, 3, 'I need help with my code', 'How do I write a for loop? My instructor wont tell me', 5, 8, '2024-06-05 12:10:00', 'USA');
 INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
 VALUES (1, 3, 'Need Project ideas', 'Seriously guys, I cant think of anything.', 30, 6, '2024-06-05 12:30:00', 'USA');
+
+--Misc. posts
+INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
+VALUES (1, null, 'Hi Stephen', '', 200, 0, '2024-06-10 12:13:00', 'NRL');
 
 -- Comments for "Jurassic Park Review: Response"
 INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
