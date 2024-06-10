@@ -124,6 +124,8 @@ INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time
 VALUES (1, 1, 'Jurassic Park Review', 'Honestly, I''m just here for the dinosaurs', 20, 0, '2024-06-05 11:50:00', 'USA');
 INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
 VALUES (1, 1, 'Jurassic Park Review: Response', 'TO WHOEVER POSTED SAYING THEY''RE JUST WATCHING JURASSIC PARK FOR THE DINOSAURS CLEARLY ISN''T FULLY APPRECIATING THE ARTISTRY THAT COMES FROM SPIELBERG.', 0, 6, '2024-06-05 11:52:00', 'USA');
+INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
+VALUES (3, 1, 'Why Back To The Future is better than Infinity War', 'According to our top movie analysts, Back to the Future is leagues more realistic', 11, 0, '', 'USA');
 
 --Book Recommendations posts
 INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
