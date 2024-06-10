@@ -122,12 +122,16 @@ public class JdbcForumDAO implements ForumDAO {
     @Override
     public List<Forum> getFavoriteForumsByUsername(String usrnm) {
         List<Forum> forums = new ArrayList<>();
-        String sql = "SELECT forum_id, forum_user_id FROM user_favorite_forum " +
+        String sql = "SELECT * FROM user_favorite_forum " +
                 "JOIN users ON user_favorite_forum.forum_user_id = users.user_id " +
+                "JOIN forum ON user_favorite_forum.forum_id = forum.forum_id " +
                 "WHERE username = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, usrnm); //THROWS ERROR HERE
 
         while(results.next()) {
+
+
+
             Forum forum = mapRowToForum(results);
             forums.add(forum);
         }

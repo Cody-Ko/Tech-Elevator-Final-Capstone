@@ -20,7 +20,7 @@ CREATE TABLE users (
     user_id SERIAL PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
     password_hash VARCHAR(200) NOT NULL,
-    role role
+    role varchar(50) NOT NULL
 );
 
 CREATE TABLE forum (
