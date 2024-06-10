@@ -145,14 +145,8 @@ public class JdbcPostDAO implements PostDAO {
                 toPost.getMessageDetails(), toPost.getUpVotes(), toPost.getDownVotes(),
                 toPost.getLocation());
     }
-    @Override
-    public void deletePost(int postID){
 
-    }
-    @Override
-    public void deletePostsByUserID(int userID){
 
-    }
 
     /*** METHODS FOR VOTING ON POSTS ***/
     public void upvotePost(int postID){
@@ -184,6 +178,17 @@ public class JdbcPostDAO implements PostDAO {
             postList.add(mapRowToPost(result));
         }
         return postList;
+    }
+
+    @Override
+    public void deletePost(int postId) {
+        String sql = "DELETE FROM posts WHERE post_id = ?";
+        jdbcTemplate.update(sql, postId);
+    }
+    @Override
+    public void deletePostsByUserID(int userID){
+        String sql = "DELETE FROM posts WHERE user_id = ?";
+        jdbcTemplate.update(sql, userID);
     }
 
     private Post mapRowToPost(SqlRowSet rs) {

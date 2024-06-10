@@ -27,6 +27,7 @@ public interface PostDAO {
     void deletePost(int postID);
     void deletePostsByUserID(int userID);
 
+
     /*** METHODS FOR VOTING ON POSTS ***/
     void upvotePost(int postID);
     void downvotePost(int postID);

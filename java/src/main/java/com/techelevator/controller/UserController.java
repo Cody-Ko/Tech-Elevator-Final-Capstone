@@ -15,6 +15,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -87,7 +88,7 @@ public class UserController {
     // DELETES FORUM BY FORUM ID
     @PreAuthorize("isAuthenticated()")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @RequestMapping(path= "forums/deleteforum/id/{forum_id}")
+    @RequestMapping(path= "forums/{forumId}/delete")
     public void deleteForumByForumId(@PathVariable int forumId) {
         forumDAO.deleteForumByForumId(forumId);
     }
@@ -141,7 +142,9 @@ public class UserController {
     /*** GET POST BY POST_ID ***/
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/posts/{postId}/upvote", method = RequestMethod.PUT)
-    public void upvotePost(@PathVariable int postId) {
+    public void upvotePost(@PathVariable int postId, Principal currUser) {
+        System.out.println(currUser.getName());
+        System.out.println(currUser.getClass());
         postDAO.upvotePost(postId);
     }
     @PreAuthorize("isAuthenticated()")
