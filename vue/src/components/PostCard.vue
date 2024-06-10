@@ -2,12 +2,12 @@
 
   <div class="PostCard">
     <div class="top-row">
-    <span>
+    <span id="increase" @:click="updateScore($event)">
         <i class="fa-solid fa-meteor vote-up"></i>
     </span>
     <!-- how to make this pull the computed score from database -->
     <span>{{ postScore }}</span>
-    <span>
+    <span id="decrease" @:click="updateScore($event)">
         <i class="fa-solid fa-meteor vote-down" style=""></i>
     </span>
     
@@ -95,12 +95,32 @@ export default {
             }
         },
         getScore(postId){
-            PostService.getPostScore(postId).then((response) =>{
+            PostService.getPostScore(this.post.post_id).then((response) =>{
                 this.postScore = response.data;
             })
+        },
+
+        updateScore(event){
+            if (event.target.id === "increase"){
+                PostService.upVotePost(this.post.post_id).then(() =>{
+                    this.getScore();
+                })
+                // .catch() =>{
+
+                // }
+            } else {
+                PostService.downVotePost(this.post.post_id).then(() =>{
+                    this.getScore();
+                })
+            }
         }
 
+
+
     },
+    mounted(){
+        this.getScore();
+    }
 
 };
 </script>

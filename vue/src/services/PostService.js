@@ -31,6 +31,14 @@ export default {
 
   getPostScore(postId){
     return http.get(`/posts/${postId}/getscore`)
+  },
+
+  upVotePost(postId){
+    return http.put(`/posts/${postId}/upvote`)
+  },
+
+  downVotePost(postId){
+    return http.put(`/posts/${postId}/downvote`)
   }
 
 }
