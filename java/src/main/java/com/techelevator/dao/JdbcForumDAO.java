@@ -25,6 +25,8 @@ public class JdbcForumDAO implements ForumDAO {
     public JdbcForumDAO(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
+
+    // CREATES A FORUM
     @Override
     public void addForum(Forum forum) {
         String sql = "INSERT into forum VALUES (DEFAULT, ?,?, CURRENT_TIMESTAMP);";
@@ -36,17 +38,7 @@ public class JdbcForumDAO implements ForumDAO {
             throw new DaoException("Data integrity violation", e);
         }*/
     }
-    @Override
-    public Forum mapRowToForum(SqlRowSet results) {
-        Forum forum = new Forum();
-        forum.setForumId(results.getInt("forum_id"));
-        forum.setName(results.getString("forum_name"));
-        if (results.getTimestamp("time_stamp") != null) {
-            forum.setTimestamp(results.getTimestamp("time_stamp").toLocalDateTime());    //COMMENTED OUT -- NEED TO FIX LATER
-        }
-        forum.setUserID(results.getInt("user_id"));
-        return forum;
-    }
+
 
     // GETS USER ID OF PERSON WHO CREATED FORUM
     @Override
@@ -59,6 +51,7 @@ public class JdbcForumDAO implements ForumDAO {
             throw new UsernameNotFoundException("Forum " + name + " was not found.");
         }
     }
+
 
     // GETS USERNAME OF PERSON WHO CREATED FORUM
     @Override
@@ -74,6 +67,9 @@ public class JdbcForumDAO implements ForumDAO {
             throw new UsernameNotFoundException("Forum " + name + " was not found.");
         }
     }
+
+
+    // GETS FORUMS BY USERNAME
     @Override
     public List<Forum> getForumsByUsername(String username) {
         List<Forum> forums = new ArrayList<>();
@@ -90,6 +86,9 @@ public class JdbcForumDAO implements ForumDAO {
         }
         return forums;
     }
+
+
+    // GETS FORUMS BY FORUM NAME
     @Override
     public List<Forum> getForumsByForumName(String name) {
         List<Forum> forums = new ArrayList<>();
@@ -103,6 +102,9 @@ public class JdbcForumDAO implements ForumDAO {
         }
         return forums;
     }
+
+
+    // GETS FORUMS BY FORUM ID
     @Override
     public Forum getForumById(int forumId) {
         Forum returnForum = new Forum();
@@ -116,6 +118,7 @@ public class JdbcForumDAO implements ForumDAO {
     }
 
 
+   // GETS ALL FAVORITE FORUMS BY USERNAME
     @Override
     public List<Forum> getFavoriteForums(String username) {
         List<Forum> forums = new ArrayList<>();
@@ -131,6 +134,17 @@ public class JdbcForumDAO implements ForumDAO {
         }
         return forums;
     }
+
+
+    // CREATES A FAVORITE FORUM (MAKES A FORUM A FAVORITE FOR A SPECIFIC USER)
+    @Override
+    public void addFavoriteForum(int forumId, int userId) {
+        String sql = "INSERT into user_favorite_forums VALUES ?, ?";
+        jdbcTemplate.update(sql, forumId, userId);
+    }
+
+
+    // GETS THE FIVE MOST RECENT ACTIVE FORUMS
     @Override
     public List<Forum> getActiveForums() {
         List<Forum> forums = new ArrayList<>();
@@ -146,6 +160,9 @@ public class JdbcForumDAO implements ForumDAO {
         }
         return forums;
     }
+
+
+    // PULLS UP FORUMS BY KEYWORD
     @Override
     public List<Forum> getForumsByKeyword(String keyword) {
         List<Forum> forums = new ArrayList<>();
@@ -160,6 +177,9 @@ public class JdbcForumDAO implements ForumDAO {
         }
         return forums;
     }
+
+
+    // DELETES FORUMS BY FORUM NAME
     @Override
     public int deleteForumByForumName(String name) {
         int numberOfRows = 0;
@@ -167,6 +187,9 @@ public class JdbcForumDAO implements ForumDAO {
         numberOfRows = jdbcTemplate.update(sql, name);
         return numberOfRows;
     }
+
+
+    // DELETES FORUMS BY FORUM ID
     @Override
     public int deleteForumByForumId(int forumId) {
         int numberOfRows = 0;
@@ -174,6 +197,9 @@ public class JdbcForumDAO implements ForumDAO {
         numberOfRows = jdbcTemplate.update(sql, forumId);
         return numberOfRows;
     }
+
+
+    // DELETES FORUMS BY USERNAME - LIKE IF A USER IS BANNED
     @Override
     public int deleteForumsByUserId(int userId) {
         int numberOfRows = 0;
@@ -181,6 +207,9 @@ public class JdbcForumDAO implements ForumDAO {
         numberOfRows = jdbcTemplate.update(sql, userId);
         return numberOfRows;
     }
+
+
+    // PULLS UP ALL FORUMS
     @Override
     public List<Forum> getAllForums() {
         List<Forum> forums = new ArrayList<>();
@@ -193,5 +222,19 @@ public class JdbcForumDAO implements ForumDAO {
             forums.add(forum);
         }
         return forums;
+    }
+
+
+    // ROW MAPPER
+    @Override
+    public Forum mapRowToForum(SqlRowSet results) {
+        Forum forum = new Forum();
+        forum.setForumId(results.getInt("forum_id"));
+        forum.setName(results.getString("forum_name"));
+        if (results.getTimestamp("time_stamp") != null) {
+            forum.setTimestamp(results.getTimestamp("time_stamp").toLocalDateTime());    //COMMENTED OUT -- NEED TO FIX LATER
+        }
+        forum.setUserID(results.getInt("user_id"));
+        return forum;
     }
 }
