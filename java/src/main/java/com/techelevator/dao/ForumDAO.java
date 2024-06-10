@@ -19,7 +19,7 @@ public interface ForumDAO {
 
     Forum mapRowToForum(SqlRowSet results);
 
-    List<Forum> getFavoriteForums(String username);
+    List<Forum> getFavoriteForumsByUsername(String username);
 
     List<Forum> getActiveForums();
 

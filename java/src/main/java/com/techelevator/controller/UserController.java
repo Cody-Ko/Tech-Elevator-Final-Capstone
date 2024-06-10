@@ -177,4 +177,27 @@ public class UserController {
     public Comment getCommentById(@PathVariable int commentId){
         return commentDAO.getCommentById(commentId);
     }
+
+    /*** GET FAVORITE FORUMS BY USERNAME ***/
+    @RequestMapping (value= "/favorite", method = RequestMethod.GET)
+    public List<Forum> getFavoriteForumsByUser(Principal currUser){
+        return forumDAO.getFavoriteForumsByUsername(currUser.getName());
+    }
+
+/*
+    @PreAuthorize("isAuthenticated()")
+    @RequestMapping(value = "/posts/{postId}/upvote", method = RequestMethod.PUT)
+    public void upvotePost(@PathVariable int postId, Principal currUser) {
+        System.out.println(currUser.getName());
+        System.out.println(currUser.getClass());
+        postDAO.upvotePost(postId);
+    }
+*/
+    /*** ADD A NEW FAVORITED FORUM ***/
+    /*
+    @RequestMapping (value= "/favorite/{forumId}", method = RequestMethod.POST)
+    public Forum addFavoriteForum(Principal currUser){
+        return forumDAO.getFavoriteForumsByUsername(currUser.getName());
+    }*/
+
 }

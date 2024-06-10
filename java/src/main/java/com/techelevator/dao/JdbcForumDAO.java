@@ -120,7 +120,7 @@ public class JdbcForumDAO implements ForumDAO {
 
    // GETS ALL FAVORITE FORUMS BY USERNAME
     @Override
-    public List<Forum> getFavoriteForums(String username) {
+    public List<Forum> getFavoriteForumsByUsername(String username) {
         List<Forum> forums = new ArrayList<>();
         String sql = "SELECT * FROM forum\n" +
                 "JOIN user_favorite_forums ON forum_id.forum = forum.id.user_favorite_forums\n" +
