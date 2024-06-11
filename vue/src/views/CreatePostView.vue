@@ -18,7 +18,9 @@ import CreatePostCard from '../components/CreatePostCard.vue';
         changePost: {
           // id: 0,
           // forum_user_id: 0,
-          post_name: '',
+          title: '',
+          message: '',
+          location: '',
           // time_stamp: Date,
         }
         
