@@ -14,6 +14,7 @@ import SearchView from '../views/SearchView.vue';
 import ResourcesView from '../views/ResourcesView.vue';
 import CreateForumView from '../views/CreateForumtView.vue';
 import CreatePostView from '../views/CreatePostView.vue';
+import UserHomeView from '../views/UserHomeView.vue';
 
 
 /**
@@ -121,6 +122,14 @@ const routes = [
       requiresAuth: true
     }
   },
+  {
+    path: "/userHome",
+    name: "userhome",
+    component: UserHomeView,
+    meta: {
+      requiresAuth: true
+    }
+  }
 
 
   // {
