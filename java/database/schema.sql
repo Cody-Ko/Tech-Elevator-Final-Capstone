@@ -134,6 +134,7 @@ INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time
 VALUES (1, 2, 'My Favorite Books', 'I actually only reread Meditations by Marcus Aerelius every second of the day. Highly recommend!', 20, 8, '2024-06-05 12:10:00', 'USA');
 INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
 VALUES (1, 2, 'Recommendations needed!', 'I havent read in 25 years, I need my book fix. Any recs? My favorite genre is horror.', 5, 6, '2024-06-05 12:30:00', 'USA');
+INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
 VALUES (2, 1, 'Help me find a new book!', 'I need a book that''s a dark fantasy western pleeeaaase', 11, 0, 'CURRENT_TIMESTAMP', 'USA');
 
 --Software Things posts
@@ -143,6 +144,7 @@ INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time
 VALUES (1, 3, 'I need help with my code', 'How do I write a for loop? My instructor wont tell me', 5, 8, '2024-06-05 12:10:00', 'USA');
 INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
 VALUES (1, 3, 'Need Project ideas', 'Seriously guys, I cant think of anything.', 30, 6, '2024-06-05 12:30:00', 'USA');
+INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
 VALUES (3, 1, 'Physical health of a software developer', 'Does anyone else have back and neck problems from this profession?', 11, 0, 'CURRENT_TIMESTAMP', 'USA');
 
 --Misc. posts
