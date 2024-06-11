@@ -40,4 +40,5 @@ public interface ForumDAO {
 
     void addFavoriteForum(int forumId, String username);
 
+    void removeFavoriteForum(int forumId, String username);
 }
