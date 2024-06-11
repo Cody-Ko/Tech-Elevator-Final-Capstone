@@ -252,5 +252,31 @@ VALUES (1, 'You should make something like Venmo! But, call it something else.',
 INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
 VALUES (1, 'You should make a message board or something.', '2024-06-07 10:39:00', 18, NULL, 'USA');
 
+--Comments for "Why you should watch A24 movies"
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (1, 'I love A24!!', CURRENT_TIMESTAMP, 8, NULL, 'USA');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (2, 'What is that', CURRENT_TIMESTAMP, 8, NULL, 'USA');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (3, 'Every A24 movie I''ve seen has been mid (I''m lying)', CURRENT_TIMESTAMP, 8, NULL, 'USA');
+
+--Comments for "My favorite movies"
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (2, 'Day of The Dead', CURRENT_TIMESTAMP, 5, NULL, 'USA');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (3, 'O Brother, Where Art Thou', CURRENT_TIMESTAMP, 5, NULL, 'USA');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (1, 'Spirited Away', CURRENT_TIMESTAMP, 5, NULL, 'USA');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (1, 'Night of the living dead', CURRENT_TIMESTAMP, 5, NULL, 'USA');
+
+--Comments for "Why Back To The Future is better than Infinity War"
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (2, 'I believe this', CURRENT_TIMESTAMP, 5, NULL, 'USA');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (3, 'Blasphemy', CURRENT_TIMESTAMP, 5, NULL, 'USA');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (1, 'Interesting take', CURRENT_TIMESTAMP, 5, NULL, 'USA');
+
 
 COMMIT TRANSACTION;
