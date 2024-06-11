@@ -23,7 +23,7 @@
   
 <script>
 import PostService from '../services/PostService';
-  
+
 export default {
       components: {
 
@@ -60,13 +60,15 @@ export default {
         PostService.addPost(this.forumId, this.postDto).then(
           (response) => {
             if(response.status === 201) {
-              this.$router.push('/')
+            //   this.$router.push({ name: "forumview", params: {forumId: this.forumId}} )
+            location.reload();
+            
             }
           }
         )
       },
       cancelButton() {
-        this.$router.push({name: '/'});
+        this.$router.push('/');
       }
     },
   
