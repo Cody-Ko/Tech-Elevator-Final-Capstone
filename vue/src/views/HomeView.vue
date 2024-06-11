@@ -32,7 +32,7 @@
       <section class ="top-section">
         <!-- <h1 class="linksandsearches"> -->
           <h1 class="welcome">Stellar Discussions</h1>
-    <form @submit.prevent="searchForums(keyword)">
+    <form class = "ForumSearch" @submit.prevent="searchForums(keyword)">
         <div class="searchbar">
           <input type="text" v-model="keyword"
           placeholder="Search here for your criteria!"/>
@@ -292,7 +292,7 @@ import PostService from '../services/PostService';
 }
 
 form {
-  width: 100%;
+  /* width: 100%; */
 }
 
 .searchbar {
