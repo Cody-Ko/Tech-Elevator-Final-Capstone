@@ -120,9 +120,9 @@ public class UserController {
     /*** CREATE A NEW POST ***/
     @PreAuthorize("isAuthenticated()")
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/forums/{forumId}/posts", method = RequestMethod.POST)
-    public void createPost(@Valid @RequestBody Post post) {
-        postDAO.createPost(post);
+    @RequestMapping(path = "/forums/{forumId}", method = RequestMethod.POST)
+    public void createPost(@Valid @RequestBody String title, String message, Principal currUser) {
+        postDAO.createPost(currUser, title, message);
     }
 
     /*** GET POSTS BY FORUM ***/

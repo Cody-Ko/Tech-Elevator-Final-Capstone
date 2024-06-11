@@ -30,21 +30,8 @@ export default {
   downVotePost(postId){
     return axios.put(`/posts/${postId}/downvote`)
   },
+
   get10MostPopularPosts(){
     return axios.get('/posts/topvoted')
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
