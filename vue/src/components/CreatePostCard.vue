@@ -77,7 +77,7 @@ export default {
   
   <style scoped>
   .create-post-home {
-      display: grid;
+      /* display: grid; */
       align-content: center;
       /* flex-direction: column;
       justify-content: space-between; */
