@@ -285,6 +285,24 @@ import PostService from '../services/PostService';
   width: 250px;
   /* margin-left: 300px; */
 }
+
+form {
+  width: 100%;
+}
+
+.searchbar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.searchbar input, .searchbar button {
+  font-size: 20px;
+}
+
+.searchbar input {
+  width: 400px;
+}
+
 .welcome {
   font-size: 3rem;
   color: white;
