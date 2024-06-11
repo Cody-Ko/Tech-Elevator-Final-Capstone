@@ -3,17 +3,27 @@
 
     <section class="left-panel">
 
-      <h1 class="home-text">Home</h1>
-
-      <router-link class="ResourcesViewLink" 
+      <!-- <h1 class="home-text">Home</h1> -->
+    
+      <!-- <router-link class="ResourcesViewLink" 
       v-bind:to="{name: 'resources'}">
         <h1 class="resources-link"> Resources</h1>
-      </router-link>
+      </router-link> -->
 
-      <router-link class="CreateForumViewLink" 
+      <select v-model="Selection" @change="changeView" class="dropdown">
+        <option value="">Select</option>
+        <!-- <router-link v-bind:to="{name: 'resources'}"> -->
+          <option value="Resources">Resources</option>
+        <!-- </router-link> -->
+        <!-- <router-link v-bind:to="{name: 'createforum'}"> -->
+        <option value="Create-Forum">Create Forum</option>
+      <!-- </router-link> -->
+      </select>
+
+      <!-- <router-link class="CreateForumViewLink" 
       v-bind:to="{name: 'createforum'}">
         <h1 class="create-forum">Create Forum</h1>
-      </router-link>
+      </router-link> -->
 
       <!-- <router-link class="CreatePostViewLink" v-bind:to="{name: 'createpost'}">
         <h1 class="create-post">Create A Post</h1>
@@ -23,7 +33,7 @@
     <section class="main-section">
       <section class ="top-section">
         <!-- <h1 class="linksandsearches"> -->
-          <h1 class="welcome">Welcome back!</h1>
+          <h1 class="welcome">Stellar Discussions</h1>
     <form @submit.prevent="searchForums(keyword)">
         <div class="searchbar">
           <input type="text" v-model="keyword" 
@@ -138,9 +148,17 @@ import PostService from '../services/PostService';
               // },
              ],
              keyword: "",
+             Selection: ""
         };
     },
     methods: {
+        getTodaysPopularPosts(){
+          PostService.get10MostPopularPosts().then((response) =>{
+            this.posts = response.data;
+          }).catch(error =>{
+                
+              })
+        },
         getForums(){
             ForumService.getAllForums().then((response) =>{
                 this.forums = response.data;
@@ -169,11 +187,22 @@ import PostService from '../services/PostService';
 
         searchForums(keyword) {
           this.getForumsByKeyword(keyword)
+        },
+
+        changeView(){
+          if(this.Selection === 'Resources'){
+            this.$router.push({name:'resources'});
+          } else if (this.Selection === 'Create-Forum'){
+            this.$router.push({name:'createforum'});
+
+          }
         }
+       
     },
     created(){
             this.getForums();
-            this.getPosts();
+            // this.getPosts();
+            this.getTodaysPopularPosts();
         }
         
     };
@@ -193,6 +222,12 @@ import PostService from '../services/PostService';
   margin-right: 10px;
   padding-bottom: 10%;
 
+}
+
+.dropdown{
+  margin-top: 20%;
+  margin-right: 10px;
+  size: 30px;
 }
 
 .ResourcesViewLink{
