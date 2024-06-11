@@ -152,6 +152,16 @@ public class JdbcForumDAO implements ForumDAO {
         jdbcTemplate.update(sql, forumId, username);
     }
 
+    // REMOVES FAVORITE FROM FORUM
+    @Override
+    public void removeFavoriteForum(int forumId, String username) {
+        String sql = "DELETE from user_favorite_forum WHERE forum_user_id =" +
+                " (SELECT user_id FROM users WHERE username = ?)" +
+                " AND forum_id = ?;";
+       jdbcTemplate.update(sql, username, forumId);
+    }
+
+
 
     // GETS THE FIVE MOST RECENT ACTIVE FORUMS
     @Override

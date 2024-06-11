@@ -31,10 +31,4 @@ import CreateForumCard from '../components/CreateForumCard.vue';
   
 <style scoped>
 
-.create-forum-home {
-  height: 100vh;
-  width: 100vw;
-  margin: 0;
-}
-
 </style>

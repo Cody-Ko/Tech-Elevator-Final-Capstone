@@ -28,6 +28,14 @@ export default {
 
   getForumsByKeyword(keyword) {
     return axios.get(`/forums/keyword/${keyword}`)
+  },
+
+  addFavoriteForum(forumId) {
+    return axios.post(`/forums/favorite/${forumId}`)
+  },
+
+  unfavoriteForum(forumId) {
+    return axios.delete(`/forums/favorite/${forumId}`)
   }
 
   //Why is this happening?
