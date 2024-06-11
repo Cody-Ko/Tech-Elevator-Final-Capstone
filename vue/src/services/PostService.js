@@ -16,7 +16,7 @@ export default {
     return axios.put(`/update-post`, postID);
   },
   addPost(forumId, postDto) {
-    return axios.post(`/forums/${forumId}/`, postDto)
+    return axios.post(`/forums/${forumId}`, postDto)
   },
   deletePost(postId) {
     return axios.delete(`/posts/${postId}`)

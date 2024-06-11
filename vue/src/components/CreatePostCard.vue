@@ -46,14 +46,18 @@ export default {
         //   time_stamp: Date,
           
         },
-        forumId: this.$route.forumId,
+        forumId: null
 
       }
+    },
+
+    created(){
+      this.forumId = this.$route.params.forumId;
     },
   
     methods: {
       addPost() {
-        PostService.addPost(this.forumId, this.changePost).then(
+        PostService.addPost(this.forumId, this.postDto).then(
           (response) => {
             if(response.status === 201) {
               this.$router.push('home')
