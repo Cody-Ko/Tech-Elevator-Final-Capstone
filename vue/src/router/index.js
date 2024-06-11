@@ -12,7 +12,8 @@ import PostView from '../views/PostView.vue';
 import CommentView from '../views/CommentView.vue';
 import SearchView from '../views/SearchView.vue';
 import ResourcesView from '../views/ResourcesView.vue';
-import CreateForumView from '../views/CreateForumtView.vue'
+import CreateForumView from '../views/CreateForumtView.vue';
+import CreatePostView from '../views/CreatePostView.vue';
 
 
 /**
@@ -108,6 +109,14 @@ const routes = [
     path: "/createforum",
     name: "createforum",
     component: CreateForumView,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: "/createpost",
+    name: "createpost",
+    component: CreatePostView,
     meta: {
       requiresAuth: true
     }

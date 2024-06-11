@@ -154,7 +154,7 @@ public class JdbcPostDAO implements PostDAO {
         jdbcTemplate.update(sql, postID);
     }
     public void downvotePost(int postID){
-        String sql = "UPDATE posts SET up_votes = up_votes - 1 WHERE post_id = ?";
+        String sql = "UPDATE posts SET down_votes = down_votes + 1 WHERE post_id = ?";
         jdbcTemplate.update(sql, postID);
     }
     public int getPostScore(int postID){

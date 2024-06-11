@@ -7,7 +7,15 @@
     <!-- Need: ADD POST AND LIKE POST FUNCTIONALITY (IF SIGNED IN - otherwise disable) -->
     <ForumsCard class = "forum-card" v-bind:forum="forum" v-bind:key="forum.forum_id"/>
     </div>
+
+    <CreatePostCard class = 'create-post-card'/>
+
+    
+
+    
     <PostCard v-for="post in posts" v-bind:post="post" v-bind:key="post.post_id"/>
+
+    
   </template>
   
   <script>
@@ -16,12 +24,14 @@ import ForumService from '../services/ForumService';
 import PostService from '../services/PostService';
 import ForumsCard from '../components/ForumsCard.vue';
 import PostCard from '../components/PostCard.vue';
+import CreatePostCard from '../components/CreatePostCard.vue';
 
 
   export default {
     components: {
         ForumsCard,
-        PostCard
+        PostCard,
+        CreatePostCard
     },
     data(){
         return {
@@ -60,6 +70,8 @@ import PostCard from '../components/PostCard.vue';
                 // }
             )
         },
+
+        
         /*
         handleErrorResponse(error) {
             if (error.response.status == 404) {
@@ -86,6 +98,17 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 padding-top: 3%;
+}
+
+.create-post-card{
+      display: flex;
+      align-content: center;
+      margin-bottom: 1%;
+      border: 8px solid rgb(250, 129, 240);
+      color: white;
+      margin-top: .5%;
+      text-align: center;
+      padding: 10px;
 }
 
 </style>

@@ -4,7 +4,7 @@
     <form v-on:submit.prevent="addForum">
       
       <label for="forum_name">Name of Forum</label>
-      <input type="text" id="forum_name" name="forum_name" v-model="changeForum.forum_name"/>
+      <input type="text" id="forum_name" name="forum_name" v-model="changeForum"/>
       
       <div class="submissions">
         <button class="submitBtn" type="submit">Submit</button>
@@ -26,21 +26,26 @@ export default {
         required: true,
       }
     },
+
     data() {
       return {
         changeForum: {
-          id: 0,
+        //   id: 0,
+        //   forum_user_id: 0,
           forum_name: '',
+        //   time_stamp: Date,
+          
         }
 
       }
     },
+
     methods: {
       addForum() {
-        ForumService.addForum(this.forum).then (
+        ForumService.addForum(this.changeForum).then(
           (response) => {
             if(response.status === 201) {
-              this.$router.push('forumview')
+              this.$router.push('home')
             }
           }
         )
@@ -51,6 +56,7 @@ export default {
     },
   
   };
+
   </script>
   
   <style scoped>

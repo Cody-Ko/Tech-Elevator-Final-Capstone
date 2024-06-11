@@ -1,23 +1,24 @@
 <template>
-    <div class="create-forum-home"> Create A Forum</div>
-    <CreateForumCard v-bind:forum="forum"/>
+    <div class="create-post-home"> Create A Forum</div>
+    <CreatePostCard v-bind:post="post"/>
+
 </template>
   
 <script>
 
-import CreateForumCard from '../components/CreateForumCard.vue';
+import CreatePostCard from '../components/CreatePostCard.vue';
 
 
   export default {
     components: {
-      CreateForumCard
+      CreatePostCard,
     },
     data() {
       return {
-        changeForum: {
+        changePost: {
           // id: 0,
           // forum_user_id: 0,
-          forum_name: '',
+          post_name: '',
           // time_stamp: Date,
         }
         
