@@ -34,6 +34,8 @@ export default {
     data(){
         return{
             postId: this.post.post_id,
+            hasUpVoted: false,
+            hasDownVoted: false,
             postScore: 0,
             editPost: {
                 post_id: this.post_id,
@@ -113,21 +115,31 @@ export default {
         },
 
         upVoteScore(){
-            PostService.upVotePost(this.post.post_id).then((response)=>{
+            if (this.hasUpVoted === false){
+                PostService.upVotePost(this.post.post_id).then((response)=>{
                 if(response.status === 200){
                     this.getScore();
+                    this.hasUpVoted = true;
+                    this.hasDownVoted = false;
 
                 }
             })
+            }
+            
             console.log('up')
         },
 
         downVoteScore(){
-            PostService.downVotePost(this.post.post_id).then((response)=>{
+            if(this.hasDownVoted === false){
+                PostService.downVotePost(this.post.post_id).then((response)=>{
                 if(response.status === 200){
                     this.getScore();
+                    this.hasDownVoted = true;
+                    this.hasUpVoted = false;
                 }
             })
+            }
+            
 
             console.log('down')
         }
