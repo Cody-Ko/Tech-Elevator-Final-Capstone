@@ -12,10 +12,10 @@
       <select v-model="Selection" @change="changeView" class="dropdown">
         <option value="">Select</option>
         <!-- <router-link v-bind:to="{name: 'resources'}"> -->
-          <option value="Resources">Resources</option>
+          <option value="Create-Forum">Create Forum</option>
         <!-- </router-link> -->
         <!-- <router-link v-bind:to="{name: 'createforum'}"> -->
-        <option value="Create-Forum">Create Forum</option>
+          <option value="Resources">Community Guidelines</option>
       <!-- </router-link> -->
       </select>
 
@@ -205,6 +205,8 @@ import PostService from '../services/PostService';
   margin-top: 20%;
   margin-right: 10px;
   size: 30px;
+  font-size: 23px;
+
 }
 
 .ResourcesViewLink{
@@ -230,7 +232,7 @@ import PostService from '../services/PostService';
   display:flex;
   flex-direction: column;
   width: 6%;
-  border-right: 5px solid rgb(250, 129, 240);
+  /* border-right: 5px solid rgb(250, 129, 240); */
   height: 100vh;
   /* padding-top: 2px; */
   padding-left: 3px;
