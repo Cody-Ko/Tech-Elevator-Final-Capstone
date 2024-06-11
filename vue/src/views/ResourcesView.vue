@@ -1,7 +1,9 @@
 <template>
     <div class="community-guidelines">
         <div class="background-image">
-
+            <div class="guidelines-card">
+                <p>yaba daba doo</p>
+            </div>
         </div>
 
     </div>
@@ -22,6 +24,28 @@ export default{
     height:100vh;
 }
 
+.guidelines-card{
+    flex-direction: column;
+    justify-content: space-between;
+    justify-items: center;
+    border-radius: 15px;
+    width: 50%;
+    /* max-width: 750px; */
+    min-width: 600px;
+    /* height: 250px; */
+    min-height: 500px;  
+    /* margin: 20px; */
+    margin: 0 auto;   /* this keeps the card in the middle of the page */
+    margin-bottom: 1%;
+    border: 8px solid rgb(250, 129, 240);
+    /* font-size: 2.5rem; */
+    color: white;
+    text-align: center;
+    padding-top: 10px;
+    /* background-image: ; */
+    background-color: #34aae1;
+}
+
 .background-image{
   width: auto;
   height: 100%;
@@ -33,11 +57,12 @@ export default{
   size: 2rem;
 }
 
-html, body, content {
+/* html, body, content {
   width: auto;
   height: 100vh;
   margin: 0;
-  /* background-attachment: fixed; */
-  /* background-color: #34aae1; */
-}
+  background-attachment: fixed; 
+  background-color: #34aae1;
+} */
+
 </style>

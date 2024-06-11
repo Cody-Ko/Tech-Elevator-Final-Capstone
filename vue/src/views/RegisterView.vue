@@ -1,6 +1,7 @@
 <template>
   <div id="register" class="text-center">
-    <form v-on:submit.prevent="register">
+    <div class="background-image">
+      <form v-on:submit.prevent="register">
       <h1>Create Account</h1>
       <div role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
@@ -21,6 +22,8 @@
       <p><router-link v-bind:to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
     </form>
   </div>
+    </div>
+    
 </template>
 
 <script>
@@ -78,5 +81,37 @@ export default {
 }
 label {
   margin-right: 0.5rem;
+}
+
+.background-image{
+  width: 100%;
+  height: 100%;
+  background: url("../assets/Rovermoved.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+  /* background-position: fixed; */
+  
+}
+
+#register{
+  height:100vh;
+}
+
+form{
+  border: 8px solid #34aae1;
+  width: 15%;
+  height:40%;
+  border-radius: 35px;
+  background-color: #34aae1;
+}
+
+html, body, content {
+  width: auto;
+  height: 100vh;
+  margin: 0;
+  background-attachment: fixed;
+  /* background-color: #34aae1; */
 }
 </style>
