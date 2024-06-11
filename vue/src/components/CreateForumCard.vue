@@ -1,16 +1,17 @@
 <template>
-
-<div class="create-forum-home"> Create A Forum</div>
-    <form class="build-a-forum" v-on:submit.prevent="addForum" >
+  
+    <div class="create-forum-home"> Create A Forum</div>
+      <form class="build-a-forum" v-on:submit.prevent="addForum" >
       
-      <label for="forum_name">Name of Forum</label>
-      <input type="text" id="forum_name" name="forum_name" v-model="changeForum"/>
+        <label for="forum_name">Name of Forum</label>
+          <input type="text" id="forum_name" name="forum_name" v-model="changeForum"/>
       
-      <div class="submissions">
-        <button class="submitBtn" type="submit">Submit</button>
-        <button class="cancelBtn" type="button" v-on:click="cancelButton">Cancel</button>
-      </div>
-    </form>
+        <div class="submissions">
+          <button class="submitBtn" type="submit">Submit</button>
+          <button class="cancelBtn" type="button" v-on:click="cancelButton">Cancel</button>
+        </div>
+      </form>
+  
 
 </template>
   
@@ -62,45 +63,43 @@ export default {
   <style scoped>
   .create-forum-home {
       display: grid;
+      align-items: center;
       align-content: center;
+      text-align: center;
       /* flex-direction: column;
       justify-content: space-between; */
       border-radius: 15px;
-      /* max-width: 750px; */
-      /* height: 250px; */ 
-      /* margin: 20px; */
-      margin: 0 auto;   /* this keeps the card in the middle of the page */
+      margin: 0 auto;
       margin-bottom: 1%;
       font-size: 2.5rem;
       font-weight: bold;
       color: white;
       margin-top: .25%;
+      height: 100%;
+      width: 100%;
+      margin: 0;
+  }
+  .build-a-forum {
+      display: flex;
+      align-items: center;
+      align-content: center;
+      color: white;
       text-align: center;
+      justify-content: center;
+      height: 100vh;
+      width: 100vh;
   }
 
   .build-a-forum {
       display: grid;
-      align-content: center;
-      /* flex-direction: column;
-      justify-content: space-between; */
+      align-content: baseline;
       border-radius: 15px;
       justify-content: space-around;
-      /* width: 50%; */
-      /* max-width: 750px; */
-      /* min-width: 600px; */
-      /* height: 250px; */
-      /* min-height: 500px;   */
-      /* margin: 20px; */
-      margin: 0 auto;   /* this keeps the card in the middle of the page */
+      margin: 0 auto;
       margin-bottom: 1%;
-      /* font-size: 2.5rem; */
       color: white;
       margin-top: .25%;
       text-align: center;
       padding: 10px;
-      /* background-image: ; */
   }
-
-  
-  /* Test 1 */
   </style>
