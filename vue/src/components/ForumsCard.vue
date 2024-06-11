@@ -9,10 +9,17 @@
      <!-- <button v-on:click="favorite" class="favorite-star"> -->
      <!-- <button v-bind:class="{'fas fa-star yellow-star': iconClick, 'fas fa-star white-star': !iconClick}" v-on:click="favorite"></button> -->
      
-        <span v-if="iconClick" @click="favorite">
+        <!-- <span v-if="iconClick" @click="favorite">
             <i class="fas fa-star yellow-star"></i>
         </span>
         <span v-else @click="favorite">
+            <i class="fas fa-star white-star"></i>
+        </span> -->
+
+        <span v-if="iconClick" @click="unfavoriteForum(forum.forum_id)">
+            <i class="fas fa-star yellow-star"></i>
+        </span>
+        <span v-else @click="addFavoriteForum(forum.forum_id)">
             <i class="fas fa-star white-star"></i>
         </span>
 
@@ -31,35 +38,64 @@
 
 <script>
 
+import ForumService from '../services/ForumService';
+
 // import PostsComponent from '../components/PostsComponent'
 
 export default{
     data(){
         return{
-            iconClick: false
+            iconClick: false,
+            forumId: 0,
         }
     },
+
     components: {
 
     },
+
     props: {
         forum: {
             type: Object,
             required: true
         },
-        post: {}
+        post: {},
         
     },
+
     computed: {
 
     },
+
     methods: {
+        addFavoriteForum(forumId) {
+
+            ForumService.addFavoriteForum(forumId).then(
+                (response) => {
+                    if(response.status === 201) {
+                        this.iconClick =!this.iconClick;
+                    }
+                }
+            );
+        },
+
+        unfavoriteForum(forumId) {
+
+            ForumService.unfavoriteForum(forumId).then(
+                (response) => {
+                    if(response.status === 204) {
+                        this.iconClick = !this.iconClick;
+                    }
+                }
+            );
+        },
+
         favorite(){
             this.iconClick = !this.iconClick;
             console.log(this.iconClick);
-        }
+        },
 
-    }
+    },
 
 };
 </script>
