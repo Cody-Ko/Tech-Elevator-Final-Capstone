@@ -60,13 +60,13 @@ export default {
         PostService.addPost(this.forumId, this.postDto).then(
           (response) => {
             if(response.status === 201) {
-              this.$router.push('home')
+              this.$router.push('/')
             }
           }
         )
       },
       cancelButton() {
-        this.$router.push({name: 'home'});
+        this.$router.push({name: '/'});
       }
     },
   
