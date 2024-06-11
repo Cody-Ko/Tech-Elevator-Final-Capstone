@@ -4,13 +4,13 @@
     <form class ="build-a-post" v-on:submit.prevent="addPost">
       
       <label for="post_name">Name of Post</label>
-      <input type="text" id="post_name" name="post_name" v-model="changePost.title"/>
+      <input type="text" id="post_name" name="post_name" v-model="postDto.title"/>
 
       <label for="post_message_details">Message of Post</label>
-      <input type="text" id="post_message_details" name="post_message_details" v-model="changePost.message"/>
+      <input type="text" id="post_message_details" name="post_message_details" v-model="postDto.message"/>
 
       <label for="post_location">Location of Post</label>
-      <input type="text" id="post_location" name="post_location" v-model="changePost.location"/>
+      <input type="text" id="post_location" name="post_location" v-model="postDto.location"/>
       
       <div class="submissions">
         <button class="submitBtn" type="submit">Submit</button>
@@ -37,7 +37,7 @@ export default {
 
       data() {
       return {
-        changePost: {
+        postDto: {
         //   id: 0,
         //   forum_user_id: 0,
           title: '',
