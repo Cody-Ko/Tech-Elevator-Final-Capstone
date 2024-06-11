@@ -51,7 +51,7 @@ export default {
         )
       },
       cancelButton() {
-        this.$router.push({name: '/'});
+        this.$router.push("/");
       }
     },
   
