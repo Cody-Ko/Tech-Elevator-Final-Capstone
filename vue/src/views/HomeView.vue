@@ -1,15 +1,29 @@
 <template>
   <section class="whole-page">
     <section class="left-panel">
-      <h1 class="home-text">Home</h1>
-      <router-link class="ResourcesViewLink"
+
+      <!-- <h1 class="home-text">Home</h1> -->
+    
+      <!-- <router-link class="ResourcesViewLink" 
       v-bind:to="{name: 'resources'}">
         <h1 class="resources-link"> Resources</h1>
-      </router-link>
-      <router-link class="CreateForumViewLink"
+      </router-link> -->
+
+      <select v-model="Selection" @change="changeView" class="dropdown">
+        <option value="">Select</option>
+        <!-- <router-link v-bind:to="{name: 'resources'}"> -->
+          <option value="Resources">Resources</option>
+        <!-- </router-link> -->
+        <!-- <router-link v-bind:to="{name: 'createforum'}"> -->
+        <option value="Create-Forum">Create Forum</option>
+      <!-- </router-link> -->
+      </select>
+
+      <!-- <router-link class="CreateForumViewLink" 
       v-bind:to="{name: 'createforum'}">
         <h1 class="create-forum">Create Forum</h1>
-      </router-link>
+      </router-link> -->
+
       <!-- <router-link class="CreatePostViewLink" v-bind:to="{name: 'createpost'}">
         <h1 class="create-post">Create A Post</h1>
       </router-link> -->
@@ -117,6 +131,7 @@ import PostService from '../services/PostService';
               // },
              ],
              keyword: "",
+             Selection: ""
         };
     },
     methods: {
@@ -124,6 +139,7 @@ import PostService from '../services/PostService';
           PostService.get10MostPopularPosts().then((response) =>{
             this.posts = response.data;
           }).catch(error =>{
+                
               })
         },
         getForums(){
@@ -150,7 +166,17 @@ import PostService from '../services/PostService';
         },
         searchForums(keyword) {
           this.getForumsByKeyword(keyword)
+        },
+
+        changeView(){
+          if(this.Selection === 'Resources'){
+            this.$router.push({name:'resources'});
+          } else if (this.Selection === 'Create-Forum'){
+            this.$router.push({name:'createforum'});
+
+          }
         }
+       
     },
     created(){
             this.getForums();
@@ -171,6 +197,13 @@ import PostService from '../services/PostService';
   margin-right: 10px;
   padding-bottom: 10%;
 }
+
+.dropdown{
+  margin-top: 20%;
+  margin-right: 10px;
+  size: 30px;
+}
+
 .ResourcesViewLink{
   text-decoration: none;
   color: white;
