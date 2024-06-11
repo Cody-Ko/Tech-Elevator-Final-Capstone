@@ -129,6 +129,12 @@ INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time
 VALUES (2, 1, 'My favorite movies', 'Let''s start a thread of our favorite movies! Comment down below with your favorite, I''ll start: It''s Such a Beautiful Day by Don Hertzfeldt', 3, 0, 'CURRENT_TIMESTAMP', 'USA');
 INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
 VALUES (3, 1, 'Evil Dead Review', 'Haven''t seen it :D', 5, 7, 'CURRENT_TIMESTAMP', 'USA');
+INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
+VALUES (2, 1, 'The Spongebob Movie', 'Literally the best film on planet earth, and it features my favorite band, Ween', 9, 6, 'CURRENT_TIMESTAMP', 'USA');
+INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
+VALUES (2, 1, 'Why you should watch A24 movies', 'Who doesn''t love an indie film???', 10, 0, 'CURRENT_TIMESTAMP', 'USA');
+INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
+VALUES (2, 1, 'DELAYED', 'All the movies I''ve been excited about have been delayed in production due to the 2023 writer''s strike :((' , 8, 40, 'CURRENT_TIMESTAMP', 'USA');
 
 --Book Recommendations posts
 INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
