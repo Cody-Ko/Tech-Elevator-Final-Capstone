@@ -11,6 +11,8 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.security.Principal;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -35,6 +37,7 @@ public class JdbcForumDAO implements ForumDAO {
     }*/
     @Override
     public void addForum(Principal currUser, String forumName) {
+        forumName = decoder(forumName);
         String sql = "INSERT into forum VALUES (DEFAULT, " +
                 "(select user_id from users where username = ?)," +
                 "?, CURRENT_TIMESTAMP);";
@@ -228,7 +231,13 @@ public class JdbcForumDAO implements ForumDAO {
         }
         return forums;
     }
-
+    private String decoder(String input){
+        input = URLDecoder.decode(input, StandardCharsets.UTF_8);
+        if (input.endsWith("=")){
+            input = input.substring(0,input.length()-1);
+        }
+        return input;
+    }
 
     // ROW MAPPER
     @Override

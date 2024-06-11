@@ -10,11 +10,14 @@ import com.techelevator.dao.UserDAO;
 import com.techelevator.model.Comment;
 import com.techelevator.model.Forum;
 import com.techelevator.model.Post;
+import com.techelevator.model.PostDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.security.Principal;
 import java.util.List;
 
@@ -118,10 +121,11 @@ public class UserController {
     /*** CREATE A NEW POST ***/
     @PreAuthorize("isAuthenticated()")
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/forums/{forumId}/posts", method = RequestMethod.POST)
-    public void createPost(@Valid @RequestBody Post post) {
-        postDAO.createPost(post);
+    @RequestMapping(path = "/forums/{forumId}", method = RequestMethod.POST)
+    public void createPost(@Valid @RequestBody PostDto postDto, Principal currUser, @PathVariable int forumId) {
+        postDAO.createPost(currUser, postDto, forumId);
     }
+    /* dto for create post includes: title, message, location */
 
     /*** GET POSTS BY FORUM ***/
     @RequestMapping(value = "/forums/{forumId}/posts", method = RequestMethod.GET)

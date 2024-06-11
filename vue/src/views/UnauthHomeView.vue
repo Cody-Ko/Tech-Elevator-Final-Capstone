@@ -18,7 +18,7 @@
     <section class="main-section">
       <section class ="top-section">
       
-          <h1 class="welcome">Welcome back!</h1>
+          <h1 class="welcome">Stellar Discussions</h1>
     <form @submit.prevent="searchForums(keyword)">
         <div class="searchbar">
           <input type="text" v-model="keyword" 
@@ -140,6 +140,13 @@ import PostService from '../services/PostService';
         };
     },
     methods: {
+        getTodaysPopularPosts(){
+           PostService.get10MostPopularPosts().then((response) =>{
+             this.posts = response.data;
+           }).catch(error =>{
+
+               })
+        },
         getForums(){
             ForumService.getAllForums().then((response) =>{
                 this.forums = response.data;

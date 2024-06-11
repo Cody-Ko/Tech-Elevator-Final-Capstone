@@ -1,10 +1,10 @@
 <template>
 
 <div class="create-forum-home"> Create A Forum</div>
-    <form v-on:submit.prevent="addForum">
+    <form class="build-a-forum" v-on:submit.prevent="addForum">
       
       <label for="forum_name">Name of Forum</label>
-      <input type="text" id="forum_name" name="forum_name" v-model="changeForum.forum_name"/>
+      <input type="text" id="forum_name" name="forum_name" v-model="changeForum"/>
       
       <div class="submissions">
         <button class="submitBtn" type="submit">Submit</button>
@@ -26,21 +26,26 @@ export default {
         required: true,
       }
     },
+
     data() {
       return {
         changeForum: {
-          id: 0,
+        //   id: 0,
+        //   forum_user_id: 0,
           forum_name: '',
+        //   time_stamp: Date,
+          
         }
 
       }
     },
+
     methods: {
       addForum() {
-        ForumService.addForum(this.forum).then (
+        ForumService.addForum(this.changeForum).then(
           (response) => {
             if(response.status === 201) {
-              this.$router.push('forumview')
+              this.$router.push('home')
             }
           }
         )
@@ -51,31 +56,46 @@ export default {
     },
   
   };
+
   </script>
   
   <style scoped>
-  .PostCard {
+  .create-forum-home {
       display: grid;
-      grid-template-columns: auto 1fr;
-      grid-template-areas: 
-      "vote-icons post-name"
-      "message message"
-      "time time";
+      align-content: center;
       /* flex-direction: column;
       justify-content: space-between; */
       border-radius: 15px;
-      width: 50%;
       /* max-width: 750px; */
-      min-width: 600px;
-      /* height: 250px; */
-      min-height: 500px;  
+      /* height: 250px; */ 
       /* margin: 20px; */
       margin: 0 auto;   /* this keeps the card in the middle of the page */
       margin-bottom: 1%;
-      border: 8px solid rgb(250, 129, 240);
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: white;
+      margin-top: .25%;
+      text-align: center;
+  }
+
+  .build-a-forum {
+      display: grid;
+      align-content: center;
+      /* flex-direction: column;
+      justify-content: space-between; */
+      border-radius: 15px;
+      justify-content: space-around;
+      /* width: 50%; */
+      /* max-width: 750px; */
+      /* min-width: 600px; */
+      /* height: 250px; */
+      /* min-height: 500px;   */
+      /* margin: 20px; */
+      margin: 0 auto;   /* this keeps the card in the middle of the page */
+      margin-bottom: 1%;
       /* font-size: 2.5rem; */
       color: white;
-      margin-top: .5%;
+      margin-top: .25%;
       text-align: center;
       padding: 10px;
       /* background-image: ; */

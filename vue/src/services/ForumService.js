@@ -18,12 +18,12 @@ export default {
     return axios.put(`/update-forum`, forumId);
   },
 
-  addForum(forum) {
-    return http.post('/add-forum', forum)
+  addForum(changeForum) {
+    return axios.post('/forums', changeForum)
   },
 
   deleteForum(forumId) {
-    return http.delete(`/forums/${forumId}`)
+    return axios.delete(`/forums/${forumId}`)
   },
 
   getForumsByKeyword(keyword) {

@@ -1,7 +1,9 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Post;
+import com.techelevator.model.PostDto;
 
+import java.security.Principal;
 import java.util.List;
 
 public interface PostDAO {
@@ -23,7 +25,8 @@ public interface PostDAO {
 
 
         /*** CREATE AND DELETE POSTS ***/
-    void createPost(Post toPost);
+    //void createPost(Post toPost);
+        void createPost(Principal currentUser, PostDto postDto, int forumId);
     void deletePost(int postID);
     void deletePostsByUserID(int userID);
 
