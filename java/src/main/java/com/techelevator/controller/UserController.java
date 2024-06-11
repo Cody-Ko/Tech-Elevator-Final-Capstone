@@ -220,6 +220,14 @@ public class UserController {
     public void addFavoriteForum(@PathVariable int forumId, Principal currUser){
         forumDAO.addFavoriteForum(forumId, currUser.getName());
     }
+
+    @PreAuthorize("isAuthenticated()")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping (value= "/forums/favorite/{forumId}", method = RequestMethod.DELETE)
+    public void removeFavoriteForum(@PathVariable int forumId, Principal currUser){
+        forumDAO.removeFavoriteForum(forumId, currUser.getName());
+    }
+
 /*
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/posts/{postId}/upvote", method = RequestMethod.PUT)
