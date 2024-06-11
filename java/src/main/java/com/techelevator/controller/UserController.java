@@ -57,7 +57,7 @@ public class UserController {
     // GETS FORUMS BY FORUM NAME
     @RequestMapping(value = "/forums/forumname/{name}", method = RequestMethod.GET)
     public List<Forum> getForumsByForumName(@PathVariable String name) {
-        return forumDAO.getForumsByForumName(name);
+        return forumDAO.getForumsByUsername(name);
     }
 
     // GETS FORUMS BY FORUM ID
