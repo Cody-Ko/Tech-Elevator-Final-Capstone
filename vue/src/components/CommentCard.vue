@@ -49,6 +49,8 @@ export default{
     /* margin: 20px; */
     /* margin: 0 auto; */
     margin-bottom: 5px;
+    background-color: #34aae1;
+
 }
 
 .CommentCard .messageDetails{

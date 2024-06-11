@@ -93,7 +93,7 @@ html, body, content {
   height: 100vh;
   margin: 0;
   background-attachment: fixed;
-  background-color: #34aae1;
+  /* background-color: #34aae1; */
 }
 
 
