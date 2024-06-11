@@ -168,6 +168,8 @@ export default {
     text-align: center;
     padding: 10px;
     /* background-image: ; */
+    background-color: #34aae1;
+;
 }
 
 .messageDetails {

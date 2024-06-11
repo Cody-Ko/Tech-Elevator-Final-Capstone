@@ -81,16 +81,27 @@ public class UserController {
         forumDAO.addForum(forum);
     }*/
 
+    // GETS FAVORITE FORUMS
     @PreAuthorize("isAuthenticated()")
     @RequestMapping (value= "/forums/favorite", method = RequestMethod.GET)
     public List<Forum> getFavoriteForumsByUser(Principal currUser){
         return forumDAO.getFavoriteForumsByUsername(currUser.getName());
     }
+
+
+    // CREATES A FORUM
     @PreAuthorize("isAuthenticated()")
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/forums", method = RequestMethod.POST)
     public void addForum(Principal currUser, @RequestBody String forumName) {
         forumDAO.addForum(currUser, forumName);
+    }
+
+
+    // GETS 5 MOST ACTIVE FORUMS BY POSTS TIMESTAMP
+    @RequestMapping(value="/forums/active", method= RequestMethod.GET)
+    public List<Forum> getActiveForums() {
+        return forumDAO.getActiveForums();
     }
 
 
@@ -101,6 +112,7 @@ public class UserController {
     public void deleteForumByForumName(@PathVariable String name) {
         forumDAO.deleteForumByForumName(name);
     }
+
 
     // DELETES FORUM BY FORUM ID
     @PreAuthorize("isAuthenticated()")
