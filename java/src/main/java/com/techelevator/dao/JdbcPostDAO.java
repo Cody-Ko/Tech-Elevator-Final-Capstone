@@ -8,6 +8,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 
 import javax.validation.constraints.Null;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
+import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
@@ -139,13 +142,45 @@ public class JdbcPostDAO implements PostDAO {
 
     /*** CREATE AND DELETE POSTS ***/
     @Override
-    public void createPost(Post toPost){
+    public void createPost(/*Post toPost,*/  Principal currUser, String title, String message/*,
+                           int forumID*/ /* path variable */){
+
+        //Principal currUser, String forumName
+        /*
         String sql = "INSERT INTO posts VALUES (DEFAULT, ?, ?, ?, ? , ?, ?, CURRENT_TIMESTAMP, ?)";
+
         jdbcTemplate.update(sql, toPost.getUserID(), toPost.getForumID(), toPost.getTitle(),
                 toPost.getMessageDetails(), toPost.getUpVotes(), toPost.getDownVotes(),
                 toPost.getLocation());
-    }
+         */
+        String sql = "INSERT INTO posts VALUES (DEFAULT, (select user_id from users where username = ?), 2, ?, ? , 0, 0, CURRENT_TIMESTAMP," +
+                " 'New Jersey ofc, everywhere else sucks')";
 
+        jdbcTemplate.update(sql, currUser.getName(), title, message);
+    }
+    /*
+    post_id     --  serial
+    user_id     --  from principal
+    forum_id    --  from url path
+    title       --  PARAMETER
+    message     --  PARAMETER
+    up_votes    --  set to zero
+    down_votes  --  set to zero
+    time_stamp  -- CURRENT_TIMESTAMP
+    location    -- STRING PARAMETER
+     */
+
+
+/*
+    @Override
+    public void addForum(Principal currUser, String forumName) {
+        forumName = decoder(forumName);
+        String sql = "INSERT into forum VALUES (DEFAULT, " +
+                "(select user_id from users where username = ?)," +
+                "?, CURRENT_TIMESTAMP);";
+        jdbcTemplate.update(sql, currUser.getName(), forumName);
+    }
+*/
 
 
     /*** METHODS FOR VOTING ON POSTS ***/
@@ -189,6 +224,14 @@ public class JdbcPostDAO implements PostDAO {
     public void deletePostsByUserID(int userID){
         String sql = "DELETE FROM posts WHERE user_id = ?";
         jdbcTemplate.update(sql, userID);
+    }
+
+    private String decoder(String input){
+        input = URLDecoder.decode(input, StandardCharsets.UTF_8);
+        if (input.endsWith("=")){
+            input = input.substring(0,input.length()-1);
+        }
+        return input;
     }
 
     private Post mapRowToPost(SqlRowSet rs) {
