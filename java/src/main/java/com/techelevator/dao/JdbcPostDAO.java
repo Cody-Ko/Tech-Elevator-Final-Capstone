@@ -2,6 +2,7 @@ package com.techelevator.dao;
 
 import com.techelevator.model.Forum;
 import com.techelevator.model.Post;
+import com.techelevator.model.PostDto;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -142,8 +143,8 @@ public class JdbcPostDAO implements PostDAO {
 
     /*** CREATE AND DELETE POSTS ***/
     @Override
-    public void createPost(/*Post toPost,*/  Principal currUser, String title, String message/*,
-                           int forumID*/ /* path variable */){
+    public void createPost(Principal currUser, PostDto postDto,
+                           int forumID /* path variable */){
 
         //Principal currUser, String forumName
         /*
@@ -153,10 +154,9 @@ public class JdbcPostDAO implements PostDAO {
                 toPost.getMessageDetails(), toPost.getUpVotes(), toPost.getDownVotes(),
                 toPost.getLocation());
          */
-        String sql = "INSERT INTO posts VALUES (DEFAULT, (select user_id from users where username = ?), 2, ?, ? , 0, 0, CURRENT_TIMESTAMP," +
-                " 'New Jersey ofc, everywhere else sucks')";
+        String sql = "INSERT INTO posts VALUES (DEFAULT, (select user_id from users where username = ?), ?, ?, ? , 0, 0, CURRENT_TIMESTAMP, ?)";
 
-        jdbcTemplate.update(sql, currUser.getName(), title, message);
+        jdbcTemplate.update(sql, currUser.getName(), forumID, postDto.getTitle(), postDto.getMessage(), postDto.getLocation());
     }
     /*
     post_id     --  serial
