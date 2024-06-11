@@ -26,7 +26,7 @@ export default{
 
 <style scoped>
 .background-image{
-  width: 100vw;
+  width: auto;
   height: 100%;
   background-repeat: no-repeat;
   background-position: center;

@@ -1,18 +1,16 @@
 <template>
   <section class="whole-page">
-
+    
     <section class="left-panel">
-
-      <h1 class="home-text">Home</h1>
-
-      <router-link class="ResourcesViewLink" 
-      v-bind:to="{name: 'resources'}">
-        <h1 class="resources-link"> Resources</h1>
-      </router-link>
-
-      <!-- <router-link class="CreatePostViewLink" v-bind:to="{name: 'createpost'}">
-        <h1 class="create-post">Create A Post</h1>
-      </router-link> -->
+      <select v-model="Selection" @change="changeView" class="dropdown">
+        <option value="">Select</option>
+        <!-- <router-link v-bind:to="{name: 'resources'}"> -->
+          <option value="Create-Forum">Create Forum</option>
+        <!-- </router-link> -->
+        <!-- <router-link v-bind:to="{name: 'createforum'}"> -->
+          <option value="Resources">Community Guidelines</option>
+      <!-- </router-link> -->
+      </select>
     </section>
 
     <section class="main-section">
@@ -137,6 +135,7 @@ import PostService from '../services/PostService';
               // },
              ],
              keyword: "",
+             Selection: "",
         };
     },
     methods: {
@@ -175,6 +174,14 @@ import PostService from '../services/PostService';
 
         searchForums(keyword) {
           this.getForumsByKeyword(keyword)
+        },
+        changeView(){
+          if(this.Selection === 'Resources'){
+            this.$router.push({name:'resources'});
+          } else if (this.Selection === 'Create-Forum'){
+            this.$router.push({name:'createforum'});
+
+          }
         }
     },
     created(){
@@ -201,6 +208,14 @@ import PostService from '../services/PostService';
 
 }
 
+.dropdown{
+  margin-top: 20%;
+  margin-right: 10px;
+  size: 30px;
+  font-size: 23px;
+
+}
+
 .ResourcesViewLink{
   text-decoration: none;
   color: white;
@@ -224,7 +239,7 @@ import PostService from '../services/PostService';
   display:flex;
   flex-direction: column;
   width: 5%;
-  border-right: 5px solid rgb(250, 129, 240);
+  /* border-right: 5px solid rgb(250, 129, 240); */
   height: 100vh;
   /* padding-top: 2px; */
   padding-left: 3px;
@@ -288,17 +303,24 @@ import PostService from '../services/PostService';
 }
 
 .searchbar {
-  /* justify-content: right; */
-  grid-area: searchforums;
-  /* top: 300px; */
-  width: 250px;
-  /* margin-left: 300px; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.searchbar input, .searchbar button {
+  font-size: 20px;
+}
 
+.searchbar input {
+  width: 400px;
 }
 
 .welcome {
   font-size: 3rem;
   color: white;
+}
+input {
+  size: 100px;
 }
 
 .register {
