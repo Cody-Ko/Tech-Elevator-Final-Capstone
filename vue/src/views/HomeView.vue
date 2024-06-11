@@ -1,5 +1,5 @@
 <template>
-  <section class="whole-page">
+    <section class="whole-page">
     <section class="left-panel">
 
       <!-- <h1 class="home-text">Home</h1> -->
@@ -58,6 +58,7 @@
   </section>
   <div class="home">
   </div>
+  
 </template>
 <script>
 import ForumService from '../services/ForumService';
@@ -131,7 +132,7 @@ import PostService from '../services/PostService';
               // },
              ],
              keyword: "",
-             Selection: ""
+             Selection: "",
         };
     },
     methods: {
@@ -186,6 +187,8 @@ import PostService from '../services/PostService';
     };
   </script>
 <style scoped>
+
+
 .whole-page{
   display: flex;
   /* height: 100%; */
