@@ -7,6 +7,10 @@
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
     </div>
     <router-view />
+
+    <div id="bottomNav">
+      Welcome to the Edge of the Universe.  Farwell!
+    </div>
   </div>
     </div>
     
@@ -94,6 +98,18 @@ html, body, content {
   margin: 0;
   background-attachment: fixed;
   /* background-color: #34aae1; */
+}
+
+#bottomNav {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(250, 228, 248);
+  text-decoration-color: rgb(250, 129, 240);
+  position: fixed;
+  width: 100vw;
+  z-index: 1;
+  color: purple;
+  text-align: Center;
+  bottom: 0;
 }
 
 

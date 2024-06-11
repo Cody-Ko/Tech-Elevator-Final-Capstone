@@ -1,7 +1,7 @@
 <template>
 
 <div class="create-forum-home"> Create A Forum</div>
-    <form class="build-a-forum" v-on:submit.prevent="addForum">
+    <form class="build-a-forum" v-on:submit.prevent="addForum" >
       
       <label for="forum_name">Name of Forum</label>
       <input type="text" id="forum_name" name="forum_name" v-model="changeForum"/>
