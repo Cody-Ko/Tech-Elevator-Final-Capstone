@@ -59,16 +59,15 @@ public class JdbcForumDAO implements ForumDAO {
 
     // GETS USERNAME OF PERSON WHO CREATED FORUM
     @Override
-    public String getUsername(String name) {
+    public String getUsername(int forumId) {
         String sql = "SELECT username from users\n" +
-                "JOIN user_forum ON user_id.users = user_id.user_forum\n" +
-                "JOIN forum ON forum_id.user_forum = forum_id.forum\n" +
-                "WHERE forum_name = ?";
+                "JOIN forum ON users.user_id = forum.user_id\n" +
+                "WHERE forum_id = ?";
 
         try{
-            return jdbcTemplate.queryForObject(sql, String.class, name);
+            return jdbcTemplate.queryForObject(sql, String.class, forumId);
         } catch (NullPointerException | EmptyResultDataAccessException e) {
-            throw new UsernameNotFoundException("Forum " + name + " was not found.");
+            throw new UsernameNotFoundException("Forum " + forumId + " was not found.");
         }
     }
 

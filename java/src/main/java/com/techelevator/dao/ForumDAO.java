@@ -12,7 +12,7 @@ public interface ForumDAO {
 
     int getUserId(String name);
 
-    String getUsername(String name);
+    String getUsername(int forumId);
 
     List<Forum> getForumsByUsername(String username);
 

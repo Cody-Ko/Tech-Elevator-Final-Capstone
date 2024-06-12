@@ -248,6 +248,11 @@ public class UserController {
         return forumDAO.getFavoriteForumsByUsername(currUser.getName());
     }*/
 
+    @RequestMapping(value = "/forums/{forumId}/createdBy", method = RequestMethod.GET)
+    public String getUsernameByForum(@PathVariable int forumId){
+        return forumDAO.getUsername(forumId);
+    }
+
 
 
 }
