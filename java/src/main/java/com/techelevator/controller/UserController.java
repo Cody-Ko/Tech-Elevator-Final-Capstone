@@ -227,6 +227,12 @@ public class UserController {
     public void deletePost(@PathVariable int postId){
         postDAO.deletePost(postId);
     }
+
+    @PreAuthorize("hasAnyRole('MOD', 'ADMIN')")
+    @RequestMapping(value= "/users/{userId}/promote", method= RequestMethod.PUT)
+    public void promoteUserToModerator(@PathVariable int userId) {
+        userDAO.promoteUserToModerator(userId);
+    }
 /*
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/posts/{postId}/upvote", method = RequestMethod.PUT)

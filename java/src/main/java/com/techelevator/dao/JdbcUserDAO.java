@@ -72,6 +72,12 @@ public class JdbcUserDAO implements UserDAO {
     }
 
     @Override
+    public void promoteUserToModerator(int userId) {
+        String sql = "UPDATE users SET ROLE = 'MOD' WHERE user_id = ?";
+        jdbcTemplate.update(sql, userId);
+    }
+
+    @Override
     public User createUser(RegisterUserDto user) {
         User newUser = null;
         String insertUserSql = "INSERT INTO users (username, password_hash, role) values (LOWER(TRIM(?)), ?, ?) RETURNING user_id";

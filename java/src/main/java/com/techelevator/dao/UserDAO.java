@@ -13,5 +13,7 @@ public interface UserDAO {
 
     User getUserByUsername(String username);
 
+    void promoteUserToModerator(int userId);
+
     User createUser(RegisterUserDto user);
 }
