@@ -167,10 +167,15 @@ public class JdbcForumDAO implements ForumDAO {
     @Override
     public List<Forum> getActiveForums() {
         List<Forum> forums = new ArrayList<>();
-        String sql = "SELECT * from forum \n" +
-                "JOIN posts ON forum.forum_id = posts.forum_id\n" +
-                "ORDER BY posts.time_stamp\n" +
-                "LIMIT 5;";
+        String sql = "SELECT *\n" +
+                "FROM forum\n" +
+                "JOIN (\n" +
+                "    SELECT posts.forum_id, MAX(posts.time_stamp) as last_post_time\n" +
+                "    FROM posts\n" +
+                "    GROUP BY posts.forum_id\n" +
+                ") AS recent_posts ON forum.forum_id = recent_posts.forum_id\n" +
+                "ORDER BY recent_posts.last_post_time DESC\n" +
+                "LIMIT 5;\n";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
 
         while(results.next()) {
