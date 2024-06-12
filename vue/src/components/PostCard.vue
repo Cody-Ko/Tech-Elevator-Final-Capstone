@@ -99,13 +99,17 @@ export default {
         errorNeedingAddressed(error, toBeDone) {
             if(error.response) {
                 if(error.response.status == 404) {
-                    this.$router.push({name: 'home'})
+                    this.$router.push({name: '/'})
                     //Need a Something went wrong view
                 } else {
-                    `This ${toBeDone} has not occurred.  Server could not be reached.`
+                    this.store.commit('SET_NOTIFICATION',
+                    `This ${toBeDone} has not occurred.  Server response was "${error.response.statusText}".`)
                 }
             } else if (error.request) {
-                `This ${toBeDone} has not occurred.  Server could not be reached.`
+                this.$store.commit('SET_NOTIFICATION',
+                `This ${toBeDone} has not occurred.  Server could not be reached.`)
+            } else {
+                `This ${toBeDone} has not occurred.  Server could not be created.`
             }
         },
         getScore(postId){
