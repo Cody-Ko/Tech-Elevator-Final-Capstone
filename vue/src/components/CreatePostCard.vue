@@ -96,7 +96,7 @@ export default {
 
   .build-a-post {
       display: grid;
-      align-content: center;
+      /* align-content: center; */
       /* flex-direction: column;
       justify-content: space-between; */
       border-radius: 15px;
@@ -107,7 +107,7 @@ export default {
       /* height: 250px; */
       /* min-height: 500px;   */
       /* margin: 20px; */
-      margin: 0 auto;   /* this keeps the card in the middle of the page */
+      margin: 5% auto 1%;   /* this keeps the card in the middle of the page */
       margin-bottom: 1%;
       /* font-size: 2.5rem; */
       color: white;
