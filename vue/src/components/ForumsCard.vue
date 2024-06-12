@@ -45,7 +45,9 @@ import ForumService from '../services/ForumService';
 export default{
     data(){
         return{
-            iconClick: false,
+            // iconClick: false,
+            // forumId: 0,
+            iconClick: localStorage.getItem('forum_' + this.forum.forum_id) === 'true' ? true : false,
             forumId: 0,
         }
     },
@@ -68,12 +70,35 @@ export default{
     },
 
     methods: {
+        // addFavoriteForum(forumId) {
+
+        //     ForumService.addFavoriteForum(forumId).then(
+        //         (response) => {
+        //             if(response.status === 201) {
+        //                 this.iconClick =!this.iconClick;
+        //             }
+        //         }
+        //     );
+        // },
+
+        // unfavoriteForum(forumId) {
+
+        //     ForumService.unfavoriteForum(forumId).then(
+        //         (response) => {
+        //             if(response.status === 204) {
+        //                 this.iconClick = !this.iconClick;
+        //             }
+        //         }
+        //     );
+        // },
+
         addFavoriteForum(forumId) {
 
             ForumService.addFavoriteForum(forumId).then(
                 (response) => {
                     if(response.status === 201) {
-                        this.iconClick =!this.iconClick;
+                        this.iconClick = true;
+                        localStorage.setItem('forum_' + forumId, 'true')
                     }
                 }
             );
@@ -84,7 +109,8 @@ export default{
             ForumService.unfavoriteForum(forumId).then(
                 (response) => {
                     if(response.status === 204) {
-                        this.iconClick = !this.iconClick;
+                        this.iconClick = false;
+                        localStorage.setItem('forum_' + forumId, 'false')
                     }
                 }
             );

@@ -44,7 +44,7 @@ export default {
 
 <style scoped>
 
-/* .searchforum .forumName .forum-section{
+.classmeup{
     font-size: 2.5rem;
     color: white;
     text-decoration: none;
@@ -54,68 +54,16 @@ export default {
 }
 
 .searchforum{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border: 8px solid rgb(250, 129, 240);
-    border-radius: 25px;
-    min-width: 450px;
-    height: 250px;
-    max-width: 650px;
-    margin-bottom: 10px;
-}
-
-.classmeup{
-    font-size: 2.5rem;
-    color: white;
-    text-decoration: none;
+    display: grid;
+    align-content: center;
+    justify-content: space-around;
+    margin: 0 auto;
+    margin-bottom: 1%;
+    margin-top: .25%;
     text-align: center;
-    margin-top: 1px;
-
-}
-
-.card .timeStamp{
-    font-size: 1rem;
-    color: white;
-    align-self: flex-end;
-    margin-right: 10px;
-}
-
-.ForumViewLink {
-    text-decoration: none;
-    color: white;
-}
-
-.white-star{
-    color: white;
-    font-size: 35px;
-    margin-top: 5px;
-    margin-left: 85%;
-    margin-right: 10px;
-}
-
-.yellow-star{
-    color: white;
-    font-size: 35px;
-    margin-top: 5px;
-    margin-left: 85%;
-    margin-right: 10px;
-}
-
-.forumName{
-    margin: 5%;
-}
-
-.timeStamp{
-    margin-bottom: 2%;
-} */
-
-.classmeup{
-    font-size: 2.5rem;
-    color: white;
-    text-decoration: none;
-    text-align: center;
-    margin-top: 1px;
+    padding: 10px;
+    height: 100vh;
+    width: 100vh;
 
 }
 
