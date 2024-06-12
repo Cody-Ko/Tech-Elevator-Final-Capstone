@@ -63,20 +63,6 @@ public class UserController {
         return forumDAO.getForumById(forumId);
     }
 
-    // GETS FORUMS BY USERNAME
-    /*@RequestMapping(value = "/forums/{username}", method = RequestMethod.GET)
-    public List<Forum> getForumsByUsername(@PathVariable String username) {
-        return forumDAO.getForumsByUsername(username);
-    }*/
-
-    // CREATES FORUM
-    // OLD -- MC
-    /*@PreAuthorize("isAuthenticated()")
-    @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/forums", method = RequestMethod.POST)
-    public void addForum(@Valid @RequestBody Forum forum) {
-        forumDAO.addForum(forum);
-    }*/
 
     // GETS FAVORITE FORUMS
     @PreAuthorize("isAuthenticated()")
@@ -192,12 +178,7 @@ public class UserController {
         return commentDAO.getCommentsByPostId(postId);
     }
 
-    /*** DELETE COMMENTS BY ID ***/
-    @PreAuthorize("hasAnyRole('MOD','ADMIN')")
-    @RequestMapping (value= "/comments/{commentId}", method = RequestMethod.DELETE)
-    public void deleteComment(@PathVariable int commentId){
-        commentDAO.deleteComment(commentId);
-    }
+
     /*** GET COMMENT BY ID **/
     @RequestMapping (value= "/comments/{commentId}", method = RequestMethod.GET)
     public Comment getCommentById(@PathVariable int commentId){
@@ -231,6 +212,17 @@ public class UserController {
         commentDAO.createComment(currUser, commentDto, postId);
     }
 
+    /*** DELETE COMMENTS BY ID ***/
+    @PreAuthorize("hasAnyRole('MOD','ADMIN')")
+    @RequestMapping (value= "/comments/{commentId}", method = RequestMethod.DELETE)
+    public void deleteComment(@PathVariable int commentId){
+        commentDAO.deleteComment(commentId);
+    }
+    @PreAuthorize("hasAnyRole('MOD','ADMIN')")
+    @RequestMapping (value= "/posts/{postId}", method = RequestMethod.DELETE)
+    public void deletePost(@PathVariable int postId){
+        postDAO.deletePost(postId);
+    }
 /*
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/posts/{postId}/upvote", method = RequestMethod.PUT)
