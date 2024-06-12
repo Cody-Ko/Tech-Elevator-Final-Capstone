@@ -211,8 +211,17 @@ public class JdbcPostDAO implements PostDAO {
 
     @Override
     public void deletePost(int postId) {
-        String sql = "DELETE FROM posts WHERE post_id = ?";
-        jdbcTemplate.update(sql, postId);
+
+        String[] sql;
+        sql = new String[] {"DELETE FROM comments WHERE post_id = ?;",
+                "DELETE FROM votes_post WHERE post_id = ?;" ,
+                "DELETE FROM posts WHERE post_id = ?;"};
+
+        //String sql =
+
+        for (int i = 0; i<sql.length; i++) {
+            jdbcTemplate.update(sql[i], postId);
+        }
     }
     @Override
     public void deletePostsByUserID(int userID){
