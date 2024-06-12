@@ -4,7 +4,7 @@
       <form class="build-a-forum" v-on:submit.prevent="addForum" >
       
         <label for="forum_name">Name of Forum</label>
-          <input type="text" id="forum_name" name="forum_name" v-model="changeForum"/>
+          <input type="text" id="forum_name" name="forum_name" v-model="changeForum" />
       
         <div class="submissions">
           <button class="submitBtn" type="submit">Submit</button>
@@ -49,11 +49,36 @@ export default {
               this.$router.push('/')
             }
           }
+        ).catch(
+                (error) => {
+                    if(error.response) {
+                        this.errorNeedingAddressed(this.error.response, "Forum not created");
+                    } else if (error.request) {
+                        this.errorNeedingAddressed(this.error.request, "Forum not created");
+                    }
+                }
         )
       },
       cancelButton() {
         this.$router.push("/");
-      }
+      },
+      errorNeedingAddressed(error, toBeDone) {
+          if(error.response) {
+              if(error.response.status == 404) {
+                    this.$router.push({name: '/'})
+                    //Need a Something went wrong view
+              } else {
+                    this.store.commit('SET_NOTIFICATION',
+                    `This ${toBeDone} has not occurred.  Server response was "${error.response.statusText}".`)
+                }
+            } else if (error.request) {
+                this.$store.commit('SET_NOTIFICATION',
+                `This ${toBeDone} has not occurred.  Server could not be reached.`)
+            } else {
+                `This ${toBeDone} has not occurred.  Server could not be created.`
+            }
+      },
+      
     },
   
   };

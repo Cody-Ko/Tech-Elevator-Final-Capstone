@@ -14,6 +14,10 @@ export default {
     return axios.get(`/forums/${forumId}`)
   },
 
+  getActiveForums(){
+    return axios.get('/forums/active')
+  },
+
   updateForum(forumId) {
     return axios.put(`/update-forum`, forumId);
   },
@@ -36,7 +40,9 @@ export default {
 
   unfavoriteForum(forumId) {
     return axios.delete(`/forums/favorite/${forumId}`)
-  }
+  },
+
+
 
   //Why is this happening?
 

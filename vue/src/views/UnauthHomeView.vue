@@ -139,6 +139,11 @@ import PostService from '../services/PostService';
         };
     },
     methods: {
+      getTodaysActiveForums(){
+          ForumService.getActiveForums().then((response)=>{
+            this.forums = response.data;
+          }). catch()
+        },
         getTodaysPopularPosts(){
            PostService.get10MostPopularPosts().then((response) =>{
              this.posts = response.data;
@@ -185,7 +190,8 @@ import PostService from '../services/PostService';
         }
     },
     created(){
-            this.getForums();
+            // this.getForums();
+            this.getTodaysActiveForums();
             // this.getPosts();
             this.getTodaysPopularPosts()
         }
