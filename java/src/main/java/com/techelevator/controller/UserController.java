@@ -7,10 +7,7 @@ import com.techelevator.dao.PostDAO;
 import com.techelevator.dao.UserDAO;
 
 //import spring framework resources
-import com.techelevator.model.Comment;
-import com.techelevator.model.Forum;
-import com.techelevator.model.Post;
-import com.techelevator.model.PostDto;
+import com.techelevator.model.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -66,20 +63,6 @@ public class UserController {
         return forumDAO.getForumById(forumId);
     }
 
-    // GETS FORUMS BY USERNAME
-    /*@RequestMapping(value = "/forums/{username}", method = RequestMethod.GET)
-    public List<Forum> getForumsByUsername(@PathVariable String username) {
-        return forumDAO.getForumsByUsername(username);
-    }*/
-
-    // CREATES FORUM
-    // OLD -- MC
-    /*@PreAuthorize("isAuthenticated()")
-    @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/forums", method = RequestMethod.POST)
-    public void addForum(@Valid @RequestBody Forum forum) {
-        forumDAO.addForum(forum);
-    }*/
 
     // GETS FAVORITE FORUMS
     @PreAuthorize("isAuthenticated()")
@@ -195,12 +178,7 @@ public class UserController {
         return commentDAO.getCommentsByPostId(postId);
     }
 
-    /*** DELETE COMMENTS BY ID ***/
-    @PreAuthorize("hasAnyRole('MOD','ADMIN')")
-    @RequestMapping (value= "/comments/{commentId}", method = RequestMethod.DELETE)
-    public void deleteComment(@PathVariable int commentId){
-        commentDAO.deleteComment(commentId);
-    }
+
     /*** GET COMMENT BY ID **/
     @RequestMapping (value= "/comments/{commentId}", method = RequestMethod.GET)
     public Comment getCommentById(@PathVariable int commentId){
@@ -227,7 +205,24 @@ public class UserController {
     public void removeFavoriteForum(@PathVariable int forumId, Principal currUser){
         forumDAO.removeFavoriteForum(forumId, currUser.getName());
     }
+    @PreAuthorize("isAuthenticated()")
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping (path = "/posts/{postId}/comments", method = RequestMethod.POST)
+    public void createComment(@Valid @RequestBody CommentDto commentDto, Principal currUser, @PathVariable int postId){
+        commentDAO.createComment(currUser, commentDto, postId);
+    }
 
+    /*** DELETE COMMENTS BY ID ***/
+    @PreAuthorize("hasAnyRole('MOD','ADMIN')")
+    @RequestMapping (value= "/comments/{commentId}", method = RequestMethod.DELETE)
+    public void deleteComment(@PathVariable int commentId){
+        commentDAO.deleteComment(commentId);
+    }
+    @PreAuthorize("hasAnyRole('MOD','ADMIN')")
+    @RequestMapping (value= "/posts/{postId}", method = RequestMethod.DELETE)
+    public void deletePost(@PathVariable int postId){
+        postDAO.deletePost(postId);
+    }
 /*
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/posts/{postId}/upvote", method = RequestMethod.PUT)

@@ -131,7 +131,8 @@ public class JdbcPostDAO implements PostDAO {
     @Override
     public List<Post> getPostsByForumID(int forumID){
         String sql = "SELECT * FROM posts" +
-                " WHERE forum_id = ? ";
+                " WHERE forum_id = ? " +
+                "ORDER BY time_stamp DESC";
         List<Post> rtnList = new ArrayList<Post>();
         SqlRowSet postRowSet = jdbcTemplate.queryForRowSet(sql, forumID);
         while (postRowSet.next()) {
@@ -146,14 +147,6 @@ public class JdbcPostDAO implements PostDAO {
     public void createPost(Principal currUser, PostDto postDto,
                            int forumID /* path variable */){
 
-        //Principal currUser, String forumName
-        /*
-        String sql = "INSERT INTO posts VALUES (DEFAULT, ?, ?, ?, ? , ?, ?, CURRENT_TIMESTAMP, ?)";
-
-        jdbcTemplate.update(sql, toPost.getUserID(), toPost.getForumID(), toPost.getTitle(),
-                toPost.getMessageDetails(), toPost.getUpVotes(), toPost.getDownVotes(),
-                toPost.getLocation());
-         */
         String sql = "INSERT INTO posts VALUES (DEFAULT, (select user_id from users where username = ?), ?, ?, ? , 0, 0, CURRENT_TIMESTAMP, ?)";
 
         jdbcTemplate.update(sql, currUser.getName(), forumID, postDto.getTitle(), postDto.getMessage(), postDto.getLocation());
