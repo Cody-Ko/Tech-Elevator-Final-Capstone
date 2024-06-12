@@ -186,7 +186,8 @@ import PostService from '../services/PostService';
     },
     created(){
             this.getForums();
-            this.getPosts();
+            // this.getPosts();
+            this.getTodaysPopularPosts()
         }
         
     };

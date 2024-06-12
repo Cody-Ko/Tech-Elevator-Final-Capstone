@@ -2,7 +2,29 @@
     <div class="community-guidelines">
         <div class="background-image">
             <div class="guidelines-card">
-                <p>yaba daba doo</p>
+                <h1 id="mission">Our Mission:</h1>
+                <p id="mission-statement">At Stellar Discussions, our driving force is our people. We are dedicated to providing an inclusive space for folx all across the galaxy to connect and discuss topics of interest. We want to promote a culture of kindness and curiosity. Below you will see some guidelines to better help promote our brand!</p>
+                <div id="rules-and-consequences">
+                  <h2>Guidelines:</h2>
+                <ul>
+                  <li>Treat others with respect; imagine you met in real life; how would you respectfully engage in dialogue? If others share how they would like to be addressed, please respect the privacy and personal information being shared.</li>
+                  <li>Communicate positively and demonstrate tolerance towards unshared viewpoints. Negative or harmful name calling will not be tolerated</li>
+                  <li>Report any harmful, abusive, or derogatory comments or exchanges to Stellar Discussions’ Administrators.</li>
+                </ul>
+                <h2>Do Not:</h2>
+                <ul>
+                  <li>Treat others with respect; imagine you met in real life; how would you respectfully engage in dialogue? If others share how they would like to be addressed, please respect the privacy and personal information being shared.</li>
+                  <li>Communicate positively and demonstrate tolerance towards unshared viewpoints. Negative or harmful name calling will not be tolerated</li>
+                  <li>Report any harmful, abusive, or derogatory comments or exchanges to Stellar Discussions’ Administrators.</li>
+                </ul>
+                <h2>Consequences:</h2>
+                <ul>
+                  <li>Treat others with respect; imagine you met in real life; how would you respectfully engage in dialogue? If others share how they would like to be addressed, please respect the privacy and personal information being shared.</li>
+                  <li>Communicate positively and demonstrate tolerance towards unshared viewpoints. Negative or harmful name calling will not be tolerated</li>
+                  <li>Report any harmful, abusive, or derogatory comments or exchanges to Stellar Discussions’ Administrators.</li>
+                </ul>
+                </div>
+
             </div>
         </div>
 
@@ -27,12 +49,13 @@ export default{
 .guidelines-card{
     flex-direction: column;
     justify-content: space-between;
-    justify-items: center;
+    flex-wrap: wrap;
+    /* justify-items: center; */
     border-radius: 15px;
-    width: 50%;
+    width: 35%;
     /* max-width: 750px; */
     min-width: 600px;
-    /* height: 250px; */
+    height: 95%;
     min-height: 500px;  
     /* margin: 20px; */
     margin: 0 auto;   /* this keeps the card in the middle of the page */
@@ -40,8 +63,8 @@ export default{
     border: 8px solid rgb(250, 129, 240);
     /* font-size: 2.5rem; */
     color: white;
-    text-align: center;
-    padding-top: 10px;
+    /* text-align: center; */
+    /* padding-top: 10px; */
     /* background-image: ; */
     background-color: #34aae1;
 }
@@ -57,12 +80,28 @@ export default{
   size: 2rem;
 }
 
+#mission, #mission-statement {
+  padding-top: 5%;
+  text-align: center;
+  font-size: 1.75rem;
+ 
+}
+
+#rules-and-consequences{
+  font-size: 1.3rem;
+}
+
+#mission, #mission-statement, #rules-and-consequences {
+  padding-left: 3%;
+  padding-right: 3%;
+}
+
+
 /* html, body, content {
   width: auto;
-  height: 100vh;
+  height: auto;
   margin: 0;
   background-attachment: fixed; 
-  background-color: #34aae1;
 } */
 
 </style>
