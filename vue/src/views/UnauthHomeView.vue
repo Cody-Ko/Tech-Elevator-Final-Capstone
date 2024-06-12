@@ -4,6 +4,7 @@
     <section class="left-panel">
       <select v-model="Selection" @change="changeView" class="dropdown">
         <option value="">Select</option>
+        <option value="User">Profile</option>
         <!-- <router-link v-bind:to="{name: 'resources'}"> -->
           <option value="Create-Forum">Create Forum</option>
         <!-- </router-link> -->
@@ -183,7 +184,9 @@ import PostService from '../services/PostService';
         changeView(){
           if(this.Selection === 'Resources'){
             this.$router.push({name:'resources'});
-          } else if (this.Selection === 'Create-Forum'){
+          } else if (this.Selection === 'User'){
+            this.$router.push({name:'userhome'});
+          }else if (this.Selection === 'Create-Forum'){
             this.$router.push({name:'createforum'});
 
           }

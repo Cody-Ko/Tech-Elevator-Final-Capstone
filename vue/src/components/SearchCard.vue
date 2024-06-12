@@ -64,6 +64,7 @@ export default {
     height: 250px;
     max-width: 650px;
     margin-bottom: 10px;
+    background-color: #34aae1;;
 }
 
 .searchResults .forumName{

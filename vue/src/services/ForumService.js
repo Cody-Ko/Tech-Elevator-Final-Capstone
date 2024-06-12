@@ -42,6 +42,10 @@ export default {
     return axios.delete(`/forums/favorite/${forumId}`)
   },
 
+  getUserFavorites(){
+    return axios.get('/forums/favorite')
+  }
+
 
 
   //Why is this happening?
