@@ -1,13 +1,16 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Comment;
+import com.techelevator.model.CommentDto;
 import com.techelevator.model.Post;
+import com.techelevator.model.PostDto;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.security.Principal;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -69,7 +72,7 @@ public class JdbcCommentDAO implements CommentDAO {
 
     @Override
     public List<Comment> getCommentsByPostId(int postID) {
-        String sql = "SELECT * FROM comments WHERE post_id = ? ORDER BY time_stamp";
+        String sql = "SELECT * FROM comments WHERE post_id = ? ORDER BY time_stamp DESC";
         List<Comment> rtnComments = new ArrayList<Comment>();
         rtnComments = jdbcTemplate.query(sql, new CommentRowMapper(), postID);
         return rtnComments;
@@ -92,4 +95,49 @@ public class JdbcCommentDAO implements CommentDAO {
         String sql = "DELETE FROM comments WHERE comment_id = ?";
         jdbcTemplate.update(sql, commentID);
     }
+    @Override
+    public void createComment(Principal currUser, CommentDto commentDto, int postId /* path variable */){
+
+        String sql = "INSERT INTO comments VALUES (DEFAULT, (select user_id from users where username = ?), ?," +
+                "CURRENT_TIMESTAMP, ?, NULL, ? )";
+
+        jdbcTemplate.update(sql, currUser.getName(), commentDto.getMessage(), postId, commentDto.getLocation());
+    }
+        /*
+
+            /*
+        comment_id     --  serial
+        user_id     --  from principal
+        message     --  PARAMETER               NEEDED
+
+
+        time_stamp  -- CURRENT_TIMESTAMP
+        post_id     -- what post is it under    NEEDED
+        reply_to    -- if replying to comment   NEEDED
+        location    -- STRING PARAMETER         NEEDED
+
+
+    comment_id     --  serial
+    user_id     --  from principal
+    message     --  PARAMETER
+    time_stamp  -- CURRENT_TIMESTAMP
+    post_id     -- what post is it under
+    reply_to    -- if replying to comment
+    location    -- STRING PARAMETER
+
+    CREATE TABLE comments (
+    comment_id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL,
+    message VARCHAR(1000) NOT NULL,
+    time_stamp TIMESTAMP NOT NULL,
+    post_id INT NOT NULL,
+    reply_to INT,
+    location VARCHAR(50) NOT NULL,
+    --Reply_to foreign key set to comment_id (idk if this will work how we want it to, but hopefully)
+    FOREIGN KEY (reply_to) REFERENCES comments(comment_id),
+    FOREIGN KEY (post_id) REFERENCES posts(post_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+
+     */
+
 }

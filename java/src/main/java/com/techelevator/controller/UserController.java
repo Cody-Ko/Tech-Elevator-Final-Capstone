@@ -7,10 +7,7 @@ import com.techelevator.dao.PostDAO;
 import com.techelevator.dao.UserDAO;
 
 //import spring framework resources
-import com.techelevator.model.Comment;
-import com.techelevator.model.Forum;
-import com.techelevator.model.Post;
-import com.techelevator.model.PostDto;
+import com.techelevator.model.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -226,6 +223,12 @@ public class UserController {
     @RequestMapping (value= "/forums/favorite/{forumId}", method = RequestMethod.DELETE)
     public void removeFavoriteForum(@PathVariable int forumId, Principal currUser){
         forumDAO.removeFavoriteForum(forumId, currUser.getName());
+    }
+    @PreAuthorize("isAuthenticated()")
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping (path = "/posts/{postId}/comments", method = RequestMethod.POST)
+    public void createComment(@Valid @RequestBody CommentDto commentDto, Principal currUser, @PathVariable int postId){
+        commentDAO.createComment(currUser, commentDto, postId);
     }
 
 /*
