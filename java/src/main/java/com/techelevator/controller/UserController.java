@@ -211,6 +211,10 @@ public class UserController {
     public void createComment(@Valid @RequestBody CommentDto commentDto, Principal currUser, @PathVariable int postId){
         commentDAO.createComment(currUser, commentDto, postId);
     }
+    @RequestMapping (value= "/comments", method = RequestMethod.GET)
+    public List<Comment> getAllComments(){
+        return commentDAO.getAllComments();
+    }
 
     /*** DELETE COMMENTS BY ID ***/
     @PreAuthorize("hasAnyRole('MOD','ADMIN')")
