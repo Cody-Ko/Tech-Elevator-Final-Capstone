@@ -29,7 +29,7 @@ export default {
     },
     methods: {
         getPost(postId) {
-            PostService.getPost(this.postId).then(
+            PostService.getPost(postId).then(
                 (response) => {
                     this.post = response.data;
                 }
@@ -42,7 +42,8 @@ export default {
         }
     },
     created(){
-            this.getPost();
+            // console.log(this.$route.params.postId);
+            this.getPost(this.$route.params.postId);
             this.getComments();
         }
 

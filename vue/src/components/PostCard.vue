@@ -109,7 +109,10 @@ export default {
             }
         },
         getScore(postId){
-            PostService.getPostScore(this.post.post_id).then((response) =>{
+            if (!postId) {
+                postId = this.$route.params.postId;
+            }
+            PostService.getPostScore(postId).then((response) =>{
                 this.postScore = response.data;
             })
         },
@@ -118,7 +121,7 @@ export default {
             if (this.hasUpVoted === false){
                 PostService.upVotePost(this.post.post_id).then((response)=>{
                 if(response.status === 200){
-                    this.getScore();
+                    this.getScore(this.post.post_id);
                     this.hasUpVoted = true;
                     this.hasDownVoted = false;
 
@@ -133,7 +136,7 @@ export default {
             if(this.hasDownVoted === false){
                 PostService.downVotePost(this.post.post_id).then((response)=>{
                 if(response.status === 200){
-                    this.getScore();
+                    this.getScore(this.post.post_id);
                     this.hasDownVoted = true;
                     this.hasUpVoted = false;
                 }
@@ -148,7 +151,7 @@ export default {
 
     },
     mounted(){
-        this.getScore();
+        this.getScore(this.post.post_id);
     }
 
 };
