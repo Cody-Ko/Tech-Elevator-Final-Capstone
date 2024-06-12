@@ -57,7 +57,7 @@ export default {
                         this.errorNeedingAddressed(this.error.request, "Forum not created");
                     }
                 }
-        )
+          )
       },
       cancelButton() {
         this.$router.push("/");
