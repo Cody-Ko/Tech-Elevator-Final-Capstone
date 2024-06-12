@@ -77,18 +77,18 @@ export default{
   background-size:cover;
   background: url("../assets/SpaceOriginal.jpg");
   background-position: fixed;
-  size: 2rem;
+  /* size: 2rem; */
 }
 
 #mission, #mission-statement {
   padding-top: 5%;
   text-align: center;
-  font-size: 1.75rem;
+  font-size: 1rem;
  
 }
 
 #rules-and-consequences{
-  font-size: 1.3rem;
+  font-size: 1rem;
 }
 
 #mission, #mission-statement, #rules-and-consequences {
