@@ -128,12 +128,6 @@ public class UserController {
         return postDAO.getPostsByForumID(forumId);
     }
 
-    //AMBIGUOUS SPRING MAPPING ERROR
-    /*@RequestMapping(value = "/forums/{forumName}/posts", method = RequestMethod.GET)
-    public List<Post> getPostsByForumName(@PathVariable String forumName){
-        return postDAO.getPostsByForumName(forumName);
-    }*/
-
     /*** GET ALL POSTS ***/
     @RequestMapping(value = "/posts", method = RequestMethod.GET)
     public List<Post> getAllPosts() {
@@ -185,12 +179,6 @@ public class UserController {
         return commentDAO.getCommentById(commentId);
     }
 
-    /*** GET FAVORITE FORUMS BY USERNAME ***/
-   /* @PreAuthorize("isAuthenticated()")
-    @RequestMapping (value= "/forums/favorite", method = RequestMethod.GET)
-    public List<Forum> getFavoriteForumsByUser(Principal currUser){
-        return forumDAO.getFavoriteForumsByUsername(currUser.getName());
-    }*/
     /*** ADD A NEW FAVORITED FORUM ***/
     @PreAuthorize("isAuthenticated()")
     @ResponseStatus(HttpStatus.CREATED)
@@ -233,26 +221,10 @@ public class UserController {
     public void promoteUserToModerator(@PathVariable int userId) {
         userDAO.promoteUserToModerator(userId);
     }
-/*
-    @PreAuthorize("isAuthenticated()")
-    @RequestMapping(value = "/posts/{postId}/upvote", method = RequestMethod.PUT)
-    public void upvotePost(@PathVariable int postId, Principal currUser) {
-        System.out.println(currUser.getName());
-        System.out.println(currUser.getClass());
-        postDAO.upvotePost(postId);
-    }
-*/
-    /*
-    @RequestMapping (value= "/favorite/{forumId}", method = RequestMethod.POST)
-    public Forum addFavoriteForum(Principal currUser){
-        return forumDAO.getFavoriteForumsByUsername(currUser.getName());
-    }*/
 
     @RequestMapping(value = "/forums/{forumId}/createdBy", method = RequestMethod.GET)
     public String getUsernameByForum(@PathVariable int forumId){
         return forumDAO.getUsername(forumId);
     }
-
-
 
 }
