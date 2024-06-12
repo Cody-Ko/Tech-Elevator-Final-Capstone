@@ -109,12 +109,18 @@ INSERT INTO users (username, password_hash, role) VALUES ('codythegoat', '$2a$10
 --Insert forums
 INSERT INTO forum (user_id, forum_name, time_stamp) VALUES (1, 'Movie Reviews', '2024-06-05 10:00:00');
 INSERT INTO forum (user_id, forum_name, time_stamp) VALUES (1, 'Book Recommendations', '2024-06-05 10:29:00');
-INSERT INTO forum (user_id, forum_name, time_stamp) VALUES (1, 'Software Things', '2024-06-05 10:36:00');
+INSERT INTO forum (user_id, forum_name, time_stamp) VALUES (3, 'Software Things', '2024-06-05 10:36:00');
+INSERT INTO forum (user_id, forum_name, time_stamp) VALUES (2, 'Let''s Talk Music', CURRENT_TIMESTAMP);
+INSERT INTO forum (user_id, forum_name, time_stamp) VALUES (2, 'Videogames', CURRENT_TIMESTAMP);
+INSERT INTO forum (user_id, forum_name, time_stamp) VALUES (3, 'Pet Discussions', CURRENT_TIMESTAMP);
 
 --Insert user forums
 INSERT INTO user_forum (user_id, forum_id) VALUES (1, 1);
 INSERT INTO user_forum (user_id, forum_id) VALUES (1, 2);
-INSERT INTO user_forum (user_id, forum_id) VALUES (1, 3);
+INSERT INTO user_forum (user_id, forum_id) VALUES (3, 3);
+INSERT INTO user_forum (user_id, forum_id) VALUES (2, 4);
+INSERT INTO user_forum (user_id, forum_id) VALUES (2, 5);
+INSERT INTO user_forum (user_id, forum_id) VALUES (3, 6);
 
 --Movie Reviews posts
 INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
@@ -167,6 +173,30 @@ VALUES (2, 3, 'Preferred language', 'What''s y''all''s preferred programming lan
 --Misc. posts
 INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
 VALUES (1, null, 'Hi Stephen', 'Hi Stephen', 200, 0, '2024-06-10 12:13:00', 'NRL');
+
+--Let's Talk Music posts
+INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
+VALUES (3, 4, 'What''s a song you can''t live without?', 'I personally wouldn''t be the same without Rick Astley''s Never Gonna Give You Up', 18, 3, CURRENT_TIMESTAMP, 'USA');
+INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
+VALUES (2, 4, 'Favorite Bands', 'What''s your favorite band? Comment below!', 12, 2, CURRENT_TIMESTAMP, 'USA');
+INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
+VALUES (1, 4, 'Need song recs', 'I listen to just about anything so throw your recommendations my way :)', 35, 6, CURRENT_TIMESTAMP, 'USA');
+
+--VideoGames posts
+INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
+VALUES (3, 5, 'Cozy Games', 'I''m in DESPERATE need of some cozy games in my life. Any recs?', 9, 0, CURRENT_TIMESTAMP, 'USA');
+INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
+VALUES (2, 5, 'Best console?', 'What''s your preferred console to use?', 12, 5, CURRENT_TIMESTAMP, 'USA');
+INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
+VALUES (1, 5, 'Game help', 'I can''t seem to beat the computer on pong, somebody help.', 35, 0, CURRENT_TIMESTAMP, 'USA');
+
+-- Pet Discussion Posts
+INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
+VALUES (1, 6, 'Need help!', 'My pet iguana won''t stop scratching me! I''m at my wits'' end. Any advice?', 18, 10, CURRENT_TIMESTAMP, 'USA');
+INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
+VALUES (1, 6, 'First time pet owner', 'Hello! I plan on getting myself my first ever pet and I''d like to know your recommendations for the best beginner pet :)', 12, 2, CURRENT_TIMESTAMP, 'USA');
+INSERT INTO posts (user_id, forum_id, title, message, up_votes, down_votes, time_stamp, location)
+VALUES (3, 6, 'Beta fish care PSA', 'If you can''t give them a proper setup, DON''T BUY ONE', 50, 9, CURRENT_TIMESTAMP, 'USA');
 
 --Comments for misc. posts
 INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
@@ -277,6 +307,78 @@ INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
 VALUES (3, 'Blasphemy', CURRENT_TIMESTAMP, 5, NULL, 'USA');
 INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
 VALUES (1, 'Interesting take', CURRENT_TIMESTAMP, 5, NULL, 'USA');
+
+--Comments for "Beta Fish Care PSA"
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (3, 'SO TRUE', CURRENT_TIMESTAMP, 31, NULL, 'USA');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (1, 'Everytime I see a beta fish in a bowl with no filter, I die a little inside', CURRENT_TIMESTAMP, 31, NULL, 'USA');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (3, 'I treat my beta fish like ROYALTY', CURRENT_TIMESTAMP, 31, NULL, 'USA');
+
+--Comments for "First Time Pet Owner"
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (1, 'Get a dog or cat ez', CURRENT_TIMESTAMP, 30, NULL, 'USA');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (3, 'GET A MOUSE. I own several :)', CURRENT_TIMESTAMP, 30, NULL, 'USA');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (2, 'Reptiles are underrated, get a snake!', CURRENT_TIMESTAMP, 30, NULL, 'USA');
+
+--Comments for "Need Help!"
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (2, 'Maybe should''ve done more research before getting an iguana', CURRENT_TIMESTAMP, 29, NULL, 'USA');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (3, 'All iguanas do that! I have one and I''m COVERED in scratches', CURRENT_TIMESTAMP, 29, NULL, 'USA');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (3, 'If it''s a juvenile, that''s normal. If it''s fully grown then that''s dangerous and you didn''t do a great job socializing it :/', CURRENT_TIMESTAMP, 29, NULL, 'USA');
+
+--Comments for "Game Help"
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (1, '1972 called, they want their game back', CURRENT_TIMESTAMP, 28, NULL, 'USA');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (2, 'You can''t beat PONG???', CURRENT_TIMESTAMP, 28, NULL, 'USA');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (1, 'I also struggle with pong', CURRENT_TIMESTAMP, 28, NULL, 'USA');
+
+--Comments for "Best Console"
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (1, 'PC, obviously', CURRENT_TIMESTAMP, 27, NULL, 'USA');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (3, 'Xbox for multiplayer games, PS4 for single player', CURRENT_TIMESTAMP, 27, NULL, 'USA');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (1, 'The nintendo switch fs', CURRENT_TIMESTAMP, 27, NULL, 'USA');
+
+--Comments for "Cozy Games"
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (2, 'You should play Spiritfarer!', CURRENT_TIMESTAMP, 26, NULL, 'USA');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (2, 'Stardew Valley, ofc!', CURRENT_TIMESTAMP, 26, NULL, 'USA');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (2, 'I honestly find older Pokemon to be relatively cozy, that could just be me tho', CURRENT_TIMESTAMP, 26, NULL, 'USA');
+
+--Comments for "Need Song Recs"
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (2, 'Worms by Viagra Boys', CURRENT_TIMESTAMP, 25, NULL, 'USA');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (3, 'The Clue by R.M.F.C.', CURRENT_TIMESTAMP, 25, NULL, 'USA');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (3, 'Collector by Daffo', CURRENT_TIMESTAMP, 25, NULL, 'USA');
+
+--Comments for "Favorite Bands"
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (1, 'I LOVE WEEN', CURRENT_TIMESTAMP, 24, NULL, 'USA');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (1, 'The Warning is pretty cool', CURRENT_TIMESTAMP, 24, NULL, 'USA');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (2, 'The Crane Wives!!', CURRENT_TIMESTAMP, 24, NULL, 'USA');
+
+--Comments for "What's a Song You Cant Live Without"
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (3, 'Why would you say that, this is a rickroll-free zone', CURRENT_TIMESTAMP, 23, NULL, 'USA');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (1, 'Oh yeah, I personally love All Star by Smash Mouth', CURRENT_TIMESTAMP, 23, NULL, 'USA');
+INSERT INTO comments (user_id, message, time_stamp, post_id, reply_to, location)
+VALUES (2, 'Can any of you give a normal answer??', CURRENT_TIMESTAMP, 23, NULL, 'USA');
 
 
 COMMIT TRANSACTION;
