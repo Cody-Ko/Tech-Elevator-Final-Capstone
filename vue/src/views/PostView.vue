@@ -86,7 +86,7 @@ export default {
 
 }
 
-.background-image{
+/* .background-image{
   width: auto;
   height: 100%;
   background-repeat: no-repeat;
@@ -95,11 +95,11 @@ export default {
   background: url("assets/SpaceOriginal.jpg");
   background-position: fixed;
   size: 2rem;
-}
+} */
 
-#entirepostview{
-  height:100%;
-}
+/* #entirepostview{
+  height:100vh;
+} */
 
 
 </style>

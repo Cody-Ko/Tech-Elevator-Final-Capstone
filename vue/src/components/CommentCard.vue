@@ -37,6 +37,14 @@ export default{
 
 <style scoped>
 
+.CommentCard {
+    display: grid;
+    align-items: center;
+    align-content: baseline;
+    justify-content: center;
+    margin: 0 auto;
+}
+
 .CommentCard{
     display: flex;
     flex-direction: column;
@@ -63,7 +71,7 @@ export default{
 
 }
 
-.CommentCard .timeStamp{
+.timeStamp{
     font-size: 1rem;
     color: white;
     align-self: flex-end;
