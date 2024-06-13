@@ -5,7 +5,8 @@
     <span id="increase" @:click="upVoteScore">
         <i class="fa-solid fa-meteor vote-up"></i>
     </span>
-    <!-- how to make this pull the computed score from database -->
+    <!-- <span class = "username">{{ user }}</span> -->
+
     <span>{{ postScore }}</span>
     <span id="decrease" @:click="downVoteScore">
         <i class="fa-solid fa-meteor vote-down" style=""></i>
@@ -29,6 +30,8 @@
 <script>
 
 import PostService from '../services/PostService.js'
+import UserService from '../services/UserService';
+
 
 export default {
     data(){
@@ -48,20 +51,27 @@ export default {
                 time_stamp: this.time_stamp,
                 location: this.location
 
-            }
+            },
+            // user: ''
+
         }
     },
     components: {
-        //Comment components
+
     },
     props: {
         post: {
-            // Cycle through all comments for posts
         },
         posts: [],
     },
 
     methods: {
+        // getUser(){
+        //     UserService.getUsernameByForumId(this.forum.forum_id).then((response)=>{
+        //         this.user = response.data;
+        //     })
+        // },
+
         getPost(postId) {
             PostService.getPost(this.postId).then(
                 (response) => {
@@ -166,6 +176,8 @@ export default {
     },
     mounted(){
         this.getScore(this.post.post_id);
+        // this.getUser(this.post.post_id);
+
     }
 
 };
@@ -201,6 +213,11 @@ export default {
 ;
 }
 
+.username{
+    font-size: 1.5rem;
+    color: white; 
+    padding-top: 2%;
+}
 .messageDetails {
     grid-area: message;
     font-size: 1.5rem;

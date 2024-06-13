@@ -26,7 +26,6 @@ import ForumsCard from '../components/ForumsCard.vue';
 import PostCard from '../components/PostCard.vue';
 import CreatePostCard from '../components/CreatePostCard.vue';
 
-
   export default {
     components: {
         ForumsCard,
@@ -38,7 +37,7 @@ import CreatePostCard from '../components/CreatePostCard.vue';
             forumId: parseInt(this.$route.params.forumId),
             forumkeyword: "",
             forum: {},
-            user: {},
+            // user: {},
             posts:[]
         };
     },
@@ -53,6 +52,7 @@ import CreatePostCard from '../components/CreatePostCard.vue';
             });
             */
         },
+        
         getAllPostsForForum() {
             PostService.getPostsbyForumId(this.forumId).then(
                 (response) => {

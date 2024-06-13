@@ -15,7 +15,7 @@
         <span v-else @click="favorite">
             <i class="fas fa-star white-star"></i>
         </span> -->
-
+        <span class = "username">{{ user }}</span>
         <span v-if="iconClick" @click="unfavoriteForum(forum.forum_id)">
             <i class="fas fa-star yellow-star"></i>
         </span>
@@ -39,7 +39,7 @@
 <script>
 
 import ForumService from '../services/ForumService';
-
+import UserService from '../services/UserService';
 // import PostsComponent from '../components/PostsComponent'
 
 export default{
@@ -50,6 +50,7 @@ export default{
             iconClick: localStorage.getItem('forum_' + this.forum.forum_id) === 'true' ? true : false,
             forumId: 0,
             // user: this.$store.state.user
+            user: ''
         }
     },
 
@@ -94,6 +95,11 @@ export default{
         //         }
         //     );
         // },
+        getUser(){
+            UserService.getUsernameByForumId(this.forum.forum_id).then((response)=>{
+                this.user = response.data;
+            })
+        },
 
         addFavoriteForum(forumId) {
             if(!this.$store.state.token){
@@ -135,6 +141,10 @@ export default{
 
     },
 
+    mounted(){
+        this.getUser(this.forum.forum_id);
+    }
+
 };
 </script>
 
@@ -142,7 +152,7 @@ export default{
 .card{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     border: 8px solid rgb(250, 129, 240);
     border-radius: 25px;
     min-width: 20%;
@@ -152,9 +162,13 @@ export default{
     /* margin: 0 auto; */
     margin-bottom: 10px;
     background-color: #34aae1;
-
 }
 
+.username{
+    font-size: 1.5rem;
+    color: white; 
+    padding-top: 2%;
+}
 .card .forumName{
     font-size: 2.5rem;
     color: white;
