@@ -1,23 +1,24 @@
 <template>
-
-<div class="create-post-home"> Create A Post</div>
-    <form class ="build-a-post" v-on:submit.prevent="addPost">
+  
+    <div class="create-post-home"> Create A Post</div>
+      <form class ="build-a-post" v-on:submit.prevent="addPost">
       
-      <label for="post_name">Name of Post</label>
-      <input type="text" id="post_name" name="post_name" v-model="postDto.title"/>
+        <label for="post_name">Name of Post</label>
+        <input type="text" id="post_name" name="post_name" v-model="postDto.title"/>
 
-      <label for="post_message_details">Message of Post</label>
-      <input type="text" id="post_message_details" name="post_message_details" v-model="postDto.message"/>
+        <label for="post_message_details">Message of Post</label>
+        <input type="text" id="post_message_details" name="post_message_details" v-model="postDto.message"/>
 
-      <label for="post_location">Location of Post</label>
-      <input type="text" id="post_location" name="post_location" v-model="postDto.location"/>
+        <label for="post_location">Location of Post</label>
+        <input type="text" id="post_location" name="post_location" v-model="postDto.location"/>
       
-      <div class="submissions">
-        <button class="submitBtn" type="submit">Submit</button>
-        <button class="cancelBtn" type="button" v-on:click="cancelButton">Cancel</button>
-      </div>
+        <div class="submissions">
+          <button class="submitBtn" type="submit">Submit</button>
+          <button class="cancelBtn" type="button" v-on:click="cancelButton">Cancel</button>
+        </div>
 
-    </form>
+      </form>
+  
 
 </template>
   
@@ -77,44 +78,43 @@ export default {
   
   <style scoped>
   .create-post-home {
-      /* display: grid; */
+      display: grid;
       align-content: center;
-      /* flex-direction: column;
-      justify-content: space-between; */
       border-radius: 15px;
-      /* max-width: 750px; */
-      /* height: 250px; */ 
-      /* margin: 20px; */
       margin: 0 auto;   /* this keeps the card in the middle of the page */
       margin-bottom: 1%;
       font-size: 2.5rem;
       font-weight: bold;
       color: white;
       margin-top: .25%;
+      height: 100%;
+      width: 100%;
+      margin: 0;
       text-align: center;
   }
 
   .build-a-post {
+      display: flex;
+      align-items: center;
+      align-content: center;
+      color: white;
+      text-align: center;
+      justify-content: center;
+      height: 100vh;
+      width: 100vh;
+  }
+
+  .build-a-post {
       display: grid;
-      /* align-content: center; */
-      /* flex-direction: column;
-      justify-content: space-between; */
+      align-content: baseline;
       border-radius: 15px;
       justify-content: space-around;
-      /* width: 50%; */
-      /* max-width: 750px; */
-      /* min-width: 600px; */
-      /* height: 250px; */
-      /* min-height: 500px;   */
-      /* margin: 20px; */
-      margin: 5% auto 1%;   /* this keeps the card in the middle of the page */
+      margin: 0 auto;
       margin-bottom: 1%;
-      /* font-size: 2.5rem; */
       color: white;
       margin-top: .25%;
       text-align: center;
       padding: 10px;
-      /* background-image: ; */
   }
 
   

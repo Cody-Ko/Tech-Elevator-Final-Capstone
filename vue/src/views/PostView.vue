@@ -64,6 +64,21 @@ export default {
   justify-content: center;
   align-items: center;
   /* height: 100vh; */
+  align-content: center;
+  height: 100vh;
+}
+
+.comments-section{
+    display: grid;
+    align-content: baseline;
+    border-radius: 15px;
+    justify-content: space-around;
+    margin: 0 auto;
+    margin-bottom: 1%;
+    color: white;
+    margin-top: .25%;
+    text-align: center;
+    padding: 10px;
 }
 
 .post-section{
@@ -83,7 +98,7 @@ export default {
 }
 
 #entirepostview{
-  height:100vh;
+  height:100%;
 }
 
 

@@ -1,6 +1,6 @@
 <template>
   <div class="searchResults">
-
+    
     <div class="forum-section">
         <forumsearch class = "searched-forums" v-for="forum in forums" v-bind:forum="forum" v-bind:key="forum.keyword"/>
         <router-link class="ForumViewLink" v-bind:to="{ name: 'forumview', params:{forumId: forum.forum_id} }">
