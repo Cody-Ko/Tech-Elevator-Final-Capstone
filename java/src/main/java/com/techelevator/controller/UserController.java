@@ -146,6 +146,12 @@ public class UserController {
         return postDAO.getPostsByKeyword(keyword);
     }
 
+    @PreAuthorize("isAuthenticated()")
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
+    public List<User> getUsers(){
+        return userDAO.getUsers();
+    }
+
     /*** GET POST BY POST_ID ***/
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/posts/{postId}/upvote", method = RequestMethod.PUT)
