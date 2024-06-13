@@ -2,9 +2,8 @@
   
     <div class="create-forum-home"> Create A Forum</div>
       <form class="build-a-forum" v-on:submit.prevent="addForum" >
-      
         <label for="forum_name">Name of Forum</label>
-          <input type="text" id="forum_name" name="forum_name" v-model="changeForum" />
+          <input type="text" id="forum_name" name="forum_name" v-model="changeForum.forum_name" />
       
         <div class="submissions">
           <button class="submitBtn" type="submit">Submit</button>
@@ -33,7 +32,7 @@ export default {
         changeForum: {
         //   id: 0,
         //   forum_user_id: 0,
-          forum_name: '',
+          forum_name: ''
         //   time_stamp: Date,
           
         }

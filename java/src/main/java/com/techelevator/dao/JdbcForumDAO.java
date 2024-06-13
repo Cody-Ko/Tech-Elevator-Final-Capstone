@@ -1,11 +1,7 @@
 package com.techelevator.dao;
 
-import com.techelevator.exception.DaoException;
 import com.techelevator.model.Forum;
-import com.techelevator.model.Post;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -14,10 +10,7 @@ import org.springframework.stereotype.Component;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.security.Principal;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Component
@@ -36,12 +29,14 @@ public class JdbcForumDAO implements ForumDAO {
         jdbcTemplate.update(sql, currUser.getName(), forumName);
     }*/
     @Override
-    public void addForum(Principal currUser, String forumName) {
-        forumName = decoder(forumName);
+    public void addForum(Principal currUser, Forum forum) {
+
+        //TODO: Ask Matt what this is for
+//        forum = decoder(forum);
         String sql = "INSERT into forum VALUES (DEFAULT, " +
                 "(select user_id from users where username = ?)," +
                 "?, CURRENT_TIMESTAMP);";
-        jdbcTemplate.update(sql, currUser.getName(), forumName);
+        jdbcTemplate.update(sql, currUser.getName(), forum.getName());
     }
 
     // GETS USER ID OF PERSON WHO CREATED FORUM

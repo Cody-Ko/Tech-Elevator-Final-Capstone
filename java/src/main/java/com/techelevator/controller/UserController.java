@@ -76,7 +76,7 @@ public class UserController {
     @PreAuthorize("isAuthenticated()")
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/forums", method = RequestMethod.POST)
-    public void addForum(Principal currUser, @RequestBody String forumName) {
+    public void addForum(Principal currUser, @RequestBody Forum forumName) {
         forumDAO.addForum(currUser, forumName);
     }
 
