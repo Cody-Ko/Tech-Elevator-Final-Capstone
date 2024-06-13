@@ -4,8 +4,6 @@ import com.techelevator.model.Forum;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import java.security.Principal;
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 public interface ForumDAO {
@@ -16,7 +14,7 @@ public interface ForumDAO {
 
     List<Forum> getForumsByUsername(String username);
 
-    void addForum(Principal currUser, String forumName);
+    void addForum(Principal currUser, Forum forum);
 
     Forum mapRowToForum(SqlRowSet results);
 

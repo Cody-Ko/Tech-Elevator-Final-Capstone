@@ -23,6 +23,7 @@ export default {
   },
 
   addForum(changeForum) {
+
     return axios.post('/forums', changeForum)
   },
 
