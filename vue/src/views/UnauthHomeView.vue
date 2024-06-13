@@ -337,7 +337,7 @@ input {
   display: flex;
   justify-content: center;
   grid-area: register;
-
+  color: #34aae1;
   font-size: 35px;
 }
 

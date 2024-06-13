@@ -49,6 +49,7 @@ export default{
             // forumId: 0,
             iconClick: localStorage.getItem('forum_' + this.forum.forum_id) === 'true' ? true : false,
             forumId: 0,
+            // user: this.$store.state.user
         }
     },
 
@@ -66,7 +67,9 @@ export default{
     },
 
     computed: {
-
+        // user(){
+        //     return this.$store.state.user
+        // }
     },
 
     methods: {
@@ -93,20 +96,27 @@ export default{
         // },
 
         addFavoriteForum(forumId) {
-
-            ForumService.addFavoriteForum(forumId).then(
+            if(!this.$store.state.token){
+                alert('Please log in or sign up to favorite this forum.')
+                this.$router.push({name:'register'});
+            } else {
+                ForumService.addFavoriteForum(forumId).then(
                 (response) => {
                     if(response.status === 201) {
                         this.iconClick = true;
                         localStorage.setItem('forum_' + forumId, 'true')
-                    }
+                    } 
                 }
             );
+            }
         },
 
         unfavoriteForum(forumId) {
-
-            ForumService.unfavoriteForum(forumId).then(
+            if(!this.$store.state.token){
+                alert('Please log in or sign up to favorite this forum.')
+                this.$router.push({name:'register'});
+            } else {
+                ForumService.unfavoriteForum(forumId).then(
                 (response) => {
                     if(response.status === 204) {
                         this.iconClick = false;
@@ -114,6 +124,8 @@ export default{
                     }
                 }
             );
+            }
+            
         },
 
         favorite(){

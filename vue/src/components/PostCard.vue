@@ -122,7 +122,11 @@ export default {
         },
 
         upVoteScore(){
-            if (this.hasUpVoted === false){
+            if(!this.$store.state.token){
+                alert('Please log in or sign up to vote on this post')
+                this.$router.push({name:'register'});
+            } else {
+                if (this.hasUpVoted === false){
                 PostService.upVotePost(this.post.post_id).then((response)=>{
                 if(response.status === 200){
                     this.getScore(this.post.post_id);
@@ -132,12 +136,17 @@ export default {
                 }
             })
             }
+            }
             
             console.log('up')
         },
 
         downVoteScore(){
-            if(this.hasDownVoted === false){
+            if(!this.$store.state.token){
+                alert('Please log in or sign up to vote on this post')
+                this.$router.push({name:'register'});
+            } else {
+                if(this.hasDownVoted === false){
                 PostService.downVotePost(this.post.post_id).then((response)=>{
                 if(response.status === 200){
                     this.getScore(this.post.post_id);
@@ -145,6 +154,7 @@ export default {
                     this.hasUpVoted = false;
                 }
             })
+            }
             }
             
 
