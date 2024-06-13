@@ -65,7 +65,7 @@ export default {
   align-items: center;
   /* height: 100vh; */
   align-content: center;
-  height: 100%;
+  height: 100vh;
 }
 
 .comments-section{
@@ -88,7 +88,7 @@ export default {
 
 .background-image{
   width: auto;
-  height: 100vh;
+  height: 100%;
   background-repeat: no-repeat;
   background-position: center;
   background-size:cover;
