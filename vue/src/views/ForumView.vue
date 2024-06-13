@@ -38,6 +38,7 @@ import CreatePostCard from '../components/CreatePostCard.vue';
             forumId: parseInt(this.$route.params.forumId),
             forumkeyword: "",
             forum: {},
+            user: {},
             posts:[]
         };
     },

@@ -44,7 +44,7 @@ export default {
 
   getUserFavorites(){
     return axios.get('/forums/favorite')
-  }
+  },
 
 
 
