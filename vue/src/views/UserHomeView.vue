@@ -2,35 +2,20 @@
   <section class="whole-page">
   <section class="left-panel">
 
-    <!-- <h1 class="home-text">Home</h1> -->
-  
-    <!-- <router-link class="ResourcesViewLink" 
-    v-bind:to="{name: 'resources'}">
-      <h1 class="resources-link"> Resources</h1>
-    </router-link> -->
 
     <select v-model="Selection" @change="changeView" class="dropdown">
       <option value="">Select</option>
-      <!-- <router-link v-bind:to="{name: 'resources'}"> -->
+      
         <option value="Create-Forum">Create Forum</option>
-      <!-- </router-link> -->
-      <!-- <router-link v-bind:to="{name: 'createforum'}"> -->
+      
         <option value="Resources">Community Guidelines</option>
-    <!-- </router-link> -->
+    
     </select>
 
-    <!-- <router-link class="CreateForumViewLink" 
-    v-bind:to="{name: 'createforum'}">
-      <h1 class="create-forum">Create Forum</h1>
-    </router-link> -->
-
-    <!-- <router-link class="CreatePostViewLink" v-bind:to="{name: 'createpost'}">
-      <h1 class="create-post">Create A Post</h1>
-    </router-link> -->
+    
   </section>
   <section class="main-section">
     <section class ="top-section">
-      <!-- <h1 class="linksandsearches"> -->
         <h1 class="welcome">Stellar Discussions</h1>
   <form class = "ForumSearch" @submit.prevent="searchForums(keyword)">
       <div class="searchbar">
@@ -39,7 +24,6 @@
         <button type="submit">Search</button>
       </div>
     </form>
-  <!-- </h1> -->
   </section>
   <section class="main-content">
     <h2 class="forums-description">Your Favorite Forums</h2>
@@ -47,12 +31,7 @@
   <ForumsCard class = "active-forums" v-for="forum in forums"
   v-bind:forum="forum" v-bind:key="forum.forum_id"/>
 </div>
-<!-- <h2 class="posts-description">Today's Trending Posts</h2>
-<div class="post-section">
-  <PostCard class="trending-posts" v-for="post in posts"
-  v-bind:post="post"
-  v-bind:key="post.post_id"/>
-</div> -->
+
   </section>
   </section>
 </section>
@@ -86,11 +65,7 @@ export default {
             this.forums = response.data;
           })
         },
-    // getTodaysActiveForums(){
-    //     ForumService.getActiveForums().then((response)=>{
-    //       this.forums = response.data;
-    //     }). catch()
-    //   },
+    
       getTodaysPopularPosts(){
         PostService.get10MostPopularPosts().then((response) =>{
           this.posts = response.data;
@@ -137,10 +112,7 @@ export default {
      
   },
   created(){
-          // this.getForums();
-          // this.getTodaysActiveForums();
-          // this.getPosts();
-          // this.getTodaysPopularPosts();
+          
           this.getUsersFavorites();
       }
   };
@@ -150,8 +122,8 @@ export default {
 
 .whole-page{
 display: flex;
-/* height: 100%; */
 overflow-y: auto;
+height: 100vh;
 }
 .home-text{
 padding-top: 20%;
