@@ -15,20 +15,23 @@
         <span v-else @click="favorite">
             <i class="fas fa-star white-star"></i>
         </span> -->
-        <span class = "username">{{ user }}</span>
+        <div class = "top-of-card">
+            <span class = "username">{{ user }}</span>
         <span v-if="iconClick" @click="unfavoriteForum(forum.forum_id)">
             <i class="fas fa-star yellow-star"></i>
         </span>
         <span v-else @click="addFavoriteForum(forum.forum_id)">
             <i class="fas fa-star white-star"></i>
         </span>
+        </div>
+        
 
      <!-- </button> -->
     <!-- <i class = "fas fa-star white-star"></i> -->
     <router-link class="ForumViewLink" v-bind:to="{ name: 'forumview', params:{forumId: forum.forum_id} }">
-    <header>
+    <div class="midcard">
         <h1 class="forumName">{{ forum.forum_name }}</h1>
-    </header>
+    </div>
     </router-link>
     
     <div class="timeStamp">{{ forum.time_stamp }}</div>
@@ -150,8 +153,14 @@ export default{
 
 <style scoped>
 .card{
-    display: flex;
+    /* display: flex; */
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: "topcard"
+    "midcard"
+    "endcard";
     flex-direction: column;
+    justify-content: center;
     /* justify-content: space-between; */
     border: 8px solid rgb(250, 129, 240);
     border-radius: 25px;
@@ -162,12 +171,13 @@ export default{
     /* margin: 0 auto; */
     margin-bottom: 10px;
     background-color: #34aae1;
+    padding: 10px;
 }
 
 .username{
     font-size: 1.5rem;
     color: white; 
-    padding-top: 2%;
+    /* padding-top: 2%; */
 }
 .card .forumName{
     font-size: 2.5rem;
@@ -182,6 +192,8 @@ export default{
     font-size: 1rem;
     color: white;
     align-self: flex-end;
+    justify-content: bottom;
+    /* padding-top: 3%; */
     margin-right: 10px;
 }
 
@@ -198,26 +210,42 @@ export default{
     cursor: pointer;
     color: white;
     font-size: 35px;
-    margin-top: 5px;
-    margin-left: 85%;
-    margin-right: 10px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    /* margin-left: 85%; */
+    /* margin-right: 10px; */
+    
 }
 
 .yellow-star{
     cursor: pointer;
     color: gold;
     font-size: 35px;
-    margin-top: 5px;
-    margin-left: 85%;
-    margin-right: 10px;
+    margin-top: 0;
+    margin-bottom: 20px;
+
+}
+
+.top-of-card{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-right: 10%;
+    grid-area: topcard;
+
 }
 
 .forumName{
     margin: 5%;
+    grid-area: midcard;
 }
 
 .timeStamp{
+
     margin-bottom: 2%;
+    grid-area: endcard;
+    display: flex;
+    justify-content: flex-end;
 }
 
 

@@ -86,7 +86,7 @@ label {
 .background-image{
   width: 100%;
   height: 100%;
-  background: url("../assets/Rovermoved.jpg");
+  background: url("../assets/AdjustedLogo.jpg");
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: fixed;

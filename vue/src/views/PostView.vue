@@ -1,5 +1,5 @@
 <template>
-    <div class="background-image"> 
+    <div class="background-image">
         <div id="entirepostview">
    <div class="post-section">
        <PostCard class="trending-posts" v-bind:post="post" v-bind:key="post.post_id"/>
@@ -8,7 +8,7 @@
        <CommentCard class="comments" v-for="comment in comments" v-bind:comment="comment" v-bind:key="comment.comment_id"/>
    </div>
 </div>
-   </div>
+</div>
    <!-- working -->
     
     
@@ -65,7 +65,7 @@ export default {
   align-items: center;
   /* height: 100vh; */
   align-content: center;
-  height: 100vh;
+  height: 100%;
 }
 
 .comments-section{
@@ -86,16 +86,16 @@ export default {
 
 }
 
-/* .background-image{
+.background-image{
   width: auto;
-  height: 100%;
+  height: 100vh;
   background-repeat: no-repeat;
   background-position: center;
   background-size:cover;
-  background: url("assets/SpaceOriginal.jpg");
+  background: url("../assets/SpaceOriginal.jpg");
   background-position: fixed;
   size: 2rem;
-} */
+}
 
 /* #entirepostview{
   height:100vh;

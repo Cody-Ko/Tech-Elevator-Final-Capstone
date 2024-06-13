@@ -87,7 +87,7 @@ export default {
       font-weight: bold;
       color: white;
       margin-top: .25%;
-      height: 100%;
+      /* height: 100%; */
       width: 100%;
       margin: 0;
       text-align: center;
@@ -100,8 +100,9 @@ export default {
       color: white;
       text-align: center;
       justify-content: center;
-      height: 100vh;
+      /* height: 100vh; */
       width: 100vh;
+      box-sizing: border-box;
   }
 
   .build-a-post {
@@ -112,11 +113,11 @@ export default {
       margin: 0 auto;
       margin-bottom: 1%;
       color: white;
-      margin-top: .25%;
+      margin-top: 0;
+      border-bottom-width: 0;
       text-align: center;
       padding: 10px;
   }
-
   
   /* Test 1 */
   </style>
