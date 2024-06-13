@@ -233,4 +233,11 @@ public class UserController {
         return forumDAO.getUsername(forumId);
     }
 
+    //get username by postid
+    @RequestMapping(value = "/posts/{postId}/createdBy", method = RequestMethod.GET)
+    public String getUsernameByPostId(@PathVariable int postId){
+        return postDAO.getUserName(postId);
+    }
+
+
 }
