@@ -9,7 +9,7 @@
     <router-view />
 
     <div id="bottomNav">
-      Welcome to the Edge of the Universe.  Farwell!
+      Welcome to the Edge of the Universe.  Farewell!
     </div>
   </div>
     </div>
