@@ -8,7 +8,9 @@ export default {
 
   getUsernameByForumId(forumId){
     return axios.get(`/forums/${forumId}/createdBy`)
-  }
+  },
 
-
+//   getUsernameByPostId(postId){
+//     return axios.get(`/posts/${postId}/createdBy`)
+//   }
 }
