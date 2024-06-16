@@ -1,4 +1,7 @@
 <template>
+
+
+
     <section class="whole-page">
     <section class="left-panel">
 
