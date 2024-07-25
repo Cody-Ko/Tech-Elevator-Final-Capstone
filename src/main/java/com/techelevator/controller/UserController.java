@@ -20,7 +20,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "https://cody-ko.github.io")
-@RequestMapping("/api") // added common prefix for API endpoints
+//@RequestMapping("/api") // added common prefix for API endpoints
 public class UserController {
 
     private final CommentDAO commentDAO;

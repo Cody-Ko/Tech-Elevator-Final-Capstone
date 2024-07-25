@@ -20,7 +20,7 @@ import com.techelevator.security.jwt.TokenProvider;
 
 @RestController
 @CrossOrigin(origins = "https://cody-ko.github.io")
-@RequestMapping("/api")
+//@RequestMapping("/api")
 public class AuthenticationController {
 
     private final TokenProvider tokenProvider;
