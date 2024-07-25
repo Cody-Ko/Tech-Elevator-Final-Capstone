@@ -32,6 +32,11 @@ public class AuthenticationController {
         this.userDao = userDao;
     }
 
+    @GetMapping("/")
+    public String hello() {
+        return "Hello, World!";
+    }
+
 //    @GetMapping("/login")
 //    public String showLoginPage() {
 //        return "login";
