@@ -32,10 +32,10 @@ public class AuthenticationController {
         this.userDao = userDao;
     }
 
-    @GetMapping("/login")
-    public String showLoginPage() {
-        return "login";
-    }
+//    @GetMapping("/login")
+//    public String showLoginPage() {
+//        return "login";
+//    }
 
     @RequestMapping(path = "/login", method = RequestMethod.POST)
     public ResponseEntity<LoginResponseDto> login(@Valid @RequestBody LoginDto loginDto) {

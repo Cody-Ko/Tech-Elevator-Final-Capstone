@@ -7,8 +7,8 @@ import org.springframework.web.servlet.view.RedirectView;
 @Controller
 public class HomeController {
 
-    @GetMapping("/")
-    public RedirectView redirectToLogin() {
-        return new RedirectView("/login");
-    }
+//    @GetMapping("/")
+//    public RedirectView redirectToLogin() {
+//        return new RedirectView("/login");
+//    }
 }
