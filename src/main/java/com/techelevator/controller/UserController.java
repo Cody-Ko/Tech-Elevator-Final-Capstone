@@ -19,7 +19,7 @@ import java.security.Principal;
 import java.util.List;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "https://cody-ko.github.io")
 public class UserController {
 
     private final CommentDAO commentDAO;
