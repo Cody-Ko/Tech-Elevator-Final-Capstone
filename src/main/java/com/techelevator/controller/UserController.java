@@ -20,6 +20,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "https://cody-ko.github.io")
+@RequestMapping("/api") // added common prefix for API endpoints
 public class UserController {
 
     private final CommentDAO commentDAO;
@@ -91,7 +92,7 @@ public class UserController {
     // DELETES FORUM BY FORUM NAME
     @PreAuthorize("isAuthenticated()")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @RequestMapping(path= "forums/deleteforum/{forumname}")
+    @RequestMapping(path= "/forums/deleteforum/{forumname}")
     public void deleteForumByForumName(@PathVariable String name) {
         forumDAO.deleteForumByForumName(name);
     }
@@ -100,7 +101,7 @@ public class UserController {
     // DELETES FORUM BY FORUM ID
     @PreAuthorize("isAuthenticated()")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @RequestMapping(path= "forums/{forumId}/delete")
+    @RequestMapping(path= "/forums/{forumId}/delete")
     public void deleteForumByForumId(@PathVariable int forumId) {
         forumDAO.deleteForumByForumId(forumId);
     }
@@ -108,7 +109,7 @@ public class UserController {
     // DELETES FORUM BY USERNAME
     @PreAuthorize("isAuthenticated()")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @RequestMapping(path= "forums/deleteforum/{user_id}/userId")
+    @RequestMapping(path= "/forums/deleteforum/{user_id}/userId")
     public void deleteForumByUsername(@PathVariable int userId) {
         forumDAO.deleteForumsByUserId(userId);
     }
