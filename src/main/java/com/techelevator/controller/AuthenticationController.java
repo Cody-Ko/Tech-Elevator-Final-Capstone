@@ -32,6 +32,12 @@ public class AuthenticationController {
         this.userDao = userDao;
     }
 
+    @GetMapping("/login")
+    public String showLoginPage() {
+        // Return the name of the login view if using a template engine
+        return "login";
+    }
+
     @RequestMapping(path = "/login", method = RequestMethod.POST)
     public ResponseEntity<LoginResponseDto> login(@Valid @RequestBody LoginDto loginDto) {
 
