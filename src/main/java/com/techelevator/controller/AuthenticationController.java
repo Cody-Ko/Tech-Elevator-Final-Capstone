@@ -34,7 +34,6 @@ public class AuthenticationController {
 
     @GetMapping("/login")
     public String showLoginPage() {
-        // Return the name of the login view if using a template engine
         return "login";
     }
 
