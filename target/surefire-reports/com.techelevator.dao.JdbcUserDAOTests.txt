@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.techelevator.dao.JdbcUserDAOTests
 -------------------------------------------------------------------------------
-Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.908 s - in com.techelevator.dao.JdbcUserDAOTests
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.424 s - in com.techelevator.dao.JdbcUserDAOTests

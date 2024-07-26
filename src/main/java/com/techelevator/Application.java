@@ -25,7 +25,7 @@ public static void main(String[] args) {
 
     private static String getPort() {
         String port = System.getenv("PORT");
-        return port != null ? port : "${PORT:8080}";
+        return port != null ? port : "https://stellar-discussions-142a61c436e5.herokuapp.com";
     }
 
 }
