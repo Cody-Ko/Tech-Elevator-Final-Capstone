@@ -201,7 +201,8 @@ public class JdbcPostDAO implements PostDAO {
 
 
     public List<Post> get10MostPopularPosts(){
-        String sql = "SELECT * FROM posts WHERE time_stamp >= NOW() - '1 DAY'::INTERVAL order by up_votes-down_votes DESC limit 10 "; // from t-24 hr
+        String sql = "SELECT * FROM posts order by up_votes-down_votes DESC limit 10 "; // from t-24 hr
+        // removed: WHERE time_stamp >= NOW() - '1 DAY'::INTERVAL
         //String sql = "SELECT * FROM posts order by up_votes-down_votes DESC limit 10 ";  // not time limited
         List<Post> postList = new ArrayList<Post>();
         SqlRowSet result= jdbcTemplate.queryForRowSet(sql);
