@@ -69,8 +69,8 @@ public class JdbcPostDAO implements PostDAO {
         return jdbcTemplate.queryForObject(sql, int.class, postID);
     }
     public String getUserName(int postID){
-        String sql = "SELECT username from posts " +
-                "JOIN users ON posts.user_id = users.user_id " +
+        String sql = "SELECT username from users " +
+                "JOIN posts ON users.user_id = posts.user_id " +
                 "WHERE post_id = ? ";
         return jdbcTemplate.queryForObject(sql, String.class, postID);
 
