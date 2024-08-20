@@ -20,5 +20,6 @@ public interface CommentDAO {
     //Comment mapRow(SqlRowSet rs, int rowNum) throws SQLException ;
     void createComment(Principal currUser, CommentDto commentDto, int postId /* path variable */);
 
+    public String getUsername(int commentID);
 
-    }
+}

@@ -240,5 +240,6 @@ public class UserController {
         return postDAO.getUserName(postId);
     }
 
-
+    @RequestMapping(value = "/comments/{commentId}/createdBy", method = RequestMethod.GET)
+    public String getUsernameByCommentId(@PathVariable int commentId) {return commentDAO.getUsername(commentId); }
 }

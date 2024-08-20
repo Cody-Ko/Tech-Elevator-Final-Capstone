@@ -103,6 +103,14 @@ public class JdbcCommentDAO implements CommentDAO {
 
         jdbcTemplate.update(sql, currUser.getName(), commentDto.getMessage(), postId, commentDto.getLocation());
     }
+
+    public String getUsername(int commentID){
+        String sql = "SELECT username from users " +
+                "JOIN comments on users.user_id = comments.user_id " +
+                "WHERE comment_id = ? ";
+        return jdbcTemplate.queryForObject(sql, String.class, commentID);
+    }
+
         /*
 
             /*
